@@ -66,7 +66,7 @@ import { getDatabase, ref, get, remove, child, update  } from "firebase/database
 import { database } from "./firebase";
 import SearchAndDisplayUser from "./components/Test/Test";
 import TestSearchName from "./components/Test/TestSearchName";
-
+import TestAntd from "./components/Test/TestAntd"
 
 function App() {
   const dbRef = ref(database);
@@ -121,6 +121,7 @@ function App() {
       <header className="App-header">
         {/* <SearchAndDisplayUser /> */}
         <TestSearchName></TestSearchName>
+        <TestAntd></TestAntd>
         <button onClick={handleDeleteClick}>Delete</button>
         <button onClick={Update}>Update</button>
       </header>
