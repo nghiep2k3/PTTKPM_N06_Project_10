@@ -1,0 +1,146 @@
+.Navbar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 0;
+    color: white;
+    background-color: rgb(81 89 163 / 30%);
+    cursor: pointer;
+}
+
+.Navbar_header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 50px;
+    line-height: 50px;
+
+}
+
+.Navbar_mid {
+    border-top: 1px solid #5b5a5a;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.Reverse {
+    transform: scaleX(-1);
+    font-size: 20px;
+}
+
+
+
+.Dropdown_Tour:hover .dropdown,
+.dropdown:hover {
+    display: flex;
+
+}
+
+
+.dropdown {
+    padding: 5px 10px;
+    position: absolute;
+    background-color: white;
+    color: black;
+
+    width: 915px;
+    display: none;
+    text-align: left;
+    justify-content: space-around;
+    top: 34px;
+    left: -6px;
+    border-radius: 5px;
+    height: 120px;
+}
+
+.Dropdown_Tour {
+    font-size: 16px;
+}
+
+
+.local_1 b:first-child {
+    margin-bottom: 5px;
+    display: block;
+}
+
+.Container {
+    width: 400px;
+    margin-top: 50px;
+    border: 1px solid gray;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0px 0px 48px -7px rgba(116, 102, 102, 0.47);
+    -webkit-box-shadow: 0px 0px 48px -7px rgba(116, 102, 102, 0.47);
+    -moz-box-shadow: 0px 0px 48px -7px rgba(116, 102, 102, 0.47);
+}
+
+.tl_1 {
+    width: 80px;
+    height: 2px;
+    display: inline-block;
+    background: #eee;
+}
+
+.tl_2 {
+    display: inline-block;
+    height: 12px;
+    margin: 0 5px;
+    position: relative;
+    top: 5px;
+    width: 12px;
+    border: 1px solid #1ba0e2;
+    border-radius: 50px;
+}
+
+.Content_header {
+    text-align: center;
+}
+
+.Content {
+    margin-top: 50px;
+}
+
+.Card_title {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 95px;
+}
+
+.Card_title_2{
+    display: flex;
+    justify-content: space-around;
+    margin: 0 95px;
+
+}
+
+.Text {
+    margin: 0 8px;
+}
+
+.Img {
+    width: 400px;
+}
+
+.Img img {
+    max-width: 100%;
+}
+
+.Content_2{
+    margin-top: 50px;
+    padding-bottom: 60px;
+    background-image: url(//bizweb.dktcdn.net/100/299/077/themes/642224/assets/sec_inbound_tour_bg.png?1615450591638);
+    background-size: cover;
+    background-position: center center;
+    transform: translate(0px, -12.1167px);
+    height: 675.7px;
+}
+
+.Active{
+    color: #1ba0e2;
+}
+
+.Content_3{
+    margin-top: 50px;
+}
