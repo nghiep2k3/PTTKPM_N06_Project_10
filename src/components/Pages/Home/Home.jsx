@@ -41,10 +41,6 @@ const Home = () => {
           target="_blank"
           rel="noopener noreferrer"
           href="#"
-          // style={{
-          //   color: 'red',
-          //   width: '500px',
-          // }}
         >
           1st menu item
         </a>
@@ -73,6 +69,7 @@ const Home = () => {
         <Carousel
           style={{ cursor: "pointer", position: "relative" }}
           dots
+          autoplay autoplaySpeed={3000}
           draggable
         >
           <div>
