@@ -10,8 +10,25 @@ import {
   UserAddOutlined,
 } from "@ant-design/icons";
 import imageUrl from "../../img/logo.webp";
+
+import imageUrl1 from "../../img/banner1.jpg";
+import imageUrl2 from "../../img/banner2.jpg";
+import imageUrl3 from "../../img/banner3.jpg";
+import imageUrl4 from "../../img/banner4.jpg";
+import imageUrl5 from "../../img/banner5.jpg";
+import imageUrl6 from "../../img/banner6.jpg";
+
+import BgCF1 from '../../img/background_img1.webp'
+import BgCF2 from '../../img/bg2.webp'
+import BgCF3 from '../../img/bg3.webp'
+import BgCF4 from '../../img/bg4.webp'
+import BgCF5 from '../../img/bg5.webp'
+
+
 import Search from "antd/es/input/Search";
 import Card from "../Home/Card";
+import CardFavorite from "./CardFavorite";
+import Footer from "../../Footer/Footer";
 import "animate.css";
 
 // autoplay autoplaySpeed={5000}
@@ -246,15 +263,15 @@ const Home = () => {
         </div>
 
         <div className={style.Card_title}>
-          <Card />
-          <Card />
-          <Card />
+          <Card imgSrc={imageUrl1} />
+          <Card imgSrc={imageUrl2} />
+          <Card imgSrc={imageUrl3} />
         </div>
 
         <div className={style.Card_title}>
-          <Card />
-          <Card />
-          <Card />
+          <Card imgSrc={imageUrl4} />
+          <Card imgSrc={imageUrl5} />
+          <Card imgSrc={imageUrl6} />
         </div>
       </div>
 
@@ -269,19 +286,27 @@ const Home = () => {
             <div className={style.tl_1}></div>
           </div>
           <p>
-          Tour du lịch Trong nước tại Ant Du lịch. Hành hương đầu xuân - Tận hưởng bản sắc Việt.
+            Tour du lịch Trong nước tại Ant Du lịch. Hành hương đầu xuân - Tận
+            hưởng bản sắc Việt.
           </p>
-          <div style={{display: 'flex', justifyContent: 'center', fontSize: '18px', marginTop: '20px'}}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              fontSize: "18px",
+              marginTop: "20px",
+            }}
+          >
             <p className={style.Active}>Miền Bắc</p>
-            <p style={{margin: '0 20px'}}>Miền Trung</p>
+            <p style={{ margin: "0 20px" }}>Miền Trung</p>
             <p>Miền Nam</p>
           </div>
         </div>
 
         <div className={style.Card_title_2}>
-          <Card />
-          <Card />
-          <Card />
+          <Card imgSrc={imageUrl1} />
+          <Card imgSrc={imageUrl2} />
+          <Card imgSrc={imageUrl3} />
         </div>
       </div>
 
@@ -296,21 +321,56 @@ const Home = () => {
             <div className={style.tl_1}></div>
           </div>
           <p>
-          Tour du lịch Nước ngoài tại Ant Du lịch. Du lịch 5 châu - Trải nghiệm sắc xuân thế giới
+            Tour du lịch Nước ngoài tại Ant Du lịch. Du lịch 5 châu - Trải
+            nghiệm sắc xuân thế giới
           </p>
-          <div style={{display: 'flex', justifyContent: 'center', fontSize: '18px', marginTop: '20px'}}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              fontSize: "18px",
+              marginTop: "20px",
+            }}
+          >
             <p className={style.Active}>Du lịch Châu Á</p>
-            <p style={{margin: '0 20px'}}>Du lịch Châu Âu</p>
-            <p style={{marginRight: '20px'}}>Du lịch Châu Úc</p>
+            <p style={{ margin: "0 20px" }}>Du lịch Châu Âu</p>
+            <p style={{ marginRight: "20px" }}>Du lịch Châu Úc</p>
             <p>Du lịch Châu Mỹ</p>
           </div>
         </div>
 
         <div className={style.Card_title_2}>
-          <Card />
-          <Card />
-          <Card />
+          <Card imgSrc={imageUrl1} />
+          <Card imgSrc={imageUrl2} />
+          <Card imgSrc={imageUrl3} />
         </div>
+      </div>
+
+      <div className={style.Content_4}>
+        <div className={style.Content_header}>
+          <h1>
+            Điểm đến <span style={{ color: "#1ba0e2" }}>Ưu Thích</span>
+          </h1>
+          <div>
+            <div className={style.tl_1}></div>
+            <div className={style.tl_2}></div>
+            <div className={style.tl_1}></div>
+          </div>
+          <p>
+            Những địa điểm du lịch hot nhất dịp Tết ở Việt Nam. Tham khảo những
+            điểm du lịch đặc sắc nhất từ Bắc tới Nam cùng với chúng tôi.
+          </p>
+        </div>
+        
+        <div className={style.Card_favorite}>
+            <CardFavorite SrcImg={BgCF1} title="Phú Quốc"/>
+            <CardFavorite SrcImg={BgCF2} title="Châu Á"/>
+            <CardFavorite SrcImg={BgCF3} title="Châu Âu"/>
+            <CardFavorite SrcImg={BgCF4} title="Châu Mỹ"/>
+            <CardFavorite SrcImg={BgCF5} title="Châu Phi"/>
+        </div>
+
+        <Footer/>
       </div>
     </div>
   );

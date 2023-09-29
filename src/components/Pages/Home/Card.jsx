@@ -1,7 +1,6 @@
 import React from "react";
 import style from "./Navbar.module.css";
 import SrcImg from "../../img/banner1.jpg";
-import SrcImg2 from "../../img/banner2.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCalendarDays,
@@ -10,18 +9,20 @@ import {
   faTrain,
 } from "@fortawesome/free-solid-svg-icons";
 export default function Card(props) {
+  // sử dụng props truyền src img
+  const { imgSrc } = props;
   return (
     <div>
       <div className={style.Container}>
         <div className={style.Img}>
-          <img src={SrcImg} alt="banner1" />
+          <img style={{transition: "transform 0.5s linear"}} src={imgSrc} alt="banner1" />
         </div>
 
         <div className={style.Text}>
           <div className={style.Text_title}>
             <b>
               Du lịch Mỹ [Los Angeles - Las Vegas - Universal Studios Hollywood]
-              [2 đêm KS 5* Bellagio, Las...
+              [2 đêm KS 5* Bellagio, Las...]
             </b>
           </div>
           <div style={{ display: "flex", justifyContent: "space-between" }}>

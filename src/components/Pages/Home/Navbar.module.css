@@ -76,6 +76,10 @@
     -moz-box-shadow: 0px 0px 48px -7px rgba(116, 102, 102, 0.47);
 }
 
+.Container:hover img{
+    transform: translate(0px, 0px) scale(1.1, 1.1);
+}
+
 .tl_1 {
     width: 80px;
     height: 2px;
@@ -121,6 +125,7 @@
 
 .Img {
     width: 400px;
+    overflow: hidden;
 }
 
 .Img img {
@@ -132,8 +137,8 @@
     padding-bottom: 60px;
     background-image: url(//bizweb.dktcdn.net/100/299/077/themes/642224/assets/sec_inbound_tour_bg.png?1615450591638);
     background-size: cover;
+    background-attachment: fixed;
     background-position: center center;
-    transform: translate(0px, -12.1167px);
     height: 675.7px;
 }
 
@@ -144,3 +149,53 @@
 .Content_3{
     margin-top: 50px;
 }
+
+.Content_4{
+    margin-top: 50px;
+}
+
+.ContainerCF{
+    position: relative;
+}
+
+.BgCF{
+    width: 303px;
+}
+
+.BgCF img{
+    max-width: 100%;
+}
+
+.ContainerCF b{
+    bottom: 15px;
+    color: white;
+    position: absolute;
+    left: 10px;
+    transition: transform 0.2s linear;
+}
+
+.Card_favorite{
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    transition: background-color 0.6s ease;
+}
+
+.ContainerCF:hover .overlay{
+    border-bottom: 8px solid #1ba0e2;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.ContainerCF:hover b{
+    transform: translate(0px, -20px);
+}
+  
