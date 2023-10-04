@@ -10,23 +10,21 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 export default function Card(props) {
   // sử dụng props truyền src img
-  const { imgSrc } = props;
   return (
     <div>
       <div className={style.Container}>
         <div className={style.Img}>
-          <img style={{transition: "transform 0.5s linear"}} src={imgSrc} alt="banner1" />
+          <img style={{transition: "transform 0.5s linear"}} src={props.imgSrc} alt="banner1" />
         </div>
 
         <div className={style.Text}>
           <div className={style.Text_title}>
             <b>
-              Du lịch Mỹ [Los Angeles - Las Vegas - Universal Studios Hollywood]
-              [2 đêm KS 5* Bellagio, Las...]
+              {props.title}
             </b>
           </div>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <b style={{ color: "#1ba0e2" }}>49.000.000đ</b>
+            <b style={{ color: "#1ba0e2" }}>{props.price}</b>
             <div>
               <FontAwesomeIcon
                 icon={faTrain}
@@ -36,7 +34,7 @@ export default function Card(props) {
               <FontAwesomeIcon icon={faPlane} size="lg" />
             </div>
           </div>
-          <p style={{ textDecoration: "line-through" }}>54.000.000đ</p>
+          <p style={{ textDecoration: "line-through" }}>{props.priceOld}</p>
           <p>
             {" "}
             <FontAwesomeIcon

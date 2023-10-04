@@ -1,3 +1,4 @@
+// import React, { useState } from 'react';
 // import logo from "./logo.svg";
 // import "./App.css";
 // import { getDatabase, ref, child, get, set } from "firebase/database";
@@ -9,6 +10,8 @@
 //     .then((snapshot) => {
 //       if (snapshot.exists()) {
 //         console.log(snapshot.val());
+//         //object
+//         console.log(typeof(snapshot.val()));
 //       } else {
 //         console.log("No data available");
 //       }
@@ -17,23 +20,23 @@
 //       console.error(error);
 //     });
 
-//   set(child(dbRef, `users/3`), {
-//     id: 3,
-//     username: "Thanh Trúc 2",
-//   });
+// set(child(dbRef, `users/3`), {
+//   id: 3,
+//   username: "Thanh Trúc 2",
+// });
 
-//   var firebaseRef = getDatabase.database().ref('https://data-web-76487-default-rtdb.firebaseio.com/users/2');
-//   const handleDeleteClick = () => {
-//     firebaseRef
-//       .child("fieldToRemove")
-//       .remove()
-//       .then(function () {
-//         console.log("Dữ liệu đã được xóa thành công.");
-//       })
-//       .catch(function (error) {
-//         console.error("Lỗi khi xóa dữ liệu:", error);
-//       });
-//   }
+// var firebaseRef = getDatabase.database().ref('https://data-web-76487-default-rtdb.firebaseio.com');
+// const handleDeleteClick = () => {
+//   firebaseRef
+//     .child("fieldToRemove")
+//     .remove()
+//     .then(function () {
+//       console.log("Dữ liệu đã được xóa thành công.");
+//     })
+//     .catch(function (error) {
+//       console.error("Lỗi khi xóa dữ liệu:", error);
+//     });
+// }
 
 //   return (
 //     <div className="App">
@@ -51,14 +54,13 @@
 //           Learn React
 //         </a>
 
-//         <button onClick={handleDeleteClick}>Click</button>
+//         {/* <button onClick={handleDeleteClick}>Click</button> */}
 //       </header>
 //     </div>
 //   );
 // }
 
 // export default App;
-
 
 // import logo from "./logo.svg";
 // import "./App.css";
@@ -106,7 +108,7 @@
 //       "name": "Nghiep",
 //       "address": "Thái Bình"
 //     };
-    
+
 //     update(dbRef2, newData)
 //       .then(() => {
 //         console.log('Dữ liệu đã được cập nhật thành công.');
@@ -131,12 +133,19 @@
 
 // export default App;
 
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom/client';
+import React, { useState } from "react";
+import ReactDOM from "react-dom/client";
 import "./App.css";
-import Home from './components/Pages/Home/Home';
+import Home from "./components/Pages/Home/Home";
+import Test from './components/Test/TestCard'
+import ListCard from './components/Pages/Home/ListCard'
 function App() {
-  return <Home />;
+  return (
+    <div>
+      <Home />;
+      <Test></Test>
+    </div>
+  );
 }
 
 export default App;
