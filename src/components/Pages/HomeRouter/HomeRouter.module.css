@@ -1,0 +1,56 @@
+.Navbar {
+    color: white;
+    /* background-color: rgb(81 89 163 / 30%); */
+    cursor: pointer;
+    background-image: url('../../img/bgRouter.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 20% 90%;
+}
+
+.Navbar_header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 50px;
+    line-height: 50px;
+
+}
+
+.Navbar_mid {
+    border-top: 1px solid #5b5a5a;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.Reverse {
+    transform: scaleX(-1);
+    font-size: 20px;
+}
+
+.Dropdown_Tour:hover .dropdown,
+.dropdown:hover {
+    display: flex;
+
+}
+
+.dropdown {
+    padding: 5px 10px;
+    position: absolute;
+    background-color: white;
+    color: black;
+
+    width: 915px;
+    display: none;
+    text-align: left;
+    justify-content: space-around;
+    top: 34px;
+    left: -6px;
+    border-radius: 5px;
+    height: 120px;
+    transition: height 1s ease-in-out;
+}
+
+.Dropdown_Tour {
+    font-size: 16px;
+}

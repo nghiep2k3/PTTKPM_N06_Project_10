@@ -9,6 +9,7 @@ import {
   SearchOutlined,
   UserAddOutlined,
 } from "@ant-design/icons";
+import { Route, Routes, Link, Outlet } from "react-router-dom";
 import imageUrl from "../../img/logo.webp";
 
 import imageUrl1 from "../../img/banner1.jpg";
@@ -256,16 +257,18 @@ const Home = () => {
               }}
             >
               <li style={{ width: "300px", textAlign: "center" }}>Trang chủ</li>
-              <li
-                style={{
-                  width: "300px",
-                  textAlign: "center",
-                  borderLeft: "2px solid gray",
-                  borderRight: "2px solid gray",
-                }}
-              >
-                Giới thiệu
-              </li>
+              <Link to="/Contact">
+                <li
+                  style={{
+                    width: "300px",
+                    textAlign: "center",
+                    borderLeft: "2px solid gray",
+                    borderRight: "2px solid gray",
+                  }}
+                >
+                  Giới thiệu
+                </li>
+              </Link>
               <li
                 style={{
                   width: "300px",
@@ -316,7 +319,9 @@ const Home = () => {
                   <Button style={{ fontSize: "16px" }}>Tour nước ngoài</Button>
                 </Dropdown>
               </li>
-              <li style={{ width: "300px", textAlign: "center" }}>Liên hệ</li>
+              <Link to="/Page">
+                <li style={{ width: "300px", textAlign: "center" }}>Liên hệ</li>
+              </Link>
             </ul>
           </div>
         </div>
@@ -500,41 +505,69 @@ const Home = () => {
             <div>
               <div className={style.List1}>
                 <div className={style.List1_left}>
-                    <img src="https://tourvip.vn/assets/uploads/images/c1.jpg" alt="" />
+                  <img
+                    src="https://tourvip.vn/assets/uploads/images/c1.jpg"
+                    alt=""
+                  />
                 </div>
                 <div className={style.List1_right}>
                   <b>Tràng An cổ - điểm đến đang hot ở Ninh Bình</b>
-                  <p>Ở Tràng An có hai địa danh là Tràng An và Tràng An cổ. Trong đó, Tràng An, nơi thu hút hàng nghìn lượt khách du xuân mỗi ngày</p>
+                  <p>
+                    Ở Tràng An có hai địa danh là Tràng An và Tràng An cổ. Trong
+                    đó, Tràng An, nơi thu hút hàng nghìn lượt khách du xuân mỗi
+                    ngày
+                  </p>
                 </div>
               </div>
 
               <div className={style.List1}>
                 <div className={style.List1_left}>
-                    <img src="https://tourvip.vn/assets/uploads/images/c1.jpg" alt="" />
+                  <img
+                    src="https://tourvip.vn/assets/uploads/images/c1.jpg"
+                    alt=""
+                  />
                 </div>
                 <div className={style.List1_right}>
                   <b>Tràng An cổ - điểm đến đang hot ở Ninh Bình</b>
-                  <p>Ở Tràng An có hai địa danh là Tràng An và Tràng An cổ. Trong đó, Tràng An, nơi thu hút hàng nghìn lượt khách du xuân mỗi ngày</p>
+                  <p>
+                    Ở Tràng An có hai địa danh là Tràng An và Tràng An cổ. Trong
+                    đó, Tràng An, nơi thu hút hàng nghìn lượt khách du xuân mỗi
+                    ngày
+                  </p>
                 </div>
               </div>
 
               <div className={style.List1}>
                 <div className={style.List1_left}>
-                    <img src="https://tourvip.vn/assets/uploads/images/c1.jpg" alt="" />
+                  <img
+                    src="https://tourvip.vn/assets/uploads/images/c1.jpg"
+                    alt=""
+                  />
                 </div>
                 <div className={style.List1_right}>
                   <b>Tràng An cổ - điểm đến đang hot ở Ninh Bình</b>
-                  <p>Ở Tràng An có hai địa danh là Tràng An và Tràng An cổ. Trong đó, Tràng An, nơi thu hút hàng nghìn lượt khách du xuân mỗi ngày</p>
+                  <p>
+                    Ở Tràng An có hai địa danh là Tràng An và Tràng An cổ. Trong
+                    đó, Tràng An, nơi thu hút hàng nghìn lượt khách du xuân mỗi
+                    ngày
+                  </p>
                 </div>
               </div>
 
               <div className={style.List1}>
                 <div className={style.List1_left}>
-                    <img src="https://tourvip.vn/assets/uploads/images/c1.jpg" alt="" />
+                  <img
+                    src="https://tourvip.vn/assets/uploads/images/c1.jpg"
+                    alt=""
+                  />
                 </div>
                 <div className={style.List1_right}>
                   <b>Tràng An cổ - điểm đến đang hot ở Ninh Bình</b>
-                  <p>Ở Tràng An có hai địa danh là Tràng An và Tràng An cổ. Trong đó, Tràng An, nơi thu hút hàng nghìn lượt khách du xuân mỗi ngày</p>
+                  <p>
+                    Ở Tràng An có hai địa danh là Tràng An và Tràng An cổ. Trong
+                    đó, Tràng An, nơi thu hút hàng nghìn lượt khách du xuân mỗi
+                    ngày
+                  </p>
                 </div>
               </div>
             </div>

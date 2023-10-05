@@ -139,12 +139,13 @@ import "./App.css";
 import Home from "./components/Pages/Home/Home";
 import Test from './components/Test/TestCard'
 import ListCard from './components/Pages/Home/ListCard'
+import HomeRouter from "./components/Pages/HomeRouter/HomeRouter";
+import RouterComponent from './Router';
+{/* <RouterComponent/> */}
+
 function App() {
   return (
-    <div>
-      <Home />;
-      <Test></Test>
-    </div>
+    <RouterComponent/>
   );
 }
 
