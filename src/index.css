@@ -1,4 +1,4 @@
-*{
+* {
   padding: 0;
   box-sizing: border-box;
   margin: 0;
@@ -17,17 +17,20 @@ code {
     monospace;
 }
 
-.ant-carousel .css-dev-only-do-not-override-1ck3jst{
+.ant-carousel .css-dev-only-do-not-override-1ck3jst {
   border: none !important;
-  
+
 }
 
-.ant-input-affix-wrapper, .ant-input-group-addon, .ant-input, .ant-input-affix-wrapper-focused{
+.ant-input-affix-wrapper,
+.ant-input-group-addon,
+.ant-input,
+.ant-input-affix-wrapper-focused {
   background-color: transparent !important;
   border: none;
 }
 
-.ant-input-wrapper{
+.ant-input-wrapper {
   border: 1px solid white;
   border-radius: 10px;
 }
@@ -42,7 +45,7 @@ code {
 }
 
 ::placeholder {
-  color: white !important; 
+  color: white !important;
 }
 
 .ant-btn {
@@ -52,12 +55,61 @@ code {
   width: 100%;
 }
 
-.ant-dropdown-open{
+.ant-dropdown-open {
   /* color: red !important; */
 }
 
-ul > a{
+ul>a {
   text-decoration: none;
   color: white;
   font-style: 16px;
 }
+
+#basic_username,
+#basic_user_email {
+  border: 2px solid gray;
+  color: black;
+  width: 350px;
+}
+
+#basic_user_introduction {
+  width: 854px !important;
+  border: 2px solid gray;
+  color: black;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.ant-col {
+  flex: none;
+}
+
+label[title="Email"] {
+  padding-left: 80px;
+  font-weight: bold;
+  font-size: 18px !important;
+  color: black !important;
+}
+
+label[title="Họ và tên"] {
+  font-weight: bold;
+  font-size: 18px !important;
+  color: black !important;
+}
+.selected {
+  color: #1ba0e2;
+}
+
+label[title="Mô tả"] {
+  padding-right: 32px;
+  font-weight: bold;
+  font-size: 18px !important;
+  color: black !important;
+}
+
+button[title="ButtonSubmit"]:hover {
+    background-color: red !important;
+    color: black !important;
+}
+
+

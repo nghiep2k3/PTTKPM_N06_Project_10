@@ -54,3 +54,15 @@
 .Dropdown_Tour {
     font-size: 16px;
 }
+
+.Img_Logo{
+    width: 210px;
+}
+
+.Img_Logo img{
+    max-width: 100%;
+}
+
+.Reverse {
+    transform: scaleX(-1);
+}

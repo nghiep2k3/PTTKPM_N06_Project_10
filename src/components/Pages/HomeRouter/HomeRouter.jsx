@@ -121,7 +121,7 @@ export default function HomeRouter() {
             <Link to="/">
               <li style={{ width: "300px", textAlign: "center" }}>Trang chủ</li>
             </Link>
-            <Link to="/Contact">
+            <Link to="/Page">
               <li
                 style={{
                   width: "300px",
@@ -183,15 +183,19 @@ export default function HomeRouter() {
                 <Button style={{ fontSize: "16px" }}>Tour nước ngoài</Button>
               </Dropdown>
             </li>
-            <Link to="/Page">
+            <Link to="/Contact">
               <li style={{ width: "300px", textAlign: "center" }}>Liên hệ</li>
+            </Link>
+
+            <Link to="/TestAntd">
+              <li style={{ width: "300px", textAlign: "center" }}>Dev Mode</li>
             </Link>
           </ul>
         </div>
       </div>
       <Content
         style={{
-          margin: "24px 16px",
+          margin: "10px 16px",
           padding: 24,
           minHeight: 280,
         }}

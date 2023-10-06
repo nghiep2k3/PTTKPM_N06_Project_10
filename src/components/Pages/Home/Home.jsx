@@ -12,6 +12,9 @@ import {
 import { Route, Routes, Link, Outlet } from "react-router-dom";
 import imageUrl from "../../img/logo.webp";
 
+//Cách dùng chung className
+// className={`${style.ButtonClick} ${selectedButton === 'a' ? 'selected' : ''} common-button`}
+
 import imageUrl1 from "../../img/banner1.jpg";
 import imageUrl2 from "../../img/banner2.jpg";
 import imageUrl3 from "../../img/banner3.jpg";
@@ -107,8 +110,10 @@ const Home = () => {
 
   const [currentComponentCart, setcurrentComponentCart] = useState(Component1);
 
-  const handleButtonClick = (component) => {
+  const [isActive, setIsActive] = useState('Asia')
+  const handleButtonClick = (component, prams) => {
     setcurrentComponentCart(component);
+    setIsActive(prams);
   };
 
   //Component content 2
@@ -135,12 +140,16 @@ const Home = () => {
       </div>
     );
   };
-
-  const [currentComponentDomestic, setcurrentComponentDomestic] =
-    useState(Component5);
-  const handleButtonNext = (component) => {
+  //Active
+  const [Active, setActive] = useState('MienBac');
+  const [currentComponentDomestic, setcurrentComponentDomestic] = useState(Component5);
+  const handleButtonNext = (component, prams) => {
     setcurrentComponentDomestic(component);
+    setActive(prams)
   };
+
+  
+
 
   return (
     <div style={{ height: "5000px" }}>
@@ -319,8 +328,14 @@ const Home = () => {
                   <Button style={{ fontSize: "16px" }}>Tour nước ngoài</Button>
                 </Dropdown>
               </li>
-              <Link to="/Page">
+              <Link to="/Contact">
                 <li style={{ width: "300px", textAlign: "center" }}>Liên hệ</li>
+              </Link>
+
+              <Link to="/TestAntd">
+                <li style={{ width: "300px", textAlign: "center" }}>
+                  Dev mode
+                </li>
               </Link>
             </ul>
           </div>
@@ -370,29 +385,23 @@ const Home = () => {
               marginTop: "20px",
             }}
           >
+            {/* selected là một đối tượng class */}
             <button
-              className={style.Active}
-              style={{
-                border: "none",
-                fontWeight: "bold",
-                fontSize: "18px",
-                cursor: "pointer",
-                background: "transparent",
-              }}
-              onClick={() => handleButtonNext(<Component5 />)}
+              className={`${style.ButtonClick} ${Active === 'MienBac' ? 'selected' : ''}`}
+              onClick={() => handleButtonNext(<Component5 />, 'MienBac')}
             >
               Miền Bắc
             </button>
             <button
               style={{ margin: "0 20px" }}
-              className={style.ButtonClick}
-              onClick={() => handleButtonNext(<Component7 />)}
+              className={`${style.ButtonClick} ${Active === 'MienTrung' ? 'selected' : ''}`}
+              onClick={() => handleButtonNext(<Component7 />, 'MienTrung')}
             >
               Miền Trung
             </button>
             <button
-              className={style.ButtonClick}
-              onClick={() => handleButtonNext(<Component6 />)}
+              className={`${style.ButtonClick} ${Active === 'MienNam' ? 'selected' : ''}`}
+              onClick={() => handleButtonNext(<Component6 />, 'MienNam')}
             >
               Miền Nam
             </button>
@@ -425,35 +434,28 @@ const Home = () => {
             }}
           >
             <button
-              className={style.Active}
-              style={{
-                border: "none",
-                fontWeight: "bold",
-                fontSize: "18px",
-                cursor: "pointer",
-                background: "transparent",
-              }}
-              onClick={() => handleButtonClick(<Component1 />)}
+              className={`${style.ButtonClick} ${isActive === 'Asia' ? 'selected' : ''}`}
+              onClick={() => handleButtonClick(<Component1 />, 'Asia')}
             >
               Du lịch Châu Á
             </button>
             <button
               style={{ margin: "0 20px" }}
-              className={style.ButtonClick}
-              onClick={() => handleButtonClick(<Component2 />)}
+              className={`${style.ButtonClick} ${isActive === 'Europe' ? 'selected' : ''}`}
+              onClick={() => handleButtonClick(<Component2 />, 'Europe')}
             >
               Du lịch Châu Âu
             </button>
             <button
               style={{ marginRight: "20px" }}
-              className={style.ButtonClick}
-              onClick={() => handleButtonClick(<Component3 />)}
+              className={`${style.ButtonClick} ${isActive === 'Australia' ? 'selected' : ''}`}
+              onClick={() => handleButtonClick(<Component3 />, 'Australia')}
             >
               Du lịch Châu Úc
             </button>
             <button
-              className={style.ButtonClick}
-              onClick={() => handleButtonClick(<Component4 />)}
+              className={`${style.ButtonClick} ${isActive === 'Americas' ? 'selected' : ''}`}
+              onClick={() => handleButtonClick(<Component4 />, 'Americas')}
             >
               Du lịch Châu Mỹ
             </button>
