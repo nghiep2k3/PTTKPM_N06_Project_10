@@ -5,12 +5,8 @@ import ImgSrc from "../../img/logo.webp";
 import style from "./HomeRouter.module.css";
 import {
   HomeOutlined,
-  LoginOutlined,
-  LogoutOutlined,
   MailOutlined,
   PhoneOutlined,
-  SearchOutlined,
-  UserAddOutlined,
 } from "@ant-design/icons";
 
 export default function Contact() {

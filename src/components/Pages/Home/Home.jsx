@@ -45,16 +45,11 @@ import Bac from "../../VietNam/Bac/Bac";
 import Nam from "../../VietNam/Nam/Nam";
 import Trung from "../../VietNam/Trung/Trung";
 
-// autoplay autoplaySpeed={5000}
 const Home = () => {
   const items = [
     {
       key: "1",
-      label: (
-        <a target="_blank" rel="noopener noreferrer" href="#">
-          1st menu item
-        </a>
-      ),
+      label: <Link to="Asia">Du lịch Châu Á</Link>,
     },
     {
       key: "2",
@@ -110,7 +105,7 @@ const Home = () => {
 
   const [currentComponentCart, setcurrentComponentCart] = useState(Component1);
 
-  const [isActive, setIsActive] = useState('Asia')
+  const [isActive, setIsActive] = useState("Asia");
   const handleButtonClick = (component, prams) => {
     setcurrentComponentCart(component);
     setIsActive(prams);
@@ -141,15 +136,13 @@ const Home = () => {
     );
   };
   //Active
-  const [Active, setActive] = useState('MienBac');
-  const [currentComponentDomestic, setcurrentComponentDomestic] = useState(Component5);
+  const [Active, setActive] = useState("MienBac");
+  const [currentComponentDomestic, setcurrentComponentDomestic] =
+    useState(Component5);
   const handleButtonNext = (component, prams) => {
     setcurrentComponentDomestic(component);
-    setActive(prams)
+    setActive(prams);
   };
-
-  
-
 
   return (
     <div style={{ height: "5000px" }}>
@@ -311,23 +304,27 @@ const Home = () => {
                   </div>
                 </Button>
               </li>
-              <li
-                style={{
-                  width: "300px",
-                  textAlign: "center",
-                  borderLeft: "2px solid gray",
-                  borderRight: "2px solid gray",
-                }}
-              >
-                <Dropdown
-                  menu={{
-                    items,
+              <Link to="/TourOut">
+                <li
+                  style={{
+                    width: "300px",
+                    textAlign: "center",
+                    borderLeft: "2px solid gray",
+                    borderRight: "2px solid gray",
                   }}
-                  placement="bottomLeft"
                 >
-                  <Button style={{ fontSize: "16px" }}>Tour nước ngoài</Button>
-                </Dropdown>
-              </li>
+                  <Dropdown
+                    menu={{
+                      items,
+                    }}
+                    placement="bottomLeft"
+                  >
+                    <Button style={{ fontSize: "16px" }}>
+                      Tour nước ngoài
+                    </Button>
+                  </Dropdown>
+                </li>
+              </Link>
               <Link to="/Contact">
                 <li style={{ width: "300px", textAlign: "center" }}>Liên hệ</li>
               </Link>
@@ -387,21 +384,27 @@ const Home = () => {
           >
             {/* selected là một đối tượng class */}
             <button
-              className={`${style.ButtonClick} ${Active === 'MienBac' ? 'selected' : ''}`}
-              onClick={() => handleButtonNext(<Component5 />, 'MienBac')}
+              className={`${style.ButtonClick} ${
+                Active === "MienBac" ? "selected" : ""
+              }`}
+              onClick={() => handleButtonNext(<Component5 />, "MienBac")}
             >
               Miền Bắc
             </button>
             <button
               style={{ margin: "0 20px" }}
-              className={`${style.ButtonClick} ${Active === 'MienTrung' ? 'selected' : ''}`}
-              onClick={() => handleButtonNext(<Component7 />, 'MienTrung')}
+              className={`${style.ButtonClick} ${
+                Active === "MienTrung" ? "selected" : ""
+              }`}
+              onClick={() => handleButtonNext(<Component7 />, "MienTrung")}
             >
               Miền Trung
             </button>
             <button
-              className={`${style.ButtonClick} ${Active === 'MienNam' ? 'selected' : ''}`}
-              onClick={() => handleButtonNext(<Component6 />, 'MienNam')}
+              className={`${style.ButtonClick} ${
+                Active === "MienNam" ? "selected" : ""
+              }`}
+              onClick={() => handleButtonNext(<Component6 />, "MienNam")}
             >
               Miền Nam
             </button>
@@ -434,28 +437,36 @@ const Home = () => {
             }}
           >
             <button
-              className={`${style.ButtonClick} ${isActive === 'Asia' ? 'selected' : ''}`}
-              onClick={() => handleButtonClick(<Component1 />, 'Asia')}
+              className={`${style.ButtonClick} ${
+                isActive === "Asia" ? "selected" : ""
+              }`}
+              onClick={() => handleButtonClick(<Component1 />, "Asia")}
             >
               Du lịch Châu Á
             </button>
             <button
               style={{ margin: "0 20px" }}
-              className={`${style.ButtonClick} ${isActive === 'Europe' ? 'selected' : ''}`}
-              onClick={() => handleButtonClick(<Component2 />, 'Europe')}
+              className={`${style.ButtonClick} ${
+                isActive === "Europe" ? "selected" : ""
+              }`}
+              onClick={() => handleButtonClick(<Component2 />, "Europe")}
             >
               Du lịch Châu Âu
             </button>
             <button
               style={{ marginRight: "20px" }}
-              className={`${style.ButtonClick} ${isActive === 'Australia' ? 'selected' : ''}`}
-              onClick={() => handleButtonClick(<Component3 />, 'Australia')}
+              className={`${style.ButtonClick} ${
+                isActive === "Australia" ? "selected" : ""
+              }`}
+              onClick={() => handleButtonClick(<Component3 />, "Australia")}
             >
               Du lịch Châu Úc
             </button>
             <button
-              className={`${style.ButtonClick} ${isActive === 'Americas' ? 'selected' : ''}`}
-              onClick={() => handleButtonClick(<Component4 />, 'Americas')}
+              className={`${style.ButtonClick} ${
+                isActive === "Americas" ? "selected" : ""
+              }`}
+              onClick={() => handleButtonClick(<Component4 />, "Americas")}
             >
               Du lịch Châu Mỹ
             </button>

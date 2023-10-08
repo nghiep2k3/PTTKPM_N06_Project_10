@@ -53,16 +53,48 @@
 
 .Dropdown_Tour {
     font-size: 16px;
+    z-index: 99;
 }
 
-.Img_Logo{
+.Img_Logo {
     width: 210px;
 }
 
-.Img_Logo img{
+.Img_Logo img {
     max-width: 100%;
 }
 
 .Reverse {
     transform: scaleX(-1);
+}
+
+.Form_Price {
+    max-width: 254px;
+    height: 128px;
+    overflow: auto;
+}
+
+.Form_Price::-webkit-scrollbar {
+    width: 8px;
+}
+
+.Form_Price::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+.Form_Price::-webkit-scrollbar-thumb {
+    background-color: #1ba0e2;
+    border-radius: 6px;
+}
+
+.Form_Price::-webkit-scrollbar-thumb:hover {
+    background-color: #1ba0e2;
+}
+
+.FormBorder{
+    border: 2px solid #1ba0e2;
+    padding: 15px;
+    border-radius: 10px;
+    background: ghostwhite;
+    margin-top: 10px;
 }

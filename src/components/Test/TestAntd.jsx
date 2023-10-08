@@ -1,40 +1,36 @@
-import React, { useState } from 'react';
+import React from "react";
+import style from "./TestAntd.module.css";
+import { Form } from "react-router-dom";
+import { Checkbox } from "antd";
 
-const ButtonGroup = () => {
-  const [selectedButton, setSelectedButton] = useState(null);
-
-  const handleButtonClick = (button) => {
-    setSelectedButton(button);
+const ScrollBox = () => {
+  const onFinish = (values) => {
+    console.log("Success:", values);
   };
-
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
   return (
-    <div>
-      <button
-        className={selectedButton === 'a' ? 'selected' : ''}
-        onClick={() => handleButtonClick('a')}
-      >
-        Button A
-      </button>
-      <button
-        className={selectedButton === 'b' ? 'selected' : ''}
-        onClick={() => handleButtonClick('b')}
-      >
-        Button B
-      </button>
-      <button
-        className={selectedButton === 'c' ? 'selected' : ''}
-        onClick={() => handleButtonClick('c')}
-      >
-        Button C
-      </button>
-      <button
-        className={selectedButton === 'd' ? 'selected' : ''}
-        onClick={() => handleButtonClick('d')}
-      >
-        Button D
-      </button>
+    <div className="scroll-box">
+      <div className="content">
+        <Form
+          name="basic"
+          style={{
+            maxWidth: 245,
+            height: 140,
+          }}
+          initialValues={{
+            remember: true,
+          }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off"
+        >
+          
+        </Form>
+      </div>
     </div>
   );
 };
 
-export default ButtonGroup;
+export default ScrollBox;

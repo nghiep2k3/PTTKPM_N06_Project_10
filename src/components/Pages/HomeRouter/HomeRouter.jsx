@@ -19,27 +19,19 @@ export default function HomeRouter() {
   const items = [
     {
       key: "1",
-      label: (
-        <a target="_blank" rel="noopener noreferrer" href="#">
-          1st menu item
-        </a>
-      ),
+      label: <Link to="TourAsia">Du lịch Châu Á</Link>,
     },
     {
       key: "2",
-      label: (
-        <a target="_blank" rel="noopener noreferrer" href="#">
-          2nd menu item
-        </a>
-      ),
+      label: <Link to="Europe">Du lịch Châu Âu</Link>,
     },
     {
       key: "3",
-      label: (
-        <a target="_blank" rel="noopener noreferrer" href="#">
-          3rd menu item
-        </a>
-      ),
+      label: <Link to="Australia">Du lịch Châu Úc</Link>,
+    },
+    {
+      key: "4",
+      label: <Link to="Americas">Du lịch Châu Mỹ</Link>,
     },
   ];
   return (
@@ -166,29 +158,31 @@ export default function HomeRouter() {
                 </div>
               </Button>
             </li>
-            <li
-              style={{
-                width: "300px",
-                textAlign: "center",
-                borderLeft: "2px solid gray",
-                borderRight: "2px solid gray",
-              }}
-            >
-              <Dropdown
-                menu={{
-                  items,
+            <Link to="/TourOut">
+              <li
+                style={{
+                  width: "300px",
+                  textAlign: "center",
+                  borderLeft: "2px solid gray",
+                  borderRight: "2px solid gray",
                 }}
-                placement="bottomLeft"
               >
-                <Button style={{ fontSize: "16px" }}>Tour nước ngoài</Button>
-              </Dropdown>
-            </li>
+                <Dropdown
+                  menu={{
+                    items,
+                  }}
+                  placement="bottomLeft"
+                >
+                  <Button style={{ fontSize: "16px" }}>Tour nước ngoài</Button>
+                </Dropdown>
+              </li>
+            </Link>
             <Link to="/Contact">
               <li style={{ width: "300px", textAlign: "center" }}>Liên hệ</li>
             </Link>
 
             <Link to="/TestAntd">
-              <li style={{ width: "300px", textAlign: "center" }}>Dev Mode</li>
+              <li style={{ width: "150px", textAlign: "center" }}>Dev Mode</li>
             </Link>
           </ul>
         </div>
