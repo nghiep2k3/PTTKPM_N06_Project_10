@@ -145,7 +145,7 @@ const Home = () => {
   };
 
   return (
-    <div style={{ height: "5000px" }}>
+    <div >
       <div style={{ position: "relative" }}>
         <Carousel
           style={{ cursor: "pointer", position: "relative" }}

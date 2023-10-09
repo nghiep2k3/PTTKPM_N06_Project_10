@@ -117,3 +117,7 @@ button[title="ButtonSubmit"]:hover {
 }
 
 
+a{
+  text-decoration: none;
+  color: black;
+}

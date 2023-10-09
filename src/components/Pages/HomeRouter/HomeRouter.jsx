@@ -19,19 +19,19 @@ export default function HomeRouter() {
   const items = [
     {
       key: "1",
-      label: <Link to="TourAsia">Du lịch Châu Á</Link>,
+      label: <Link to="/TourAsia">Du lịch Châu Á</Link>,
     },
     {
       key: "2",
-      label: <Link to="Europe">Du lịch Châu Âu</Link>,
+      label: <Link to="/TourEurope">Du lịch Châu Âu</Link>,
     },
     {
       key: "3",
-      label: <Link to="Australia">Du lịch Châu Úc</Link>,
+      label: <Link to="/TourAutralia">Du lịch Châu Úc</Link>,
     },
     {
       key: "4",
-      label: <Link to="Americas">Du lịch Châu Mỹ</Link>,
+      label: <Link to="/TourAmericars">Du lịch Châu Mỹ</Link>,
     },
   ];
   return (
@@ -126,6 +126,7 @@ export default function HomeRouter() {
               </li>
             </Link>
             <li
+              className={style.Dropdown_Tour2}
               style={{
                 width: "300px",
                 textAlign: "center",
@@ -137,8 +138,8 @@ export default function HomeRouter() {
                 <div className={style.dropdown}>
                   <div className={style.local_1}>
                     <b>MIỀN BẮC</b>
-                    <p>Du lịch Hà Nội</p>
-                    <p>Du lịch Hạ Long</p>
+                    <p><Link to="/Hanoi">Du lịch Hà Nội</Link></p>
+                    <p><Link to="/HaLong">Du lịch Hạ Long</Link></p>
                     <p>Du lịch Hải Phòng</p>
                   </div>
 

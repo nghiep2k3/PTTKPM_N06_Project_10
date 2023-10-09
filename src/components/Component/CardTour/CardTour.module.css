@@ -1,9 +1,16 @@
 .CardTourImg{
     width: 300px;
+    overflow: hidden;
+
 }
 
+.CardTourImg:hover img{
+    transform: translate(0px, 0px) scale(1.1, 1.1);
+}
+/* Muốn đối tượng nào chuyển động thì thêm transition cho đối tượng đó rồi hover */
 .CardTourImg img{
     max-width: 100%;
+    transition: transform 0.2s linear;
 }
 
 .DetailTour{

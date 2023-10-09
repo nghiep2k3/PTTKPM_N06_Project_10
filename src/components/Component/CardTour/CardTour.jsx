@@ -19,7 +19,7 @@ export default function CardTour(props) {
       }}
     >
       <div style={{ display: "flex" }}>
-        <div className={style.CardTourImg}>
+        <div className={style.CardTourImg} >
           <img
             src={props.imgSrc}
             alt=""

@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import style from "../../Pages/HomeRouter/HomeRouter.module.css";
 
-export default function TourAsia() {
+export default function FormPrice(props) {
   const onFinish = (values) => {
     console.log("Success:", values);
   };
@@ -13,7 +13,7 @@ export default function TourAsia() {
   return (
     <div>
       <div style={{ fontSize: "20px" }}>
-        <Link to="/">Trang chủ</Link> &gt; Du lịch Châu Á
+        <Link to="/">Trang chủ</Link> &gt; {props.name}
       </div>
       <div className={style.FormBorder}>
         <div
