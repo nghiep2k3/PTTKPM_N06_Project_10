@@ -1,36 +1,43 @@
-import React from "react";
-import style from "./TestAntd.module.css";
-import { Form } from "react-router-dom";
-import { Checkbox } from "antd";
+import React, { useState, useRef } from 'react';
+import { Carousel, Button } from 'antd';
 
-const ScrollBox = () => {
-  const onFinish = (values) => {
-    console.log("Success:", values);
+const MyCarousel = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const carouselRef = useRef();
+
+  const handleSlideChange = (slideIndex) => {
+    if (slideIndex >= 0 && slideIndex < 3) {
+      setCurrentSlide(slideIndex);
+      carouselRef.current.goTo(slideIndex);
+    }
   };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
+
   return (
-    <div className="scroll-box">
-      <div className="content">
-        <Form
-          name="basic"
-          style={{
-            maxWidth: 245,
-            height: 140,
-          }}
-          initialValues={{
-            remember: true,
-          }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          autoComplete="off"
-        >
-          
-        </Form>
+    <div style={{background: 'gray'}}>
+      <Carousel ref={carouselRef} autoplay={true} afterChange={setCurrentSlide}>
+        <div>
+          <h3>Slide 1</h3>
+        </div>
+        <div>
+          <h3>Slide 2</h3>
+        </div>
+        <div>
+          <h3>Slide 3</h3>
+        </div>
+      </Carousel>
+      <div style={{ textAlign: 'center', marginTop: '10px' }}>
+        <Button onClick={() => handleSlideChange(currentSlide - 1)} disabled={currentSlide === 0}>
+          Previous
+        </Button>
+        <Button onClick={() => handleSlideChange(currentSlide + 1)} disabled={currentSlide === 2}>
+          Next
+        </Button>
+        <Button onClick={() => handleSlideChange(0)}>Slide 1</Button>
+        <Button onClick={() => handleSlideChange(1)}>Slide 2</Button>
+        <Button onClick={() => handleSlideChange(2)}>Slide 3</Button>
       </div>
     </div>
   );
 };
 
-export default ScrollBox;
+export default MyCarousel;

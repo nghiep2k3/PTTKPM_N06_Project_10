@@ -16,6 +16,7 @@ import TourAutralia from "./components/Pages/HomeRouter/TourForeign/TourAutralia
 
 import HaNoi from "./components/Pages/HomeRouter/TourDomestic/MienBac/HaNoi";
 import HaLong from "./components/Pages/HomeRouter/TourDomestic/MienBac/HaLong";
+import InfoTourHaNoi from "./components/Pages/DetailTour/MienBac/InfoTourHaNoi"
 function Router() {
   return (
     <Routes>
@@ -33,6 +34,8 @@ function Router() {
         <Route path="/TourAutralia" element={<TourAutralia />} />
         <Route path="/HaNoi" element={<HaNoi />} />
         <Route path="/HaLong" element={<HaLong />} />
+        {/* Detail Tour */}
+        <Route path="/InfoTourHaNoi" element={<InfoTourHaNoi />} />
 
         <Route path="*" element={<Page_404 />} />
       </Route>

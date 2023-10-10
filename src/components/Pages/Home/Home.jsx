@@ -49,23 +49,19 @@ const Home = () => {
   const items = [
     {
       key: "1",
-      label: <Link to="Asia">Du lịch Châu Á</Link>,
+      label: <Link to="/TourAsia">Du lịch Châu Á</Link>,
     },
     {
       key: "2",
-      label: (
-        <a target="_blank" rel="noopener noreferrer" href="#">
-          2nd menu item
-        </a>
-      ),
+      label: <Link to="/TourEurope">Du lịch Châu Âu</Link>,
     },
     {
       key: "3",
-      label: (
-        <a target="_blank" rel="noopener noreferrer" href="#">
-          3rd menu item
-        </a>
-      ),
+      label: <Link to="/TourAutralia">Du lịch Châu Úc</Link>,
+    },
+    {
+      key: "4",
+      label: <Link to="/TourAmericars">Du lịch Châu Mỹ</Link>,
     },
   ];
 
@@ -143,6 +139,8 @@ const Home = () => {
     setcurrentComponentDomestic(component);
     setActive(prams);
   };
+
+  
 
   return (
     <div >
@@ -272,6 +270,7 @@ const Home = () => {
                 </li>
               </Link>
               <li
+                className={style.Dropdown_Tour2}
                 style={{
                   width: "300px",
                   textAlign: "center",
@@ -327,12 +326,6 @@ const Home = () => {
               </Link>
               <Link to="/Contact">
                 <li style={{ width: "300px", textAlign: "center" }}>Liên hệ</li>
-              </Link>
-
-              <Link to="/TestAntd">
-                <li style={{ width: "300px", textAlign: "center" }}>
-                  Dev mode
-                </li>
               </Link>
             </ul>
           </div>

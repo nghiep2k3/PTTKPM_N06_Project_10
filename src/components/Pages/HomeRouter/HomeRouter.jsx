@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./HomeRouter.module.css";
-import { Button, Carousel, Dropdown, Space } from "antd";
+import { Button, Dropdown, Space } from "antd";
 import {
   LoginOutlined,
   LogoutOutlined,
