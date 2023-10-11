@@ -14,7 +14,7 @@ const MyCarousel = () => {
 
   return (
     <div style={{background: 'gray'}}>
-      <Carousel ref={carouselRef} autoplay={true} afterChange={setCurrentSlide}>
+      <Carousel ref={carouselRef} autoplay={true} afterChange={setCurrentSlide} draggable>
         <div>
           <h3>Slide 1</h3>
         </div>
