@@ -121,3 +121,43 @@ a{
   text-decoration: none;
   color: black;
 }
+
+.ant-picker {
+  background-color: rgb(176, 167, 167);
+}
+
+.ant-form-item-control-input-content{
+  border: 1px solid rgb(76, 67, 67);
+  border-radius: 10px;
+}
+
+.ant-form-item-control-input-content input{
+  color: black;
+
+}
+
+.ant-modal-footer{
+  display: none;
+}
+
+.ant-form-item-label{
+  margin: 10px;
+}
+
+.ant-form-item-label label{
+   width: 120px;
+   color: #1ba0e2 !important;
+   font-size: 16px !important;
+}
+
+input.red-placeholder::placeholder {
+  color: rgb(249, 192, 192) !important;
+}
+
+.ant-modal-title, .ant-modal-content{
+    background-color: #b8d0dc !important;
+}
+
+.ant-modal-title{
+  font-size: 20px !important;
+}
