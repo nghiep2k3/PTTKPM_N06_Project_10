@@ -7,6 +7,7 @@ import Contact from "./components/Pages/HomeRouter/Contact";
 import Home from "./components/Pages/Home/Home";
 import Page_404 from "./components/Pages/Page_404/Page_404";
 import TestAntd from "./components/Test/TestAntd";
+import CartItem from "./components/Pages/CartItem/CartItem";
 
 import TourOut from "./components/Pages/HomeRouter/TourOut";
 import TourAsia from "./components/Pages/HomeRouter/TourForeign/TourAsia";
@@ -25,6 +26,7 @@ function Router() {
 
       <Route path="/" element={<HomeRouter />}>
         <Route path="/Page" element={<Page />} />
+        <Route path="/CartItem" element={<CartItem />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/TourOut" element={<TourOut />} />
         <Route path="/TestAntd" element={<TestAntd />} />

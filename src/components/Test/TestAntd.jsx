@@ -1,43 +1,71 @@
-import React, { useState, useRef } from 'react';
-import { Carousel, Button } from 'antd';
+import React, { useEffect, useState } from "react";
+import { Space, Spin } from "antd";
+import { database } from "../../firebase";
+import { getDatabase, ref, child, get, set } from "firebase/database";
 
-const MyCarousel = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const carouselRef = useRef();
+export default function TestAntd() {
+  const dbRef = ref(database);
+  const [load, setLoad] = useState(false);
+  const [data, setData] = useState(null);
 
-  const handleSlideChange = (slideIndex) => {
-    if (slideIndex >= 0 && slideIndex < 3) {
-      setCurrentSlide(slideIndex);
-      carouselRef.current.goTo(slideIndex);
-    }
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const snapshot = await get(child(dbRef, `TourNew`));
+        if (snapshot.exists()) {
+          setData(snapshot.val());
+          console.log(snapshot.val());
+        } else {
+          console.log("No data available");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // useEffect(() => {
+  //   get(child(dbRef, `TourNew`))
+  //     .then((snapshot) => {
+  //       if (snapshot.exists()) {
+  //         setData(snapshot.val());
+  //         console.log(snapshot.val());
+  //         setLoad(true);
+  //         //object
+  //       } else {
+  //         console.log("No data available");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, []);
+
+  console.log(222, data.HaNoi.des);
+
 
   return (
-    <div style={{background: 'gray'}}>
-      <Carousel ref={carouselRef} autoplay={true} afterChange={setCurrentSlide} draggable>
-        <div>
-          <h3>Slide 1</h3>
-        </div>
-        <div>
-          <h3>Slide 2</h3>
-        </div>
-        <div>
-          <h3>Slide 3</h3>
-        </div>
-      </Carousel>
-      <div style={{ textAlign: 'center', marginTop: '10px' }}>
-        <Button onClick={() => handleSlideChange(currentSlide - 1)} disabled={currentSlide === 0}>
-          Previous
-        </Button>
-        <Button onClick={() => handleSlideChange(currentSlide + 1)} disabled={currentSlide === 2}>
-          Next
-        </Button>
-        <Button onClick={() => handleSlideChange(0)}>Slide 1</Button>
-        <Button onClick={() => handleSlideChange(1)}>Slide 2</Button>
-        <Button onClick={() => handleSlideChange(2)}>Slide 3</Button>
-      </div>
+    <div>
+      Test call api
+      <p>{data.HaNoi.des}</p>
     </div>
   );
-};
 
-export default MyCarousel;
+
+  // if (load == false) {
+  //   return (
+  //     <div>
+  //       <Spin size="large" />
+  //     </div>
+  //   );
+  // } else {
+  //   return (
+  //     <div>
+  //       Test call api
+  //       <p>{data.HaNoi.des}</p>
+  //     </div>
+  //   );
+  // }
+}

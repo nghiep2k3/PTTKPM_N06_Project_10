@@ -282,7 +282,7 @@ const Home = () => {
                   <div className={style.dropdown}>
                     <div className={style.local_1}>
                       <b>MIỀN BẮC</b>
-                      <p>Du lịch Hà Nội</p>
+                      <p><Link to="/Hanoi">Du lịch Hà Nội</Link></p>
                       <p>Du lịch Hạ Long</p>
                       <p>Du lịch Hải Phòng</p>
                     </div>

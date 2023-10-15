@@ -96,6 +96,8 @@ export default function InfoTourHaNoi() {
 
     // Update TotalMoney state
     setTotalMoney(totalMoney);
+
+    
   }, [Adult, Baby, Baby2]);
 
   const formatCurrency = (amount) => {
@@ -269,7 +271,7 @@ export default function InfoTourHaNoi() {
                   </Form.Item>
 
                   <Form.Item
-                    label="Email: "
+                    label="Email:"
                     name="email"
                     rules={[
                       {
@@ -296,7 +298,7 @@ export default function InfoTourHaNoi() {
 
                   <Form.Item style={{marginTop: 10}}>
                     <Button type="primary" htmlType="submit">
-                      Submit
+                      Gửi cho chúng tôi
                     </Button>
                   </Form.Item>
                 </Form>

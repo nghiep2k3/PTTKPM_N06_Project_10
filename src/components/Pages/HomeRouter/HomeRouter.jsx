@@ -14,6 +14,8 @@ import Search from "antd/es/input/Search";
 import Footer from "../../Footer/Footer";
 import { Route, Routes, Link, Outlet } from "react-router-dom";
 import { Content } from "antd/es/layout/layout";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function HomeRouter() {
   const items = [
@@ -85,18 +87,48 @@ export default function HomeRouter() {
             />
           </div>
 
-          <div>
-            <PhoneOutlined
-              style={{
-                border: "2px solid yellow",
-                borderRadius: "50%",
-                padding: "10px",
-                background: "#91caff",
-                marginRight: "10px",
-              }}
-              className={style.Reverse}
-            />
-            <span>0378936624</span>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              width: 200,
+            }}
+          >
+            <div>
+              <PhoneOutlined
+                style={{
+                  border: "2px solid yellow",
+                  borderRadius: "50%",
+                  padding: "10px",
+                  background: "#91caff",
+                  marginRight: "10px",
+                }}
+                className={style.Reverse}
+              />
+              <span>0378936624</span>
+            </div>
+
+            <div style={{ position: "relative" }}>
+              <div
+                style={{
+                  background: "red",
+                  textAlign: "center",
+                  borderRadius: "50%",
+                  width: 20,
+                  height: 24,
+                  position: "absolute",
+                  top: -14,
+                  right: -8,
+                }}
+              >
+                0
+              </div>
+              <Link to="/CartItem">
+                <FontAwesomeIcon style={{color: 'white'}} icon={faCartShopping} size="2xl" />
+              </Link>
+              
+            </div>
           </div>
         </div>
 
@@ -138,8 +170,12 @@ export default function HomeRouter() {
                 <div className={style.dropdown}>
                   <div className={style.local_1}>
                     <b>MIỀN BẮC</b>
-                    <p><Link to="/Hanoi">Du lịch Hà Nội</Link></p>
-                    <p><Link to="/HaLong">Du lịch Hạ Long</Link></p>
+                    <p>
+                      <Link to="/Hanoi">Du lịch Hà Nội</Link>
+                    </p>
+                    <p>
+                      <Link to="/HaLong">Du lịch Hạ Long</Link>
+                    </p>
                     <p>Du lịch Hải Phòng</p>
                   </div>
 

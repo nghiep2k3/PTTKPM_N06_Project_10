@@ -126,7 +126,13 @@ a{
   background-color: rgb(176, 167, 167);
 }
 
-.ant-form-item-control-input-content{
+/* .ant-form-item-control-input{
+  border: 1px solid rgb(76, 67, 67);
+  border-radius: 10px;
+} */
+
+input[placeholder="Họ và tên"], input[placeholder="Số điện thoại"]
+,input[placeholder="Email"],textarea[placeholder="Nội dung"], button[type="Gửi"]{
   border: 1px solid rgb(76, 67, 67);
   border-radius: 10px;
 }
@@ -144,8 +150,15 @@ a{
   margin: 10px;
 }
 
-.ant-form-item-label label{
+/* .ant-form-item-label label{
    width: 120px;
+   color: #1ba0e2 !important;
+   font-size: 16px !important;
+} */
+
+label[title="Họ tên"], label[title="Số điện thoại"], label[title="Email:"], 
+label[title="Nội dung"]{
+  width: 120px;
    color: #1ba0e2 !important;
    font-size: 16px !important;
 }
