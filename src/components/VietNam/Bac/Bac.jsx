@@ -1,30 +1,44 @@
 // Tour nước ngoài
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CardItem from "../../Pages/Home/Card";
 import UrlImg from "../../img/banner3.jpg";
 import UrlImg2 from "../../img/banner5.jpg";
 import UrlImg3 from "../../img/banner7.jpg";
+import { Space, Spin } from "antd";
+import { database } from "../../../firebase";
+import { getDatabase, ref, child, get, set } from "firebase/database";
 export default function TestCard() {
-  const data = {
-    item1: {
-      title: "Du lịch Miền Bắc",
-      img: UrlImg,
-      price: "40.000.000đ",
-      priceOld: "100.000.000đ"
-    },
-    item2: {
-      title: "Du thuyền Miền Bắc",
-      img: UrlImg2,
-      price: "100.000.000đ",
-      priceOld: "190.000.000đ"
-    },
-    item3: {
-      title: "Du lịch Hàn Quốc - Hoa anh đào",
-      img: UrlImg3,
-      price: "150.000.000đ",
-      priceOld: "220.000.000đ"
-    }
-  };
+  
+
+  const dbRef = ref(database);
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const snapshot = await get(child(dbRef, `Domestic/MienBac`));
+        if (snapshot.exists()) {
+          console.log("Tour miền bắc");
+          setData(snapshot.val());
+          console.log(snapshot.val());
+        } else {
+          console.log("Không có dữ liệu");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (!data) {
+    return (
+      <div style={{ display: "flex", justifyContent: "center", alignItems: 'center', height: 280 }}>
+        <Spin size="large" />
+      </div>
+    );
+  }
 
   const ListCard3 = () => {
     const DataKeys = Object.keys(data);
@@ -50,10 +64,12 @@ export default function TestCard() {
         {Object.keys(data).map((item) => (
           <CardItem
             key={item}
+            time={data[item].time}
+            depart={data[item].depart}
             price={data[item].price}
             title={data[item].title}
             priceOld={data[item].priceOld}
-            imgSrc={data[item].img}
+            imgSrc={data[item].srcImg}
           />
         ))}
       </div>

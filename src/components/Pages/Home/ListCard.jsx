@@ -1,51 +1,38 @@
 // Tour mới nhất
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Space, Spin } from "antd";
+import { database } from "../../../firebase";
+import { getDatabase, ref, child, get, set } from "firebase/database";
 import CardItem from "./Card";
-import UrlImg from "../../img/banner1.jpg";
-import UrlImg2 from "../../img/banner2.jpg";
-import UrlImg3 from "../../img/banner3.jpg";
-import UrlImg4 from "../../img/banner4.jpg";
-import UrlImg5 from "../../img/banner5.jpg";
-import UrlImg6 from "../../img/banner6.jpg";
-export default function TestCard() {
-  const data = {
-    item1: {
-      title: "Du lịch Mỹ [Los Angeles - Las Vegas - Universal Studios Hollywood] [2 đêm KS 5* Bellagio, Las Vegas]",
-      img: UrlImg,
-      price: "49.000.000đ",
-      priceOld: "100.000.000đ"
-    },
-    item2: {
-      title: "Du lịch Hà Nội - Lào Cai - Sapa - Hạ Long",
-      img: UrlImg2,
-      price: "45.000.000đ",
-      priceOld: "49.000.000đ"
-    },
-    item3: {
-      title: "Du lịch Châu Âu Pháp - Thụy Sỹ - Núi Jungfrau - Ý",
-      img: UrlImg3,
-      price: "40.000.000đ",
-      priceOld: "222.000.000đ"
-    },
-    item4: {
-      title: "Du lịch Pháp - Bỉ - Hà Lan [Hội Hoa Tulip Keukenhof]",
-      img: UrlImg4,
-      price: "49.000.000đ",
-      priceOld: "100.000.000đ"
-    },
-    item5: {
-      title: "Du lịch Đà Nẵng - KDL Bà Nà - Hội An - Cố Đô Huế",
-      img: UrlImg5,
-      price: "45.000.000đ",
-      priceOld: "150.000.000đ"
-    },
-    item6: {
-      title: "Du lịch Nha Trang - Hòn Lao",
-      img: UrlImg6,
-      price: "40.000.000đ",
-      priceOld: "300.000.000đ"
-    },
-  };
+export default function ListCard() {
+  const dbRef = ref(database);
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const snapshot = await get(child(dbRef, `TourNew`));
+        if (snapshot.exists()) {
+          setData(snapshot.val());
+          console.log(snapshot.val());
+        } else {
+          console.log("Không có dữ liệu");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (!data) {
+    return (
+      <div style={{ display: "flex", justifyContent: "center", alignItems: 'center', height: 280 }}>
+        <Spin size="large" />
+      </div>
+    );
+  }
 
   const ListCard = () => {
     const DataKeys = Object.keys(data);
@@ -72,8 +59,10 @@ export default function TestCard() {
             key={item}
             price={data[item].price}
             title={data[item].title}
+            depart={data[item].depart}
+            time={data[item].time}
             priceOld={data[item].priceOld}
-            imgSrc={data[item].img}
+            imgSrc={data[item].SrcImg}
           />
         ))}
       </div>

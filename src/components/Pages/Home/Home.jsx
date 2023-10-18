@@ -32,7 +32,7 @@ import Search from "antd/es/input/Search";
 import Card from "../Home/Card";
 import CardFavorite from "./CardFavorite";
 import Footer from "../../Footer/Footer";
-import CartList from "./ListCard";
+import ListCard from "./ListCard";
 import ListCart2 from "./ListCard2";
 
 import ChauA from "./Asia/Asia";
@@ -349,7 +349,7 @@ const Home = () => {
         </div>
 
         <div className={style.Card_title}>
-          <CartList />
+          <ListCard />
         </div>
       </div>
 

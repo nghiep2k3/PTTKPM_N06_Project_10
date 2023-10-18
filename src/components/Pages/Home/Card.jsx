@@ -41,7 +41,7 @@ export default function Card(props) {
               style={{ marginRight: "8px" }}
               icon={faCalendarDays}
             />
-            Khởi hành: Thứ 2 - 7 hằng tuần
+            {props.depart}
           </p>
           <p>
             {" "}
@@ -49,7 +49,7 @@ export default function Card(props) {
               style={{ marginRight: "8px" }}
               icon={faCalendarWeek}
             />
-            Thời gian: 6 ngày 5 đêm
+            {props.time}
           </p>
         </div>
       </div>
