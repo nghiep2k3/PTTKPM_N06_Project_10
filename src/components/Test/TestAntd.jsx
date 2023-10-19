@@ -3,10 +3,41 @@ import { Space, Spin } from "antd";
 import { database } from "../../firebase";
 import { getDatabase, ref, child, get, set } from "firebase/database";
 import CardItem from "../Pages/Home/Card";
+import AComponent from "./A";
+import BComponent from "./B";
 
 export default function TestAntd() {
   const dbRef = ref(database);
   const [data, setData] = useState();
+
+  // save object
+  const [tours, setTours] = useState([]);
+
+  // Lấy danh sách tour từ Local Storage khi tải ứng dụng
+  useEffect(() => {
+    const storedTours = localStorage.getItem("tours");
+    if (storedTours) {
+      setTours(JSON.parse(storedTours));
+    }
+  }, []);
+
+  // Thêm một tour vào danh sách và lưu lại vào Local Storage
+  const handleAddTour = () => {
+    const newTour = {
+      id: tours.length + 1,
+      title: `Đây là Tour ${tours.length + 1}`,
+    };
+    const updatedTours = [...tours, newTour];
+    setTours(updatedTours);
+    localStorage.setItem("tours", JSON.stringify(updatedTours));
+  };
+  // Xóa 
+  const handleDeleteTour = (id) => {
+    const updatedTours = tours.filter((tour) => tour.id !== id);
+    setTours(updatedTours);
+    localStorage.setItem('tours', JSON.stringify(updatedTours));
+  };
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,10 +59,26 @@ export default function TestAntd() {
 
   if (!data) {
     return (
-      <div style={{ display: "flex", justifyContent: "center", alignItems: 'center', height: 280 }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: 280,
+        }}
+      >
         <Spin size="large" />
       </div>
     );
+  }
+
+  if(tours <= 0) {
+    return(
+      <div>
+          <button onClick={handleAddTour}>Thêm</button>
+          <p>Không có tour </p>
+      </div>
+    )
   }
 
   return (
@@ -41,8 +88,7 @@ export default function TestAntd() {
       <p>{data.HaNoi.price}</p>
       <p>{data.HaNoi.title}</p>
       <p>{data.HaNoi.time}</p>
-
-      <div style={{ display: "flex", justifyContent: "space-around", margin: '0 95px', flexWrap: 'wrap' }}>
+      {/* <div style={{ display: "flex", justifyContent: "space-around", margin: '0 95px', flexWrap: 'wrap' }}>
         {Object.keys(data).map((item) => (
           <CardItem
             key={item}
@@ -52,6 +98,29 @@ export default function TestAntd() {
             imgSrc={data[item].SrcImg}
           />
         ))}
+      </div> */}
+      <div>
+        <h1>Thông tin Tour</h1>
+        <button onClick={handleAddTour}>Thêm</button>
+        <ul>
+          {tours.map((tour) => (
+            <li key={tour.id}>
+              <p>ID: {tour.id}</p>
+              <p>Title: {tour.title}</p>
+              <button onClick={() => handleDeleteTour(tour.id)}>Xóa</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+         <h1>Phần A</h1>
+         <AComponent/>
+      </div>
+
+      <div>
+        <h1>Phần B</h1>
+        <BComponent/>
       </div>
     </div>
   );
