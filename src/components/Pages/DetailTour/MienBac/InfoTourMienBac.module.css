@@ -1,6 +1,6 @@
 .Content_Header {
     display: flex;
-    margin-top: 20px;
+    margin: 20px -14px;
     justify-content: space-evenly;
     width: 100%;
 }

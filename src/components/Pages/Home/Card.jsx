@@ -24,7 +24,7 @@ export default function Card(props) {
             </b>
           </div>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <b style={{ color: "#1ba0e2" }}>{props.price}</b>
+            <b style={{ color: "#1ba0e2" }}>{props.price}đ</b>
             <div>
               <FontAwesomeIcon
                 icon={faTrain}
@@ -34,7 +34,7 @@ export default function Card(props) {
               <FontAwesomeIcon icon={faPlane} size="lg" />
             </div>
           </div>
-          <p style={{ textDecoration: "line-through" }}>{props.priceOld}</p>
+          <p style={{ textDecoration: "line-through" }}>{props.priceOld}đ</p>
           <p>
             {" "}
             <FontAwesomeIcon

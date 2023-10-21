@@ -1,13 +1,10 @@
 // Tour nước ngoài
 import React, { useEffect, useState } from "react";
 import CardItem from "../../Pages/Home/Card";
-import UrlImg from "../../img/banner3.jpg";
-import UrlImg2 from "../../img/banner5.jpg";
-import UrlImg3 from "../../img/banner7.jpg";
 import { Space, Spin } from "antd";
 import { database } from "../../../firebase";
 import { getDatabase, ref, child, get, set } from "firebase/database";
-export default function TestCard() {
+export default function Bac() {
   
 
   const dbRef = ref(database);
