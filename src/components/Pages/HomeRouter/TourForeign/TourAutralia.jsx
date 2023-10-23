@@ -5,7 +5,7 @@ export default function TourAutralia() {
   return (
     <div style={{ display: "flex", justifyContent: "space-around" }}>
       <FormPrice name="Du lịch Châu Úc"></FormPrice>
-      <ListCardTour></ListCardTour>
+      <ListCardTour name="ChauUc"></ListCardTour>
     </div>
   );
 }

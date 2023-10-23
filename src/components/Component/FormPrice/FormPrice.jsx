@@ -11,7 +11,7 @@ export default function FormPrice(props) {
     console.log("Failed:", errorInfo);
   };
   return (
-    <div>
+    <div style={{width: 260, position: 'absolute', left: 60,}}>
       <div style={{ fontSize: "20px" }}>
         <Link to="/">Trang chủ</Link> &gt; {props.name}
       </div>

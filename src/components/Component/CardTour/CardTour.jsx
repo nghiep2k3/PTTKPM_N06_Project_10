@@ -14,23 +14,18 @@ export default function CardTour(props) {
         position: "relative",
         background: "#eeeeff",
         width: 1110,
-        borderRadius: '10px',
-        overflow: 'hidden'
+        borderRadius: "10px",
+        overflow: "hidden",
       }}
     >
       <div style={{ display: "flex" }}>
-        <div className={style.CardTourImg} >
-          <img
-            src={props.imgSrc}
-            alt=""
-          />
+        <div className={style.CardTourImg}>
+          <img src={props.srcImg} alt="" />
         </div>
 
         <div>
           <h2 style={{ margin: "5px 10px" }}>{props.title}</h2>
-          <p style={{ margin: "5px 10px" }}>
-            Hành trình: Hồ Chí Minh - Singapore
-          </p>
+          <p style={{ margin: "5px 10px" }}>{props.trip}</p>
           <p>
             {" "}
             <CarOutlined style={{ fontSize: 20, margin: "5px 10px" }} />
@@ -39,11 +34,11 @@ export default function CardTour(props) {
           <p>
             {" "}
             <CalendarOutlined style={{ fontSize: 20, margin: "5px 10px" }} />
-            Thứ 2 hằng tuần
+            {props.depart}
           </p>
           <p>
             <ClockCircleOutlined style={{ fontSize: 20, margin: "5px 10px" }} />
-            4 ngày 3 đêm
+            {props.time}
           </p>
         </div>
       </div>

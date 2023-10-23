@@ -1,63 +1,99 @@
 // Tour nước ngoài
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CardItem from "../Card";
-import UrlImg from "../../../img/banner6.jpg";
-import UrlImg2 from "../../../img/banner7.jpg";
-import UrlImg3 from "../../../img/banner8.jpg";
+import { database } from "../../../../firebase";
+import { getDatabase, ref, child, get, set } from "firebase/database";
+import { Space, Spin } from "antd";
+
 export default function TestCard() {
-  const data = {
-    item1: {
-      title: "Du lịch Malaysia - Singapore [Thủy cung S.E.A AQUARIUM]",
-      img: UrlImg,
-      price: "40.000.000đ",
-      priceOld: "100.000.000đ"
-    },
-    item2: {
-      title: "Du thuyền 5 Sao Voyager Of The Seas",
-      img: UrlImg2,
-      price: "100.000.000đ",
-      priceOld: "190.000.000đ"
-    },
-    item3: {
-      title: "Du lịch Hàn Quốc - Hoa anh đào",
-      img: UrlImg3,
-      price: "150.000.000đ",
-      priceOld: "220.000.000đ"
-    }
-  };
+  const dbRef = ref(database);
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const snapshot = await get(child(dbRef, `/TourForeign/ChauAu`));
+        if (snapshot.exists()) {
+          console.log("Tour Châu Á");
+          setData(snapshot.val());
+          console.log(snapshot.val());
+        } else {
+          console.log("Không có dữ liệu");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (!data) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: 280,
+        }}
+      >
+        <Spin size="large" />
+      </div>
+    );
+  }
 
   const ListCard3 = () => {
     const DataKeys = Object.keys(data);
-    const dataToDisplay = DataKeys.slice(0, 4);
+    const dataToDisplay = DataKeys.slice(1, 4);
 
-    //Hiển thị giới hạn
-    // return (
-    //   <div>
-    //     {dataToDisplay.map((productKey) => (
-    //       <Card
-    //         key={productKey}
-    //         name={data[productKey].name}
-    //         price={data[productKey].price}
-    //         imgSrc={data[productKey].img}
-    //       />
-    //     ))}
-    //   </div>
-    // );
-
-    //Hiển thị tất cả
+    //Hiển thị giới hạn 
     return (
-      <div style={{display: 'flex', justifyContent: "space-around", margin: '0 95px', flexWrap: 'wrap'}}>
-        {Object.keys(data).map((item) => (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          margin: "0 95px",
+          flexWrap: "wrap",
+        }}
+      >
+        {dataToDisplay.map((item) => (
           <CardItem
             key={item}
+            time={data[item].time}
+            depart={data[item].depart}
             price={data[item].price}
             title={data[item].title}
             priceOld={data[item].priceOld}
-            imgSrc={data[item].img}
+            imgSrc={data[item].srcImg}
           />
         ))}
       </div>
     );
+
+    //Hiển thị tất cả
+    // return (
+    //   <div
+    //     style={{
+    //       display: "flex",
+    //       justifyContent: "space-around",
+    //       margin: "0 95px",
+    //       flexWrap: "wrap",
+    //     }}
+    //   >
+    //     {Object.keys(data).map((item) => (
+    //       <CardItem
+    //         key={item}
+    //         time={data[item].time}
+    //         depart={data[item].depart}
+    //         price={data[item].price}
+    //         title={data[item].title}
+    //         priceOld={data[item].priceOld}
+    //         imgSrc={data[item].srcImg}
+    //       />
+    //     ))}
+    //   </div>
+    // );
   };
   return (
     <div>

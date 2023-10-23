@@ -5,7 +5,7 @@ export default function TourAmericars() {
   return (
     <div style={{ display: "flex", justifyContent: "space-around" }}>
       <FormPrice name="Du lịch Châu Mỹ"></FormPrice>
-      <ListCardTour></ListCardTour>
+      <ListCardTour name="ChauMy"></ListCardTour>
     </div>
   );
 }
