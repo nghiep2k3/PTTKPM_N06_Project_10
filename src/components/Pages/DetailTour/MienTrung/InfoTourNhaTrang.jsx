@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import style from "./InfoTourMienBac.module.css";
+import style from "./InfoTourMienTrung.module.css";
 import {
   Carousel,
   Button,
@@ -141,13 +141,14 @@ export default function InfoTourHaNoi() {
       setupPriceTourRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
+
   return (
     <div>
       <div style={{ background: "none", height: "auto" }}>
         <div style={{ fontSize: 20, marginLeft: 52 }}>
           <Link to="/">Trang chủ</Link> &gt;{" "}
-          <Link to="/NewTour">Tour mới nhất</Link> &gt; Du lịch Hà Nội - Lào Cai
-          - Sapa - Hạ Long
+          <Link to="/NewTour">Tour mới nhất</Link> &gt; Du lịch Nha Trang - Hòn
+          Lao
         </div>
         <div className={style.Content_Header}>
           <div className={style.SetupCarousel}>
@@ -161,13 +162,22 @@ export default function InfoTourHaNoi() {
               draggable
             >
               <div>
-                <img src={ImgSrc} alt="" />
+                <img
+                  src="https://bizweb.dktcdn.net/thumb/grande/100/299/077/products/anam-resort-nha-trang-vietnam-23.jpg?v=1529554176777"
+                  alt=""
+                />
               </div>
               <div>
-                <img src={ImgSrc2} alt="" />
+                <img
+                  src="https://bizweb.dktcdn.net/thumb/grande/100/299/077/products/hinh-nhatrang-5-1b044404-88fd-4936-9bf5-63833b6d8e10.jpg?v=1529554177643"
+                  alt=""
+                />
               </div>
               <div>
-                <img src={ImgSrc3} alt="" />
+                <img
+                  src="https://bizweb.dktcdn.net/thumb/grande/100/299/077/products/nha-trang.jpg?v=1529554179217"
+                  alt=""
+                />
               </div>
             </Carousel>
 
@@ -187,7 +197,7 @@ export default function InfoTourHaNoi() {
             </div> */}
           </div>
           <div className={style.ContentTour}>
-            <h2>Du lịch Hà Nội - Lào Cai - Sapa - Hạ Long</h2>
+            <h2>Du lịch Nha Trang - Hòn Lao</h2>
             <p style={{ margin: "10px 0" }}>Hành trình: Hồ Chí Minh - Hà Nội</p>
             <div>
               <FontAwesomeIcon
@@ -313,13 +323,25 @@ export default function InfoTourHaNoi() {
       </div>
       <div className={style.ButtonNextCarousel}>
         <p style={{ width: 130 }} onClick={() => handleSlideChange(0)}>
-          <img style={{ maxWidth: "100%" }} src={ImgSrc} alt="" />
+          <img
+            style={{ maxWidth: "100%" }}
+            src="https://bizweb.dktcdn.net/thumb/grande/100/299/077/products/anam-resort-nha-trang-vietnam-23.jpg?v=1529554176777"
+            alt=""
+          />
         </p>
         <p style={{ width: 130 }} onClick={() => handleSlideChange(1)}>
-          <img style={{ maxWidth: "100%" }} src={ImgSrc2} alt="" />
+          <img
+            style={{ maxWidth: "100%" }}
+            src="https://bizweb.dktcdn.net/thumb/grande/100/299/077/products/hinh-nhatrang-5-1b044404-88fd-4936-9bf5-63833b6d8e10.jpg?v=1529554177643"
+            alt=""
+          />
         </p>
         <p style={{ width: 130 }} onClick={() => handleSlideChange(2)}>
-          <img style={{ maxWidth: "100%" }} src={ImgSrc3} alt="" />
+          <img
+            style={{ maxWidth: "100%" }}
+            src="https://bizweb.dktcdn.net/thumb/grande/100/299/077/products/nha-trang.jpg?v=1529554179217"
+            alt=""
+          />
         </p>
       </div>
 

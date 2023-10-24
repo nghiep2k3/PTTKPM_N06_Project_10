@@ -4,6 +4,7 @@ import { Space, Spin } from "antd";
 import { database } from "../../../firebase";
 import { getDatabase, ref, child, get, set } from "firebase/database";
 import CardItem from "./Card";
+import { Link } from "react-router-dom";
 export default function ListCard() {
   const dbRef = ref(database);
   const [data, setData] = useState();
@@ -13,6 +14,7 @@ export default function ListCard() {
       try {
         const snapshot = await get(child(dbRef, `TourNew`));
         if (snapshot.exists()) {
+          console.log("Tour mới nhất");
           setData(snapshot.val());
           console.log(snapshot.val());
         } else {
@@ -28,7 +30,14 @@ export default function ListCard() {
 
   if (!data) {
     return (
-      <div style={{ display: "flex", justifyContent: "center", alignItems: 'center', height: 280 }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: 280,
+        }}
+      >
         <Spin size="large" />
       </div>
     );
@@ -53,22 +62,31 @@ export default function ListCard() {
 
     //Hiển thị tất cả
     return (
-      <div style={{display: 'flex', justifyContent: "space-around", margin: '0 95px', flexWrap: 'wrap'}}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          margin: "0 95px",
+          flexWrap: "wrap",
+        }}
+      >
         {Object.keys(data).map((item) => (
-          <CardItem
-            key={item}
-            price={data[item].price}
-            title={data[item].title}
-            depart={data[item].depart}
-            time={data[item].time}
-            priceOld={data[item].priceOld}
-            imgSrc={data[item].SrcImg}
-          />
+          <Link to="/InfoTourHaNoi">
+            <CardItem
+              key={item}
+              price={data[item].price}
+              title={data[item].title}
+              depart={data[item].depart}
+              time={data[item].time}
+              priceOld={data[item].price_old}
+              imgSrc={data[item].SrcImg}
+            />
+          </Link>
         ))}
       </div>
     );
   };
-  
+
   return (
     <div>
       <ListCard></ListCard>
