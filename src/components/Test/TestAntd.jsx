@@ -23,21 +23,33 @@ export default function TestAntd() {
 
   // Thêm một tour vào danh sách và lưu lại vào Local Storage
   const handleAddTour = () => {
+    const CallTourCurrent = JSON.parse(localStorage.getItem("tours"));
+
     const newTour = {
       id: tours.length + 1,
-      title: `Đây là Tour ${tours.length + 1}`,
+      title: `Đây là Tour 2`,
     };
+
+    if (CallTourCurrent) {
+      // Kiểm tra nếu tour đã tồn tại dựa trên id hoặc các tiêu chí khác
+      const isTourExists = CallTourCurrent.some((tour) => tour.title === newTour.title);
+  
+      if (isTourExists) {
+        alert("Tour đã tồn tại!");
+        return; // Không thêm tour mới nếu đã tồn tại
+      }
+    }
+
     const updatedTours = [...tours, newTour];
     setTours(updatedTours);
     localStorage.setItem("tours", JSON.stringify(updatedTours));
   };
-  // Xóa 
+  // Xóa
   const handleDeleteTour = (id) => {
     const updatedTours = tours.filter((tour) => tour.id !== id);
     setTours(updatedTours);
-    localStorage.setItem('tours', JSON.stringify(updatedTours));
+    localStorage.setItem("tours", JSON.stringify(updatedTours));
   };
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -72,22 +84,18 @@ export default function TestAntd() {
     );
   }
 
-  if(tours <= 0) {
-    return(
+  if (tours <= 0) {
+    return (
       <div>
-          <button onClick={handleAddTour}>Thêm</button>
-          <p>Không có tour </p>
+        <button onClick={handleAddTour}>Thêm</button>
+        <p>Không có tour </p>
       </div>
-    )
+    );
   }
 
   return (
     <div>
       Test call api
-      <p>{data.HaNoi.id}</p>
-      <p>{data.HaNoi.price}</p>
-      <p>{data.HaNoi.title}</p>
-      <p>{data.HaNoi.time}</p>
       {/* <div style={{ display: "flex", justifyContent: "space-around", margin: '0 95px', flexWrap: 'wrap' }}>
         {Object.keys(data).map((item) => (
           <CardItem
@@ -99,28 +107,30 @@ export default function TestAntd() {
           />
         ))}
       </div> */}
-      <div>
-        <h1>Thông tin Tour</h1>
-        <button onClick={handleAddTour}>Thêm</button>
-        <ul>
-          {tours.map((tour) => (
-            <li key={tour.id}>
-              <p>ID: {tour.id}</p>
-              <p>Title: {tour.title}</p>
-              <button onClick={() => handleDeleteTour(tour.id)}>Xóa</button>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+        <div>
+          <h1>Thông tin Tour</h1>
+          <button onClick={handleAddTour}>Thêm</button>
+          <ul>
+            {tours.map((tour) => (
+              <li key={tour.id}>
+                <p>Mã đơn hàng: {tour.id}</p>
+                <p>Title: {tour.title}</p>
+                <button onClick={() => handleDeleteTour(tour.id)}>Xóa</button>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      <div>
-         <h1>Phần A</h1>
-         <AComponent/>
-      </div>
+        <div>
+          <h1>Phần A</h1>
+          <AComponent />
+        </div>
 
-      <div>
-        <h1>Phần B</h1>
-        <BComponent/>
+        <div>
+          <h1>Phần B</h1>
+          <BComponent />
+        </div>
       </div>
     </div>
   );

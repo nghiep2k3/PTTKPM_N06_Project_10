@@ -21,6 +21,10 @@ import InfoTourHaNoi from "./components/Pages/DetailTour/MienBac/InfoTourHaNoi";
 import InfoTourHaiPhong from "./components/Pages/DetailTour/MienBac/InfoTourHaiPhong";
 import InfoTourNhaTrang from "./components/Pages/DetailTour/MienTrung/InfoTourNhaTrang"
 import InfoTourDaNang from "./components/Pages/DetailTour/MienTrung/InfoTourDangNang";
+
+import InfoTourChauAuPhap from "./components/Pages/DetailTour/TourForeign/InfoTourChauAuPhap";
+import InfoTourMy from "./components/Pages/DetailTour/TourForeign/InfoTourMy";
+import InfoTourPhap from "./components/Pages/DetailTour/TourForeign/InfoTourPhap"
 function Router() {
   return (
     <div>
@@ -47,7 +51,14 @@ function Router() {
 
           <Route path="/InfoTourNhaTrang" element={<InfoTourNhaTrang />} />
           <Route path="/InfoTourDaNang" element={<InfoTourDaNang />} />
+          {/* Detail Tour Foreign*/}
+          <Route path="/InfoTourChauAuPhap" element={<InfoTourChauAuPhap />} />
+          <Route path="/InfoTourMy" element={<InfoTourMy />} />
+          <Route path="/InfoTourPhap" element={<InfoTourPhap />} />
+
           <Route path="*" element={<Page_404 />} />
+
+
         </Route>
       </Routes>
     </div>

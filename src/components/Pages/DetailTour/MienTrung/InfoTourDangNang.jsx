@@ -31,6 +31,8 @@ import CardTourMini from "../../../Component/CardTourMini/CardTourMini";
 import TextArea from "antd/es/input/TextArea";
 
 export default function InfoTourDaNang() {
+  //uid
+  const { v4: uuidv4 } = require('uuid');
   useEffect(() => {
     // Cuộn trang lên đầu mỗi khi chuyển trang bằng Link
     window.scrollTo(0, 0);
@@ -171,6 +173,42 @@ export default function InfoTourDaNang() {
 
     fetchData();
   }, []);
+
+  //Đặt đơn
+  const [tours, setTours] = useState([]);
+
+  // // Lấy danh sách tour từ Local Storage khi tải ứng dụng
+  useEffect(() => {
+    const storedTours = localStorage.getItem("tours");
+    if (storedTours) {
+      setTours(JSON.parse(storedTours));
+    }
+  }, []);
+
+  // Thêm một tour vào danh sách và lưu lại vào Local Storage
+  const handleAddTour = () => {
+    const CallTourCurrent = JSON.parse(localStorage.getItem("tours"));
+    const newTour = {
+      id: uuidv4(),
+      title: `${data.title}`,
+      price: `${formatCurrency(TotalMoney)}`
+    };
+
+    if (CallTourCurrent) {
+      // Kiểm tra nếu tour đã tồn tại dựa trên id hoặc các tiêu chí khác
+      const isTourExists = CallTourCurrent.some((tour) => tour.title === newTour.title);
+      const isTourPrice = CallTourCurrent.some((tour) => tour.price === newTour.price);
+      
+      if (isTourExists && isTourPrice) {
+        alert("Tour đã tồn tại!");
+        return; // Không thêm tour mới nếu đã tồn tại
+      }
+    }
+
+    const updatedTours = [...tours, newTour];
+    setTours(updatedTours);
+    localStorage.setItem("tours", JSON.stringify(updatedTours));
+  };
 
   if (!data) {
     return (
@@ -439,7 +477,7 @@ export default function InfoTourDaNang() {
                 className={style.CustomPlaceHolder}
                 onChange={onChangeDate}
               />
-              <button className={style.OrderTourDate}>
+              <button className={style.OrderTourDate} onClick={handleAddTour}>
                 <FontAwesomeIcon icon={faPaperPlane} /> Đặt Tour
               </button>
             </div>

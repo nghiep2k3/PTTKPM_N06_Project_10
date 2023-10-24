@@ -71,7 +71,7 @@ export default function ListCard() {
         }}
       >
         {Object.keys(data).map((item) => (
-          <Link to="/InfoTourHaNoi">
+          <Link to={`/${data[item].Link}`}>
             <CardItem
               key={item}
               price={data[item].price}

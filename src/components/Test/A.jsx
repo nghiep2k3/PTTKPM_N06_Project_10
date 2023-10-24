@@ -27,13 +27,6 @@ const AComponent = () => {
     localStorage.setItem('tours', JSON.stringify(updatedTours));
   };
 
-  if(tours <= 0) {
-    return(
-      <div>
-          <p>Không có tour </p>
-      </div>
-    )
-  }
 
   return (
     <div>
