@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import style from "./InfoTourMienTrung.module.css";
 import { getDatabase, ref, child, get, set } from "firebase/database";
-import { Space, Spin } from "antd";
+import { Space, Spin, message } from "antd";
 import { database } from "../../../../firebase";
 import {
   Carousel,
@@ -54,9 +54,18 @@ export default function InfoTourDaNang() {
   const [Baby2, setBaby2] = useState("0");
   const [TotalMoney, setTotalMoney] = useState(0);
 
+  const [quantityTicket, setQuantityTicket] = useState();
+  const [ticket1, setTicket1] = useState(0);
+  const [ticket2, setTicket2] = useState(0);
+  const [ticket3, setTicket3] = useState(0);
+
+  console.log(2222, quantityTicket);
+
   const onChangeAdult = (value) => {
     const priceNumber = parseFloat(`${data.price}`.replace(/\./g, ""));
     let x = priceNumber;
+
+    setTicket1(value);
     const totalPrice = value * x;
     const formattedPrice = totalPrice.toLocaleString("vi-VN", {
       style: "currency",
@@ -64,11 +73,14 @@ export default function InfoTourDaNang() {
     });
     setAdult(formattedPrice);
     console.log("Số lượng người lớn:", value, "Giá tiền:", formattedPrice);
+    setQuantityTicket(ticket1 + ticket2 + ticket3);
   };
 
   const onChangeBaby = (value) => {
     const priceNumber = parseFloat(`${data.priceTreEm}`.replace(/\./g, ""));
     let x = priceNumber;
+    console.log(1111, value);
+    setTicket2(value);
     const totalPrice = value * x;
     const formattedPrice = totalPrice.toLocaleString("vi-VN", {
       style: "currency",
@@ -76,11 +88,13 @@ export default function InfoTourDaNang() {
     });
     setBaby(formattedPrice);
     console.log('Số lượng trẻ em":', value, "Giá tiền:", formattedPrice);
+    setQuantityTicket(ticket1 + ticket2 + ticket3);
   };
 
   const onChangeBaby2 = (value) => {
     const priceNumber = parseFloat(`${data.priceEmBe}`.replace(/\./g, ""));
     let x = priceNumber;
+    setTicket3(value);
     const totalPrice = value * x;
     const formattedPrice = totalPrice.toLocaleString("vi-VN", {
       style: "currency",
@@ -88,6 +102,7 @@ export default function InfoTourDaNang() {
     });
     setBaby2(formattedPrice);
     console.log('Số lượng em bé":', value, "Giá tiền:", formattedPrice);
+    setQuantityTicket(ticket1 + ticket2 + ticket3);
   };
 
   const onChangeDate = (date, dateString) => {
@@ -191,6 +206,8 @@ export default function InfoTourDaNang() {
     const newTour = {
       id: uuidv4(),
       title: `${data.title}`,
+      ticket: quantityTicket + 1,
+      avatar: `${data.ImgCrs1}`,
       price: `${formatCurrency(TotalMoney)}`
     };
 
@@ -200,7 +217,7 @@ export default function InfoTourDaNang() {
       const isTourPrice = CallTourCurrent.some((tour) => tour.price === newTour.price);
       
       if (isTourExists && isTourPrice) {
-        alert("Tour đã tồn tại!");
+        message.error('Đã tồn tại trong giỏ hàng');
         return; // Không thêm tour mới nếu đã tồn tại
       }
     }
@@ -208,6 +225,7 @@ export default function InfoTourDaNang() {
     const updatedTours = [...tours, newTour];
     setTours(updatedTours);
     localStorage.setItem("tours", JSON.stringify(updatedTours));
+    message.success('Đặt thành công');
   };
 
   if (!data) {

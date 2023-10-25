@@ -44,6 +44,8 @@ import "animate.css";
 import Bac from "../../VietNam/Bac/Bac";
 import Nam from "../../VietNam/Nam/Nam";
 import Trung from "../../VietNam/Trung/Trung";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
   const items = [
@@ -140,10 +142,8 @@ const Home = () => {
     setActive(prams);
   };
 
-  
-
   return (
-    <div >
+    <div>
       <div style={{ position: "relative" }}>
         <Carousel
           style={{ cursor: "pointer", position: "relative" }}
@@ -199,38 +199,46 @@ const Home = () => {
           </div>
 
           <div className={style.Navbar_mid}>
-            <div style={{ width: "175px" }}>
-              <img style={{ maxWidth: "100%" }} src={imageUrl} alt="logo" />
-            </div>
+          <div style={{ width: "175px" }}>
+            <img style={{ maxWidth: "100%" }} src={imageUrl} alt="logo" />
+          </div>
 
-            <div>
-              <Search
-                placeholder="Tìm kiếm tại đây..."
-                allowClear
-                bordered={true}
-                // enterButton={<button style={{ border: 'none' }}>search</button>}
-                enterButton={
-                  <Button
-                    type="submit"
-                    style={{
-                      border: "none",
-                      backgroundColor: "transparent",
-                      height: "38px",
-                    }}
-                  >
-                    <SearchOutlined style={{ fontSize: "18px" }} />
-                  </Button>
-                }
-                style={{
-                  width: "420px",
-                  marginLeft: "-20px",
-                  border: "none",
-                  height: "35px",
-                  backgroundColor: "transparent",
-                }}
-              />
-            </div>
+          <div>
+            <Search
+              placeholder="Tìm kiếm tại đây..."
+              allowClear
+              bordered={true}
+              // enterButton={<button style={{ border: 'none' }}>search</button>}
+              enterButton={
+                <Button
+                  type="submit"
+                  style={{
+                    border: "none",
+                    backgroundColor: "transparent",
+                    height: "38px",
+                  }}
+                >
+                  <SearchOutlined style={{ fontSize: "18px" }} />
+                </Button>
+              }
+              style={{
+                width: "420px",
+                marginLeft: "-20px",
+                border: "none",
+                height: "35px",
+                backgroundColor: "transparent",
+              }}
+            />
+          </div>
 
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              width: 200,
+            }}
+          >
             <div>
               <PhoneOutlined
                 style={{
@@ -244,7 +252,29 @@ const Home = () => {
               />
               <span>0378936624</span>
             </div>
+
+            <div style={{ position: "relative" }}>
+              <div
+                style={{
+                  background: "red",
+                  textAlign: "center",
+                  borderRadius: "50%",
+                  width: 20,
+                  height: 24,
+                  position: "absolute",
+                  top: -14,
+                  right: -8,
+                }}
+              >
+                0
+              </div>
+              <Link to="/CartItem">
+                <FontAwesomeIcon style={{color: 'white'}} icon={faCartShopping} size="2xl" />
+              </Link>
+              
+            </div>
           </div>
+        </div>
 
           <div className={style.Navbar_bottom}>
             <ul
@@ -282,7 +312,9 @@ const Home = () => {
                   <div className={style.dropdown}>
                     <div className={style.local_1}>
                       <b>MIỀN BẮC</b>
-                      <p><Link to="/Hanoi">Du lịch Hà Nội</Link></p>
+                      <p>
+                        <Link to="/Hanoi">Du lịch Hà Nội</Link>
+                      </p>
                       <p>Du lịch Hạ Long</p>
                       <p>Du lịch Hải Phòng</p>
                     </div>

@@ -9,6 +9,7 @@ import {
   Modal,
   Form,
   Input,
+  message,
 } from "antd";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,6 +29,7 @@ import CardTourMini from "../../../Component/CardTourMini/CardTourMini";
 import TextArea from "antd/es/input/TextArea";
 
 export default function InfoTourHaNoi() {
+  const { v4: uuidv4 } = require('uuid');
   useEffect(() => {
     // Cuộn trang lên đầu mỗi khi chuyển trang bằng Link
     window.scrollTo(0, 0);
@@ -49,37 +51,48 @@ export default function InfoTourHaNoi() {
   const [Baby2, setBaby2] = useState("0");
   const [TotalMoney, setTotalMoney] = useState(0);
 
+  const [quantityTicket, setQuantityTicket] = useState();
+  const [ticket1, setTicket1] = useState(0);
+  const [ticket2, setTicket2] = useState(0);
+  const [ticket3, setTicket3] = useState(0);
+
   const onChangeAdult = (value) => {
     let x = 7900000;
     const totalPrice = value * x;
+    setTicket1(value);
     const formattedPrice = totalPrice.toLocaleString("vi-VN", {
       style: "currency",
       currency: "VND",
     });
     setAdult(formattedPrice);
     console.log("Số lượng người lớn:", value, "Giá tiền:", formattedPrice);
+    setQuantityTicket(ticket1 + ticket2 + ticket3);
   };
 
   const onChangeBaby = (value) => {
     let x = 5670000;
     const totalPrice = value * x;
+    setTicket2(value);
     const formattedPrice = totalPrice.toLocaleString("vi-VN", {
       style: "currency",
       currency: "VND",
     });
     setBaby(formattedPrice);
     console.log('Số lượng trẻ em":', value, "Giá tiền:", formattedPrice);
+    setQuantityTicket(ticket1 + ticket2 + ticket3);
   };
 
   const onChangeBaby2 = (value) => {
     let x = 2100000;
     const totalPrice = value * x;
+    setTicket3(value);
     const formattedPrice = totalPrice.toLocaleString("vi-VN", {
       style: "currency",
       currency: "VND",
     });
     setBaby2(formattedPrice);
     console.log('Số lượng em bé":', value, "Giá tiền:", formattedPrice);
+    setQuantityTicket(ticket1 + ticket2 + ticket3);
   };
 
   const onChangeDate = (date, dateString) => {
@@ -157,8 +170,10 @@ export default function InfoTourHaNoi() {
   const handleAddTour = () => {
     const CallTourCurrent = JSON.parse(localStorage.getItem("tours"));
     const newTour = {
-      id: tours.length + 1,
+      id: uuidv4(),
       title: `Du lịch Hà Nội - Lào Cai - Sapa - Hạ Long`,
+      ticket: quantityTicket + 1,
+      avatar: `https://bizweb.dktcdn.net/thumb/grande/100/299/077/products/1-large1.jpg?v=1529553697103`,
       price: `${formatCurrency(TotalMoney)}`
     };
 
@@ -168,7 +183,7 @@ export default function InfoTourHaNoi() {
       const isTourPrice = CallTourCurrent.some((tour) => tour.price === newTour.price);
       
       if (isTourExists && isTourPrice) {
-        alert("Tour đã tồn tại!");
+        message.error('Đã tồn tại trong giỏ hàng');
         return; // Không thêm tour mới nếu đã tồn tại
       }
     }
@@ -176,6 +191,7 @@ export default function InfoTourHaNoi() {
     const updatedTours = [...tours, newTour];
     setTours(updatedTours);
     localStorage.setItem("tours", JSON.stringify(updatedTours));
+    message.success('Đặt thành công');
   };
   return (
     <div>
