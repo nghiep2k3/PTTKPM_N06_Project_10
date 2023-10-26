@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./HomeRouter.module.css";
 import { Button, Dropdown, Space } from "antd";
 import {
@@ -36,6 +36,15 @@ export default function HomeRouter() {
       label: <Link to="/TourAmericars">Du lịch Châu Mỹ</Link>,
     },
   ];
+
+  const [tours, setTours] = useState([]);
+
+  useEffect(() => {
+    const storedTours = localStorage.getItem("tours");
+    if (storedTours) {
+      setTours(JSON.parse(storedTours));
+    }
+  }, []);
   return (
     <div>
       <div className={style.Navbar}>
@@ -122,7 +131,7 @@ export default function HomeRouter() {
                   right: -8,
                 }}
               >
-                0
+                {tours.length}
               </div>
               <Link to="/CartItem">
                 <FontAwesomeIcon style={{color: 'white'}} icon={faCartShopping} size="2xl" />

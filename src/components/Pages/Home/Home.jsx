@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Carousel, Dropdown, Space } from "antd";
 import style from "./Navbar.module.css";
 import {
@@ -48,6 +48,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
+  const [tours, setTours] = useState([]);
+
+  useEffect(() => {
+    const storedTours = localStorage.getItem("tours");
+    if (storedTours) {
+      setTours(JSON.parse(storedTours));
+    }
+  }, []);
+
+
   const items = [
     {
       key: "1",
@@ -266,7 +276,7 @@ const Home = () => {
                   right: -8,
                 }}
               >
-                0
+                {tours.length}
               </div>
               <Link to="/CartItem">
                 <FontAwesomeIcon style={{color: 'white'}} icon={faCartShopping} size="2xl" />
