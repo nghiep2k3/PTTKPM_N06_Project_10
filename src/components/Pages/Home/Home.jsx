@@ -54,9 +54,21 @@ const Home = () => {
     const storedTours = localStorage.getItem("tours");
     if (storedTours) {
       setTours(JSON.parse(storedTours));
+    } else {
+      // Nếu không có dữ liệu trong localStorage, tạo một mảng rỗng
+      setTours([]);
+
+      // Lưu mảng rỗng vào localStorage
+      localStorage.setItem("tours", JSON.stringify([]));
     }
   }, []);
 
+  useEffect(() => {
+    const storedTours = localStorage.getItem("tours");
+    if (storedTours) {
+      setTours(JSON.parse(storedTours));
+    }
+  }, []);
 
   const items = [
     {
@@ -209,82 +221,85 @@ const Home = () => {
           </div>
 
           <div className={style.Navbar_mid}>
-          <div style={{ width: "175px" }}>
-            <img style={{ maxWidth: "100%" }} src={imageUrl} alt="logo" />
-          </div>
+            <div style={{ width: "175px" }}>
+              <img style={{ maxWidth: "100%" }} src={imageUrl} alt="logo" />
+            </div>
 
-          <div>
-            <Search
-              placeholder="Tìm kiếm tại đây..."
-              allowClear
-              bordered={true}
-              // enterButton={<button style={{ border: 'none' }}>search</button>}
-              enterButton={
-                <Button
-                  type="submit"
+            <div>
+              <Search
+                placeholder="Tìm kiếm tại đây..."
+                allowClear
+                bordered={true}
+                // enterButton={<button style={{ border: 'none' }}>search</button>}
+                enterButton={
+                  <Button
+                    type="submit"
+                    style={{
+                      border: "none",
+                      backgroundColor: "transparent",
+                      height: "38px",
+                    }}
+                  >
+                    <SearchOutlined style={{ fontSize: "18px" }} />
+                  </Button>
+                }
+                style={{
+                  width: "420px",
+                  marginLeft: "-20px",
+                  border: "none",
+                  height: "35px",
+                  backgroundColor: "transparent",
+                }}
+              />
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                width: 200,
+              }}
+            >
+              <div>
+                <PhoneOutlined
                   style={{
-                    border: "none",
-                    backgroundColor: "transparent",
-                    height: "38px",
+                    border: "2px solid yellow",
+                    borderRadius: "50%",
+                    padding: "10px",
+                    background: "#91caff",
+                    marginRight: "10px",
+                  }}
+                  className={style.Reverse}
+                />
+                <span>0378936624</span>
+              </div>
+
+              <div style={{ position: "relative" }}>
+                <div
+                  style={{
+                    background: "red",
+                    textAlign: "center",
+                    borderRadius: "50%",
+                    width: 20,
+                    height: 24,
+                    position: "absolute",
+                    top: -14,
+                    right: -8,
                   }}
                 >
-                  <SearchOutlined style={{ fontSize: "18px" }} />
-                </Button>
-              }
-              style={{
-                width: "420px",
-                marginLeft: "-20px",
-                border: "none",
-                height: "35px",
-                backgroundColor: "transparent",
-              }}
-            />
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              width: 200,
-            }}
-          >
-            <div>
-              <PhoneOutlined
-                style={{
-                  border: "2px solid yellow",
-                  borderRadius: "50%",
-                  padding: "10px",
-                  background: "#91caff",
-                  marginRight: "10px",
-                }}
-                className={style.Reverse}
-              />
-              <span>0378936624</span>
-            </div>
-
-            <div style={{ position: "relative" }}>
-              <div
-                style={{
-                  background: "red",
-                  textAlign: "center",
-                  borderRadius: "50%",
-                  width: 20,
-                  height: 24,
-                  position: "absolute",
-                  top: -14,
-                  right: -8,
-                }}
-              >
-                {tours.length}
+                  {tours.length}
+                </div>
+                <Link to="/CartItem">
+                  <FontAwesomeIcon
+                    style={{ color: "white" }}
+                    icon={faCartShopping}
+                    size="2xl"
+                  />
+                </Link>
               </div>
-              <Link to="/CartItem">
-                <FontAwesomeIcon style={{color: 'white'}} icon={faCartShopping} size="2xl" />
-              </Link>
-              
             </div>
           </div>
-        </div>
 
           <div className={style.Navbar_bottom}>
             <ul

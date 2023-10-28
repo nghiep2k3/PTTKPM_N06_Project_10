@@ -23,3 +23,12 @@
 .CardTourMiniImg img:hover {
     transform:  scale(1.1, 1.1);
 }
+
+.Text_title{
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    margin: 5px 0;
+}

@@ -30,7 +30,7 @@ import ImgSrc3 from "../../../img/carousel3.webp";
 import CardTourMini from "../../../Component/CardTourMini/CardTourMini";
 import TextArea from "antd/es/input/TextArea";
 
-export default function InfoTourDaNang() {
+export default function InfoTourAuPhap() {
   //uid
   const { v4: uuidv4 } = require('uuid');
   useEffect(() => {

@@ -10,25 +10,27 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-export default function CardTourMini() {
+export default function CardTourMini(props) {
   return (
     <div>
-      <Link to="/InfoTourHaNoi" style={{textDecoration: "none", color: 'black'}}>
+      <div style={{ textDecoration: "none", color: "black" }}>
         <div className={style.Container}>
           <div className={style.CardTourMiniImg}>
             <img
-              src={SrcImg}
+              src={`${props.srcImg}`}
               style={{ transition: "transform 0.5s linear" }}
               alt=""
             />
           </div>
 
           <div style={{ margin: 8 }}>
-            <b style={{ fontSize: 18 }}>
-              Du lịch Hà Nội - Lào Cai - Sapa - Hạ Long
-            </b>
+            <div className={style.Text_title}>
+              <b>
+                <b style={{ fontSize: 18 }}>{props.title}</b>
+              </b>
+            </div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <b style={{ color: "#1ba0e2", fontSize: 18 }}>7.999.999đ</b>
+              <b style={{ color: "#1ba0e2", fontSize: 18 }}>{props.price}đ</b>
               <div>
                 <FontAwesomeIcon
                   icon={faTrain}
@@ -38,14 +40,14 @@ export default function CardTourMini() {
                 <FontAwesomeIcon icon={faPlane} size="lg" />
               </div>
             </div>
-            <p style={{ textDecoration: "line-through" }}>10.000.000đ</p>
+            <p style={{ textDecoration: "line-through" }}>{props.priceOld}đ</p>
             <p>
               {" "}
               <FontAwesomeIcon
                 style={{ marginRight: "8px" }}
                 icon={faCalendarDays}
               />
-              Khởi hành: Thứ 2 - 7 hằng tuần
+              {props.depart}
             </p>
             <p>
               {" "}
@@ -53,11 +55,11 @@ export default function CardTourMini() {
                 style={{ marginRight: "8px" }}
                 icon={faCalendarWeek}
               />
-              Thời gian: 6 ngày 5 đêm
+              {props.time}
             </p>
           </div>
         </div>
-      </Link>
+      </div>
     </div>
   );
 }

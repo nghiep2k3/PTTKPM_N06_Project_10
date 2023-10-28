@@ -10,7 +10,9 @@
     /* height: 370px; */
 }
 
-.ContentTour {}
+.ContentTour {
+    width: 630px;
+}
 
 .SetupButton {
     width: 400px;
