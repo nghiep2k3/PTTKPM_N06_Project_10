@@ -19,6 +19,8 @@ export default function HaNoi() {
         if (snapshot.exists()) {
           console.log("All tour Miền Bắc");
           setData(snapshot.val());
+
+          setFilteredItems(snapshot.val());
           console.log(snapshot.val());
         } else {
           console.log("Không có dữ liệu");
@@ -34,9 +36,15 @@ export default function HaNoi() {
   // filter giá
   const [selectedPrice, setSelectedPrice] = useState("all");
   const [filteredItems, setFilteredItems] = useState([]);
+  const [check, setCheck] = useState(true);
 
-  const shouldDisplayData =
-    !filteredItems || Object.keys(filteredItems).length === 0;
+  // const shouldDisplayData =
+  //   !filteredItems || Object.keys(filteredItems).length === 0;
+
+  // useEffect(() => {
+  //   const dataArray = Object.values(filteredItems);
+  //   setFilteredItems(dataArray);
+  // }, []);
 
   console.log(5555, filteredItems);
   const handleChange = (value) => {
@@ -50,30 +58,78 @@ export default function HaNoi() {
 
     // Lọc danh sách mặt hàng dựa trên lựa chọn giá
     if (value === "all") {
+      setCheck(true);
       setFilteredItems(dataArray);
+    } else if (value === "2000000") {
+      setCheck(false);
+    } else if (value === "2000000 - 4000000") {
+      setCheck(false);
     } else if (value === "6000000 - 8000000") {
+      setCheck(true);
       setFilteredItems(
         dataArray.filter(
-          (item) => item.price === "7.250.000"
+          (item) =>
+            parseInt(item.price.replace(/\./g, "")) >= 6000000 &&
+            parseInt(item.price.replace(/\./g, "")) <= 8000000
         )
       );
     } else if (value === "8000000 - 10000000") {
+      setCheck(true);
       setFilteredItems(
         dataArray.filter(
-          (item) => item.price === "7.250.000" && item.price === "10.000.000"
+          (item) =>
+            parseInt(item.price.replace(/\./g, "")) >= 8000000 &&
+            parseInt(item.price.replace(/\./g, "")) <= 10000000
         )
       );
-    } else if (value === "2-4") {
-      setFilteredItems(
-        dataArray.filter((item) => item.price >= 2 && item.price <= 4)
-      );
+    } else if (value === "10000000") {
+      setCheck(false);
     }
   };
 
-  useEffect(() => {
-    console.log(12212, typeof filteredItems);
-  }, [filteredItems]);
+  // useEffect(() => {
+  //   console.log(12212, typeof filteredItems);
+  // }, [filteredItems]);
 
+  const handledDestination = (value) => {
+    console.log("Điểm đến", value);
+    const dataArray = Object.values(data);
+
+    // Lọc danh sách mặt hàng dựa trên lựa chọn giá
+    if (value === "all") {
+      setCheck(true);
+      setFilteredItems(dataArray);
+    }
+    else if (value === "Hải Dương") {
+      setCheck(true);
+      setFilteredItems(
+        dataArray.filter(
+          (item) =>
+            item.title ==
+            "Du lịch Hà Nội - Ninh Bình - Cát Bà - Hạ Long - Hải Dương"
+        )
+      );
+    } else if (value === "Cao Bằng") {
+      setCheck(true);
+      setFilteredItems(
+        dataArray.filter(
+          (item) =>
+            item.title ==
+            "Du lịch Cao Bằng - Bản Giốc - Bắc Kạn - Ba Bể - Hà Nội"
+        )
+      );
+    }
+    else if (value === "Hà Nội") {
+      setCheck(true);
+      setFilteredItems(
+        dataArray.filter(
+          (item) =>
+            item.title ==
+            "Du lịch Hà Nội - Lào Cai - Sapa - Hạ Long"
+        )
+      );
+    }
+  };
   if (!data) {
     return (
       <div
@@ -93,7 +149,7 @@ export default function HaNoi() {
     <div>
       <div style={{ fontSize: 24, fontWeight: "bold", margin: "0 114px" }}>
         <Link to="/">Trang chủ</Link> &gt;{" "}
-        <span style={{ color: "#1ba0e2" }}>Du lịch Hà Nội {selectedPrice}</span>
+        <span style={{ color: "#1ba0e2" }}>Du lịch Hà Nội</span>
       </div>
       <div
         className={style.Before}
@@ -177,8 +233,12 @@ export default function HaNoi() {
           style={{
             width: 250,
           }}
-          onChange={handleChange}
+          onChange={handledDestination}
           options={[
+            {
+              value: "all",
+              label: "Tất cả",
+            },
             {
               value: "Cao Bằng",
               label: "Cao Bằng",
@@ -253,30 +313,44 @@ export default function HaNoi() {
 
       <div
         style={{
-          margin: "20px 80px",
+          margin: "20px 117px",
           display: "flex",
-          justifyContent: "space-around",
+          // justifyContent: "space-around",
           flexWrap: "wrap",
         }}
       >
-        {Object.keys(data).map(
-          (item) =>
-            shouldDisplayData && (
-              <Link to={`/${data[item].Link}`}>
-                <CardTourMini
-                  price={data[item].price}
-                  title={data[item].title}
-                  depart={data[item].depart}
-                  time={data[item].time}
-                  priceOld={data[item].priceOld}
-                  srcImg={data[item].srcImg}
-                />
-              </Link>
-            )
+        {/* {Object.keys(data).map((item, index) => (
+            <Link to={`/${data[item].Link}`} key={index}>
+              <CardTourMini
+                price={data[item].price}
+                title={data[item].title}
+                depart={data[item].depart}
+                time={data[item].time}
+                priceOld={data[item].priceOld}
+                srcImg={data[item].srcImg}
+              />
+            </Link>
+          ))} */}
+
+        {check == true ? (
+          Object.keys(filteredItems).map((item, index) => (
+            <Link to={`/${filteredItems[item].Link}`} key={index}>
+              <CardTourMini
+                price={filteredItems[item].price}
+                title={filteredItems[item].title}
+                depart={filteredItems[item].depart}
+                time={filteredItems[item].time}
+                priceOld={filteredItems[item].priceOld}
+                srcImg={filteredItems[item].srcImg}
+              />
+            </Link>
+          ))
+        ) : (
+          <p>Không có dữ liệu</p>
         )}
 
-        {Object.keys(filteredItems).map((item, index) => (
-          <Link to={`/`}>
+        {/* {Object.keys(filteredItems).map((item, index) => (
+          <Link to={`/${filteredItems[item].Link}`} key={index}>
             <CardTourMini
               price={filteredItems[item].price}
               title={filteredItems[item].title}
@@ -286,7 +360,7 @@ export default function HaNoi() {
               srcImg={filteredItems[item].srcImg}
             />
           </Link>
-        ))}
+        ))} */}
       </div>
     </div>
   );

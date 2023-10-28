@@ -19,6 +19,8 @@ import TourAutralia from "./components/Pages/HomeRouter/TourForeign/TourAutralia
 import HaNoi from "./components/Pages/HomeRouter/TourDomestic/MienBac/HaNoi";
 import HaLong from "./components/Pages/HomeRouter/TourDomestic/MienBac/HaLong";
 import InfoTourHaNoi from "./components/Pages/DetailTour/MienBac/InfoTourHaNoi";
+import InfoTourCaoBang from "./components/Pages/DetailTour/MienBac/InfoTourCaoBang"
+import InfoTourHaiDuong from "./components/Pages/DetailTour/MienBac/InfoTourHaiDuong"
 import InfoTourHaiPhong from "./components/Pages/DetailTour/MienBac/InfoTourHaiPhong";
 import InfoTourNhaTrang from "./components/Pages/DetailTour/MienTrung/InfoTourNhaTrang"
 import InfoTourDaNang from "./components/Pages/DetailTour/MienTrung/InfoTourDangNang";
@@ -49,6 +51,8 @@ function Router() {
           <Route path="/HaLong" element={<HaLong />} />
           {/* Detail Tour */}
           <Route path="/InfoTourHaNoi" element={<InfoTourHaNoi />} />
+          <Route path="/InfoTourCaoBang" element={<InfoTourCaoBang />} />
+          <Route path="/InfoTourHaiDuong" element={<InfoTourHaiDuong />} />
           <Route path="/InfoTourHaiPhong" element={<InfoTourHaiPhong />} />
 
           <Route path="/InfoTourNhaTrang" element={<InfoTourNhaTrang />} />

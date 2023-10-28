@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 export default function CardTourMini(props) {
   return (
     <div>
-      <div style={{ textDecoration: "none", color: "black" }}>
+      <div style={{ textDecoration: "none", color: "black", marginRight: 68 }}>
         <div className={style.Container}>
           <div className={style.CardTourMiniImg}>
             <img
