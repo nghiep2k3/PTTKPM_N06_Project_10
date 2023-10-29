@@ -153,7 +153,7 @@ export default function CartItem() {
               </span>
             </div>
             <div style={{ textAlign: "center" }}>
-              <button className={styles.ButtonPay}>Thanh toán ngay</button>
+              <Link to="/Payments"><button  className={styles.ButtonPay}>Thanh toán ngay</button></Link>
             </div>
             <div style={{ textAlign: "center" }}>
               <button className={styles.ButtonContinue}>

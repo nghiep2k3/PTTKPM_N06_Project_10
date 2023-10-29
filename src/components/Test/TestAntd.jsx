@@ -1,138 +1,109 @@
-import React, { useEffect, useState } from "react";
-import { Space, Spin } from "antd";
-import { database } from "../../firebase";
-import { getDatabase, ref, child, get, set } from "firebase/database";
-import CardItem from "../Pages/Home/Card";
-import AComponent from "./A";
-import BComponent from "./B";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-export default function TestAntd() {
-  const dbRef = ref(database);
-  const [data, setData] = useState();
-
-  // save object
-  const [tours, setTours] = useState([]);
-
-  // Lấy danh sách tour từ Local Storage khi tải ứng dụng
-  useEffect(() => {
-    const storedTours = localStorage.getItem("tours");
-    if (storedTours) {
-      setTours(JSON.parse(storedTours));
-    }
-  }, []);
-
-  // Thêm một tour vào danh sách và lưu lại vào Local Storage
-  const handleAddTour = () => {
-    const CallTourCurrent = JSON.parse(localStorage.getItem("tours"));
-
-    const newTour = {
-      id: tours.length + 1,
-      title: `Đây là Tour 2`,
-    };
-
-    if (CallTourCurrent) {
-      // Kiểm tra nếu tour đã tồn tại dựa trên id hoặc các tiêu chí khác
-      const isTourExists = CallTourCurrent.some((tour) => tour.title === newTour.title);
-  
-      if (isTourExists) {
-        alert("Tour đã tồn tại!");
-        return; // Không thêm tour mới nếu đã tồn tại
-      }
-    }
-
-    const updatedTours = [...tours, newTour];
-    setTours(updatedTours);
-    localStorage.setItem("tours", JSON.stringify(updatedTours));
-  };
-  // Xóa
-  const handleDeleteTour = (id) => {
-    const updatedTours = tours.filter((tour) => tour.id !== id);
-    setTours(updatedTours);
-    localStorage.setItem("tours", JSON.stringify(updatedTours));
-  };
+const LocationSelector = () => {
+  const [dataCountry, setDatadataCountry] = useState([]);
+  const [loading, setLoading] = useState(true); // Biến trạng thái tải dữ liệu
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const snapshot = await get(child(dbRef, `TourNew`));
-        if (snapshot.exists()) {
-          setData(snapshot.val());
-          console.log(snapshot.val());
-        } else {
-          console.log("Không có dữ liệu");
-        }
-      } catch (error) {
+    axios
+      .get(
+        "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json"
+      )
+      .then((response) => {
+        setDatadataCountry(response.data);
+        setLoading(false); // Đã tải xong dữ liệu
+      })
+      .catch((error) => {
         console.error(error);
-      }
-    };
-
-    fetchData();
+        setLoading(false); // Đã tải xong dù có lỗi
+      });
   }, []);
 
-  if (!data) {
-    return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: 280,
-        }}
-      >
-        <Spin size="large" />
-      </div>
-    );
-  }
+  const [selectedCity, setSelectedCity] = useState("");
+  const [districts, setDistricts] = useState([]);
+  const [selectedDistrict, setSelectedDistrict] = useState("");
+  const [wards, setWards] = useState([]);
 
-  if (tours <= 0) {
+  const handleCityChange = (event) => {
+    const selectedCityName = event.target.value; // Lấy giá trị đã chọn
+    setSelectedCity(selectedCityName);
+
+    // Lấy danh sách quận/huyện dựa trên tỉnh/thành phố đã chọn
+    const selectedCityData = dataCountry.find((item) => item.Name === selectedCityName);
+    if (selectedCityData) {
+      const districtList = selectedCityData.Districts.map((item) => item.Name);
+      setDistricts(districtList);
+    } else {
+      setDistricts([]);
+    }
+
+    setSelectedDistrict("");
+  };
+
+  const handleDistrictChange = (event) => {
+    setSelectedDistrict(event.target.value);
+
+    // Lấy danh sách xã/phường dựa trên quận/huyện đã chọn
+    const selectedCityData = dataCountry.find((item) => item.Name === selectedCity);
+    if (selectedCityData) {
+      const selectedDistrictData = selectedCityData.Districts.find(
+        (item) => item.Name === event.target.value
+      );
+      if (selectedDistrictData) {
+        const wardList = selectedDistrictData.Wards.map((item) => item.Name);
+        setWards(wardList);
+      } else {
+        setWards([]);
+      }
+    } else {
+      setWards([]);
+    }
+  };
+
+  if (loading) {
+    return <p>Đang tải dữ liệu...</p>;
+  } else {
     return (
       <div>
-        <button onClick={handleAddTour}>Thêm</button>
-        <p>Không có tour </p>
+        <div>
+          <label>Chọn tỉnh/thành phố:</label>
+          <select value={selectedCity} onChange={handleCityChange}>
+            <option value="">-- Chọn tỉnh/thành phố --</option>
+            {dataCountry.map((item, index) => (
+              <option key={index} value={item.Name}>
+                {item.Name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label>Chọn quận/huyện:</label>
+          <select value={selectedDistrict} onChange={handleDistrictChange}>
+            <option value="">-- Chọn quận/huyện --</option>
+            {districts.map((district, index) => (
+              <option key={index} value={district}>
+                {district}
+              </option>
+            ))}
+          </select>
+        </div>
+        
+        <div>
+          <label>Chọn xã/phường:</label>
+          <select>
+          <option value="">-- Chọn xã --</option>
+            {wards.map((ward, index) => (
+              <option key={index} value={ward}>
+                {ward}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
     );
   }
+};
 
-  return (
-    <div>
-      Test call api
-      {/* <div style={{ display: "flex", justifyContent: "space-around", margin: '0 95px', flexWrap: 'wrap' }}>
-        {Object.keys(data).map((item) => (
-          <CardItem
-            key={item}
-            price={data[item]?.price}
-            title={data[item]?.title}
-            priceOld={data[item]?.price_old}
-            imgSrc={data[item].SrcImg}
-          />
-        ))}
-      </div> */}
-      <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-        <div>
-          <h1>Thông tin Tour</h1>
-          <button onClick={handleAddTour}>Thêm</button>
-          <ul>
-            {tours.map((tour) => (
-              <li key={tour.id}>
-                <p>Mã đơn hàng: {tour.id}</p>
-                
-                <p>Title: {tour.title}</p>
-                <button onClick={() => handleDeleteTour(tour.id)}>Xóa</button>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h1>Phần A</h1>
-          <AComponent />
-        </div>
-
-        <div>
-          <h1>Phần B</h1>
-          <BComponent />
-        </div>
-      </div>
-    </div>
-  );
-}
+export default LocationSelector;

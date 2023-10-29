@@ -28,6 +28,8 @@ import InfoTourDaNang from "./components/Pages/DetailTour/MienTrung/InfoTourDang
 import InfoTourChauAuPhap from "./components/Pages/DetailTour/TourForeign/InfoTourChauAuPhap";
 import InfoTourMy from "./components/Pages/DetailTour/TourForeign/InfoTourMy";
 import InfoTourPhap from "./components/Pages/DetailTour/TourForeign/InfoTourPhap"
+
+import Payments from "./components/Pages/Payments/Payments";
 function Router() {
   return (
     <div>
@@ -35,6 +37,8 @@ function Router() {
       <Routes>
         <Route path="/" index element={<Home />} />
         <Route path="/HomeRouter" element={<HomeRouter />}></Route>
+        <Route path="/Payments" element={<Payments />}></Route>
+        
 
         <Route path="/" element={<HomeRouter />}>
           <Route path="/Page" element={<Page />} />

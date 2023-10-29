@@ -172,7 +172,7 @@ export default function InfoTourDaNang() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const snapshot = await get(child(dbRef, `DetailTour/Phap`));
+        const snapshot = await get(child(dbRef, `DetailTour/NhaTrang`));
         if (snapshot.exists()) {
           console.log("Tour detail Danang");
           setData(snapshot.val());
@@ -242,13 +242,18 @@ export default function InfoTourDaNang() {
     );
   }
 
+  // return(
+  //   <div>
+  //       <p>{data.title}</p>
+  //   </div>
+  // )
+
   return (
     <div>
       <div style={{ background: "none", height: "auto" }}>
         <div style={{ fontSize: 20, marginLeft: 52 }}>
           <Link to="/">Trang chủ</Link> &gt;{" "}
           <Link to="/NewTour">Tour mới nhất</Link> &gt; {data.title}
-          Lao
         </div>
         <div className={style.Content_Header}>
           <div className={style.SetupCarousel}>
@@ -571,8 +576,6 @@ export default function InfoTourDaNang() {
         <p>{data.Des.Day2.description}</p>
         <b>NGÀY 3: {data.Des.Day3.title}</b>
         <p>{data.Des.Day3.description}</p>
-        <b>NGÀY 4: {data.Des.Day4.title}</b>
-        <p>{data.Des.Day4.description}</p>
       </div>
 
       <div className={style.Footer}>

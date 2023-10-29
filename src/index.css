@@ -96,6 +96,7 @@ label[title="Họ và tên"] {
   font-size: 18px !important;
   color: black !important;
 }
+
 .selected {
   color: #1ba0e2;
 }
@@ -108,16 +109,16 @@ label[title="Mô tả"] {
 }
 
 button[title="ButtonSubmit"]:hover {
-    background-color: red !important;
-    color: black !important;
+  background-color: red !important;
+  color: black !important;
 }
 
-.css-dev-only-do-not-override-1ck3jst{
+.css-dev-only-do-not-override-1ck3jst {
   margin-bottom: 0 !important;
 }
 
 
-a{
+a {
   text-decoration: none;
   color: black;
 }
@@ -131,22 +132,25 @@ a{
   border-radius: 10px;
 } */
 
-input[placeholder="Họ và tên"], input[placeholder="Số điện thoại"]
-,input[placeholder="Email"],textarea[placeholder="Nội dung"], button[type="Gửi"]{
+input[placeholder="Họ và tên"],
+input[placeholder="Số điện thoại"],
+input[placeholder="Email"],
+textarea[placeholder="Nội dung"],
+button[type="Gửi"] {
   border: 1px solid rgb(76, 67, 67);
   border-radius: 10px;
 }
 
-.ant-form-item-control-input-content input{
+.ant-form-item-control-input-content input {
   color: black;
 
 }
 
-.ant-modal-footer{
+.ant-modal-footer {
   display: none;
 }
 
-.ant-form-item-label{
+.ant-form-item-label {
   margin: 10px;
 }
 
@@ -156,21 +160,89 @@ input[placeholder="Họ và tên"], input[placeholder="Số điện thoại"]
    font-size: 16px !important;
 } */
 
-label[title="Họ tên"], label[title="Số điện thoại"], label[title="Email:"], 
-label[title="Nội dung"]{
+label[title="Họ tên"],
+label[title="Số điện thoại"],
+label[title="Email:"],
+label[title="Nội dung"] {
   width: 120px;
-   color: #1ba0e2 !important;
-   font-size: 16px !important;
+  color: #1ba0e2 !important;
+  font-size: 16px !important;
 }
+
+input[placeholder="Họ và Tên "]::placeholder {
+  font-size: 14px;
+  color: gray !important;
+}
+
+input[placeholder="Số điện thoại "]::placeholder {
+  font-size: 14px;
+  color: gray !important;
+}
+
+input[placeholder="Email "]::placeholder {
+  color: gray !important;
+  font-size: 18px !important;
+  
+}
+input[placeholder="Email "]{
+  border-radius: 8px !important;
+  margin: 10px 0;
+  color: black !important;
+  font-size: 20px !important;
+  height: 50px !important;
+  width: 350px !important;
+  padding: 15px !important;
+}
+
+input[placeholder="Họ và Tên "]{
+  margin: 10px 0;
+  border-radius: 8px !important;
+  color: black !important;
+  font-size: 20px !important;
+  height: 50px !important;
+  width: 350px !important;
+  padding: 15px !important;
+}
+
+input[placeholder="Số điện thoại "]{
+  margin: 10px 0;
+  border-radius: 8px !important;
+  color: black !important;
+  font-size: 20px !important;
+  height: 50px !important;
+  width: 350px !important;
+  padding: 15px !important;
+}
+
+#City, #District, #Ward{
+  margin: 10px 0;
+  border-radius: 8px !important;
+  color: black !important;
+  font-size: 20px !important;
+  height: 50px !important;
+  width: 350px !important;
+}
+
+#Note{
+  margin: 10px 0;
+  padding: 15px !important;
+  border-radius: 8px !important;
+  color: black !important;
+  font-size: 20px !important;
+  height: 55px !important;
+  width: 350px !important;
+}
+
 
 input.red-placeholder::placeholder {
   color: rgb(249, 192, 192) !important;
 }
 
-.ant-modal-title, .ant-modal-content{
-    background-color: #b8d0dc !important;
+.ant-modal-title,
+.ant-modal-content {
+  background-color: #b8d0dc !important;
 }
 
-.ant-modal-title{
+.ant-modal-title {
   font-size: 20px !important;
 }
