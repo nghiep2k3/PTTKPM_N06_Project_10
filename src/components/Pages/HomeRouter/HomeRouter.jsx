@@ -18,6 +18,11 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function HomeRouter() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  
   const items = [
     {
       key: "1",

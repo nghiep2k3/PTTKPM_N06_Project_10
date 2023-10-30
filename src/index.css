@@ -181,7 +181,13 @@ input[placeholder="Số điện thoại "]::placeholder {
 
 input[placeholder="Email "]::placeholder {
   color: gray !important;
-  font-size: 18px !important;
+  font-size: 14px !important;
+  
+}
+
+input[placeholder="Mã khuyến mại ..."]::placeholder {
+  color: gray !important;
+  font-size: 14px !important;
   
 }
 input[placeholder="Email "]{
@@ -214,8 +220,18 @@ input[placeholder="Số điện thoại "]{
   padding: 15px !important;
 }
 
-#City, #District, #Ward{
+input[placeholder="Mã khuyến mại ..."]{
   margin: 10px 0;
+  border-radius: 8px !important;
+  color: black !important;
+  font-size: 20px !important;
+  height: 50px !important;
+  width: 350px !important;
+  padding: 15px !important;
+}
+
+#City, #District, #Ward, #Promotion{
+  margin: 3px 0;
   border-radius: 8px !important;
   color: black !important;
   font-size: 20px !important;
@@ -224,7 +240,7 @@ input[placeholder="Số điện thoại "]{
 }
 
 #Note{
-  margin: 10px 0;
+  margin: 3px 0;
   padding: 15px !important;
   border-radius: 8px !important;
   color: black !important;

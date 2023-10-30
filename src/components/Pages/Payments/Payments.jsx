@@ -110,6 +110,7 @@ export default function Payments() {
                     style={{
                       display: "flex",
                       justifyContent: "space-between",
+                      alignItems: "center",
                       width: 340,
                     }}
                   >
@@ -129,156 +130,220 @@ export default function Payments() {
 
                   <Form onFinish={onFinish} onFinishFailed={onFinishFailed}>
                     <div className={styles.parent}>
-                      <Form.Item
-                        name="Email3"
-                        rules={[
-                          {
-                            required: true,
-                            message: "Vui lòng nhập vào email !",
-                          },
-                        ]}
-                      >
-                        <input id="Email" placeholder="Email "></input>
-                      </Form.Item>
+                      <div>
+                        <b>
+                          <label style={{fontSize: 16}} htmlFor="Email">Email</label>
+                        </b>
+                        <Form.Item
+                          name="Email3"
+                          rules={[
+                            {
+                              required: true,
+                              message: "Vui lòng nhập vào email !",
+                            },
+                          ]}
+                        >
+                          <input id="Email" placeholder="Email "></input>
+                        </Form.Item>
+                      </div>
 
-                      <Form.Item
-                        name="Username"
-                        rules={[
-                          {
-                            required: true,
-                            message: "Vui lòng nhập vào họ và tên!",
-                          },
-                        ]}
-                      >
-                        <input id="Username" placeholder="Họ và Tên "></input>
-                      </Form.Item>
+                      <div>
+                        <b>
+                          <label  htmlFor="Username">Họ và tên</label>
+                        </b>
+                        <Form.Item
+                          name="Username"
+                          rules={[
+                            {
+                              required: true,
+                              message: "Vui lòng nhập vào họ và tên!",
+                            },
+                          ]}
+                        >
+                          <input id="Username" placeholder="Họ và Tên "></input>
+                        </Form.Item>
+                      </div>
 
-                      <Form.Item
-                        name="Phone"
-                        rules={[
-                          {
-                            validator: validatePhone,
-                          },
-                        ]}
-                      >
-                        <input id="Phone" placeholder="Số điện thoại "></input>
-                      </Form.Item>
+                      <div>
+                        <b>
+                          <label style={{fontSize: 16}} htmlFor="Phone">Số điện thoại</label>
+                        </b>
+                        <Form.Item
+                          name="Phone"
+                          rules={[
+                            {
+                              validator: validatePhone,
+                            },
+                          ]}
+                        >
+                          <input
+                            id="Phone"
+                            placeholder="Số điện thoại "
+                          ></input>
+                        </Form.Item>
+                      </div>
 
-                      <Form.Item
-                        name="City"
-                        rules={[
-                          {
-                            required: true,
-                            message: "Vui lòng nhập vào thành phố của bạn!",
-                          },
-                        ]}
-                      >
-                        <div>
-                          <select
-                            id="City"
-                            value={selectedCity}
-                            style={{ color: "gray !important" }}
-                            onChange={handleCityChange}
+                      <div>
+                        <b>
+                          <label style={{fontSize: 16}} htmlFor="City">Thành phố</label>
+                        </b>
+                        <Form.Item
+                          name="City"
+                          rules={[
+                            {
+                              required: true,
+                              message: "Không được bỏ trống!",
+                            },
+                          ]}
+                        >
+                          <div>
+                            <select
+                              id="City"
+                              value={selectedCity}
+                              style={{ color: "gray !important" }}
+                              onChange={handleCityChange}
+                            >
+                              <option value=""> Chọn tỉnh/thành phố </option>
+                              {dataCountry.map((item, index) => (
+                                <option key={index} value={item.Name}>
+                                  {item.Name}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+                        </Form.Item>
+                      </div>
+
+                      <div>
+                        <b>
+                          <label style={{fontSize: 16}} htmlFor="City">Huyện</label>
+                        </b>
+                        <Form.Item
+                          name="District"
+                          rules={[
+                            {
+                              required: true,
+                              message: "Không được bỏ trống!",
+                            },
+                          ]}
+                        >
+                          <div>
+                            <select
+                              id="District"
+                              value={selectedDistrict}
+                              onChange={handleDistrictChange}
+                            >
+                              <option value=""> Chọn quận/huyện </option>
+                              {districts.map((district, index) => (
+                                <option
+                                  style={{ height: 50 }}
+                                  key={index}
+                                  value={district}
+                                >
+                                  {district}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+                        </Form.Item>
+                      </div>
+
+                      <div>
+                        <b>
+                          <label style={{fontSize: 16}} htmlFor="City">Xã</label>
+                        </b>
+                        <Form.Item
+                          name="Ward"
+                          rules={[
+                            {
+                              required: true,
+                              message: "Không được bỏ trống!",
+                            },
+                          ]}
+                        >
+                          <div>
+                            <select id="Ward">
+                              <option value=""> Chọn xã </option>
+                              {wards.map((ward, index) => (
+                                <option key={index} value={ward}>
+                                  {ward}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+                        </Form.Item>
+                      </div>
+
+                      <div>
+                        <b>
+                          <label style={{fontSize: 16}} htmlFor="Note">Ghi chú</label>
+                        </b>
+                        <Form.Item style={{ height: "100%" }}>
+                          <textarea name="Note" id="Note"></textarea>
+                        </Form.Item>
+                      </div>
+
+                      <div>
+                        <b>
+                          <span>
+                            Hình thức thanh toán <MoneyCollectOutlined />
+                          </span>
+                        </b>
+                        <Form.Item>
+                          <Radio.Group
+                            onChange={onChangeShip}
+                            value={selectedDiv}
+                            style={{
+                              display: "flex",
+                              width: 350,
+                              justifyContent: "space-between",
+                              marginTop: 3,
+                            }}
                           >
-                            <option value=""> Chọn tỉnh/thành phố </option>
-                            {dataCountry.map((item, index) => (
-                              <option key={index} value={item.Name}>
-                                {item.Name}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                      </Form.Item>
+                            <div
+                              className={`${styles.ClickPay} ${
+                                selectedDiv === 1 ? styles.SelectedDiv2 : ""
+                              }`}
+                            >
+                              <Radio value={1}>Thanh toán khi nhận hàng</Radio>
+                            </div>
+                            <div
+                              className={`${styles.ClickPay} ${
+                                selectedDiv === 2 ? styles.SelectedDiv2 : ""
+                              }`}
+                            >
+                              <Radio value={2}>Thanh toán bằng Qr Code</Radio>
+                            </div>
+                          </Radio.Group>
+                        </Form.Item>
+                      </div>
 
-                      <Form.Item
-                        name="District"
-                        rules={[
-                          {
-                            required: true,
-                            message: "Vui lòng nhập vào thành phố của bạn!",
-                          },
-                        ]}
-                      >
-                        <div>
-                          <select
-                            id="District"
-                            value={selectedDistrict}
-                            onChange={handleDistrictChange}
-                          >
-                            <option value=""> Chọn quận/huyện </option>
-                            {districts.map((district, index) => (
-                              <option key={index} value={district}>
-                                {district}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                      </Form.Item>
-
-                      <Form.Item
-                        name="Ward"
-                        rules={[
-                          {
-                            required: true,
-                            message: "Vui lòng nhập vào thành phố của bạn!",
-                          },
-                        ]}
-                      >
-                        <div>
-                          <select id="Ward">
-                            <option value=""> Chọn xã </option>
-                            {wards.map((ward, index) => (
-                              <option key={index} value={ward}>
-                                {ward}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                      </Form.Item>
-
-                      <Form.Item style={{ height: "100%" }}>
-                        <textarea name="Note" id="Note"></textarea>
-                      </Form.Item>
+                      <div>
+                        <b>
+                          <label style={{fontSize: 16}} htmlFor="Promotion">Mã khuyến mại</label>
+                        </b>
+                        <Form.Item name="Promotion">
+                          <input
+                            id="Promotion"
+                            placeholder="Mã khuyến mại ..."
+                          ></input>
+                        </Form.Item>
+                      </div>
                     </div>
 
                     <Form.Item>
-                      <button type="primary" htmlType="submit">
+                      <button
+                        type="primary"
+                        htmlType="submit"
+                        className={styles.BuyTour}
+                      >
                         Submit
                       </button>
                     </Form.Item>
                   </Form>
                 </div>
               </div>
-
-              <div>
-                <div>
-                  <p>
-                    Hình thức thanh toán <MoneyCollectOutlined />
-                  </p>
-
-                  <div>
-                    <Radio.Group onChange={onChangeShip} value={selectedDiv}>
-                      <div
-                        className={`${styles.ClickPay} ${
-                          selectedDiv === 1 ? styles.SelectedDiv2 : ""
-                        }`}
-                      >
-                        <Radio value={1}>Thanh toán khi nhận hàng</Radio>
-                      </div>
-                      <div
-                        className={`${styles.ClickPay} ${
-                          selectedDiv === 2 ? styles.SelectedDiv2 : ""
-                        }`}
-                      >
-                        <Radio value={2}>Thanh toán bằng Qr Code</Radio>
-                      </div>
-                    </Radio.Group>
-                  </div>
-                </div>
-              </div>
             </div>
-
-            <div style={{ width: "30%" }}>2</div>
           </div>
         </div>
       </div>

@@ -13,18 +13,20 @@
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    padding: 5px;
-    margin-top: 10px;
+    width: 170px;
+    
 }
 
 .SelectedDiv2{
     height: 50px;
-    background-color: rgb(172, 169, 169) !important;
+    background-color: #1ebfff !important;
     border: 2px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 10px;
-    padding: 5px;
-    margin-top: 10px;
+}
+
+.BuyTour{
+    height: 40px;
+    padding: 10px 30px;
+    border: 1px solid #1c94e9a6;
+    border-radius: 8px;
 }

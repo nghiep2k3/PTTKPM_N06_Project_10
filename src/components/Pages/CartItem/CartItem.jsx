@@ -10,7 +10,6 @@ export default function CartItem() {
   const [TotalMoneny, setTotalMoney] = useState("0");
   document.title = NameTitle;
 
-
   useEffect(() => {
     // Get the 'tours' object from Local Storage
     const toursStr = localStorage.getItem("tours");
@@ -153,12 +152,16 @@ export default function CartItem() {
               </span>
             </div>
             <div style={{ textAlign: "center" }}>
-              <Link to="/Payments"><button  className={styles.ButtonPay}>Thanh toán ngay</button></Link>
+              <Link to="/Payments">
+                <button className={styles.ButtonPay}>Thanh toán ngay</button>
+              </Link>
             </div>
             <div style={{ textAlign: "center" }}>
-              <button className={styles.ButtonContinue}>
-                Tiếp tục mua hàng
-              </button>
+              <Link to="/">
+                <button className={styles.ButtonContinue}>
+                  Tiếp tục mua hàng
+                </button>
+              </Link>
             </div>
           </div>
         </div>
