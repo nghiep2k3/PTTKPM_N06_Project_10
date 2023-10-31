@@ -7,20 +7,37 @@ import {
   MailOutlined,
   PhoneOutlined,
   SearchOutlined,
+  ShopOutlined,
   UserAddOutlined,
 } from "@ant-design/icons";
 import imageUrl from "../../img/logo.webp";
 import Search from "antd/es/input/Search";
 import Footer from "../../Footer/Footer";
-import { Route, Routes, Link, Outlet } from "react-router-dom";
+import { Route, Routes, Link, Outlet, useNavigate } from "react-router-dom";
 import { Content } from "antd/es/layout/layout";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function HomeRouter() {
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState();
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("LogIn");
+    if (loggedIn === "true") {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const LogOut = () => {
+    localStorage.setItem("LogIn", "false");
+    navigate('/')
+    window.location.reload();
+  };
 
   const items = [
     {
@@ -61,11 +78,38 @@ export default function HomeRouter() {
           </div>
 
           <div>
-            <Link to="/Login">
-              <LoginOutlined /> <span>Đăng nhập</span>
-            </Link>
-            <UserAddOutlined style={{ marginLeft: "30px" }} />
-            <span>Đăng ký</span>
+            {isLoggedIn ? (
+              // Hiển thị khi đã đăng nhập (isLoggedIn === true)
+              <div>
+                <UserAddOutlined /> <span>User 1</span>
+                <LoginOutlined style={{ marginLeft: "30px" }} />
+                <button className={style.LogOut} onClick={LogOut}>
+                  Đăng xuất
+                </button>
+                <Link to="/ManagerTour">
+                  <button
+                    style={{ marginLeft: "30px", paddingRight: 5 }}
+                    className={style.LogOut}
+                  >
+                    {" "}
+                    <ShopOutlined />
+                    Quản lý tour
+                  </button>
+                </Link>
+              </div>
+            ) : (
+              // Hiển thị khi chưa đăng nhập (isLoggedIn === false)
+              <div>
+                <Link to="/Login">
+                  <span style={{ color: "white" }}>
+                    {" "}
+                    <LoginOutlined /> Đăng nhập
+                  </span>
+                </Link>
+                <UserAddOutlined style={{ marginLeft: "30px" }} />
+                <span>Đăng ký</span>
+              </div>
+            )}
           </div>
         </div>
 

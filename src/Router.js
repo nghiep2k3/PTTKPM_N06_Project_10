@@ -11,6 +11,7 @@ import TestAntd from "./components/Test/TestAntd";
 import TestArrange from "./components/Test/TestArrange"
 import TestOrder from "./components/Test/TestOrder"
 import CartItem from "./components/Pages/CartItem/CartItem";
+import ManagerTour from "./components/Pages/ManagerTour/ManagerTour";
 
 import TourOut from "./components/Pages/HomeRouter/TourOut";
 import TourAsia from "./components/Pages/HomeRouter/TourForeign/TourAsia";
@@ -46,6 +47,7 @@ function Router() {
 
         <Route path="/" element={<HomeRouter />}>
           <Route path="/Page" element={<Page />} />
+          <Route path="/ManagerTour" element={<ManagerTour />} />
           <Route path="/CartItem" element={<CartItem />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/TourOut" element={<TourOut />} />
