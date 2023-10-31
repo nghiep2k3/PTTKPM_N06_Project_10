@@ -2,12 +2,14 @@
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import HomeRouter from "./components/Pages/HomeRouter/HomeRouter";
+import Login from "./components/Pages/Login/Login";
 import Page from "./components/Pages/HomeRouter/Page";
 import Contact from "./components/Pages/HomeRouter/Contact";
 import Home from "./components/Pages/Home/Home";
 import Page_404 from "./components/Pages/Page_404/Page_404";
 import TestAntd from "./components/Test/TestAntd";
 import TestArrange from "./components/Test/TestArrange"
+import TestOrder from "./components/Test/TestOrder"
 import CartItem from "./components/Pages/CartItem/CartItem";
 
 import TourOut from "./components/Pages/HomeRouter/TourOut";
@@ -38,6 +40,8 @@ function Router() {
         <Route path="/" index element={<Home />} />
         <Route path="/HomeRouter" element={<HomeRouter />}></Route>
         <Route path="/Payments" element={<Payments />}></Route>
+        <Route path="/Login" element={<Login />}></Route>
+
         
 
         <Route path="/" element={<HomeRouter />}>
@@ -46,6 +50,7 @@ function Router() {
           <Route path="/Contact" element={<Contact />} />
           <Route path="/TourOut" element={<TourOut />} />
           <Route path="/TestAntd" element={<TestAntd />} />
+          <Route path="/TestOrder" element={<TestOrder />} />
           <Route path="/TestArrange" element={<TestArrange />} />
           <Route path="/TourAsia" element={<TourAsia />} />
           <Route path="/TourEurope" element={<TourEurope />} />

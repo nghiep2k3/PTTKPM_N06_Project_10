@@ -22,7 +22,6 @@ export default function HomeRouter() {
     window.scrollTo(0, 0);
   }, []);
 
-  
   const items = [
     {
       key: "1",
@@ -62,7 +61,9 @@ export default function HomeRouter() {
           </div>
 
           <div>
-            <LoginOutlined /> <span>Đăng nhập</span>
+            <Link to="/Login">
+              <LoginOutlined /> <span>Đăng nhập</span>
+            </Link>
             <UserAddOutlined style={{ marginLeft: "30px" }} />
             <span>Đăng ký</span>
           </div>
@@ -139,9 +140,12 @@ export default function HomeRouter() {
                 {tours.length}
               </div>
               <Link to="/CartItem">
-                <FontAwesomeIcon style={{color: 'white'}} icon={faCartShopping} size="2xl" />
+                <FontAwesomeIcon
+                  style={{ color: "white" }}
+                  icon={faCartShopping}
+                  size="2xl"
+                />
               </Link>
-              
             </div>
           </div>
         </div>
@@ -232,7 +236,7 @@ export default function HomeRouter() {
               <li style={{ width: "300px", textAlign: "center" }}>Liên hệ</li>
             </Link>
 
-            <Link to="/TestAntd">
+            <Link to="/TestOrder">
               <li style={{ width: "150px", textAlign: "center" }}>Dev Mode</li>
             </Link>
           </ul>

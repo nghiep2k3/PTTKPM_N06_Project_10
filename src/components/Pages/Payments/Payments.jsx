@@ -1,9 +1,41 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { UserOutlined, MoneyCollectOutlined } from "@ant-design/icons";
-import { Button, Form, Input, Radio } from "antd";
+import { Button, Form, Input, Radio, message } from "antd";
+import { database } from "../../../firebase";
+import { getDatabase, ref, child, get, set } from "firebase/database";
+
 import styles from "./Payments.module.css";
 export default function Payments() {
+  const [tours, setTours] = useState([]);
+  const [PriceAll, setPriceAll] = useState("");
+
+  useEffect(() => {
+    const storedTours = localStorage.getItem("tours");
+    if (storedTours) {
+      setTours(JSON.parse(storedTours));
+    } else {
+      // Nếu không có dữ liệu trong localStorage, tạo một mảng rỗng
+      setTours([]);
+
+      // Lưu mảng rỗng vào localStorage
+      localStorage.setItem("tours", JSON.stringify([]));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Lấy dữ liệu từ Local Storage bằng getItem
+    const priceAllFromLocalStorage = localStorage.getItem("PriceAll");
+
+    if (priceAllFromLocalStorage !== null) {
+      // Nếu giá trị tồn tại trong Local Storage, cập nhật state PriceAll
+      setPriceAll(priceAllFromLocalStorage);
+    } else {
+      // Nếu không tìm thấy trong Local Storage, thiết lập giá trị mặc định là 0
+      setPriceAll(0);
+    }
+  }, []);
+
   const [ship, setShip] = useState(1);
   const onChangeShip = (e) => {
     console.log("radio checked", e.target.value);
@@ -13,6 +45,42 @@ export default function Payments() {
 
   const onFinish = (values) => {
     console.log("Success:", values);
+    message.success("Đặt hàng thành công");
+
+    // gọi tour local
+    console.log(22222, tours);
+
+    var handleEmail = values.Email;
+    if (handleEmail.includes("@")) {
+      const username = handleEmail.split("@")[0]; // Lấy phần trước dấu @
+      const username2 = username.split(".")[0];
+      handleEmail = username2;
+    }
+
+    const Address = {
+      city: values.City,
+      district: values.District,
+      ward: values.Ward,
+    };
+
+    const IsPromotion = (values.Promotion =
+      typeof values.Promotion === "undefined" ? "Không có" : values.Promotion);
+    const IsNote = (values.Note =
+      typeof values.Note === "undefined" ? "Không có" : values.Note);
+
+    console.log(222, IsPromotion);
+    const dataAdd = {
+      username: values.Username,
+      email: values.Email,
+      address: Address,
+      numberPhone: values.Phone,
+      promotion: IsPromotion,
+      note: IsNote,
+      tours: tours,
+    };
+
+    set(ref(database, `OrderTour/${handleEmail}`), dataAdd);
+    // localStorage.removeItem('tours');
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -128,14 +196,31 @@ export default function Payments() {
                     </button>
                   </div>
 
+                  <div>
+                    <p style={{ fontSize: 20, fontWeight: "bold" }}>
+                      Số tour:{" "}
+                      <span style={{ fontSize: 17, fontWeight: "normal" }}>
+                        {tours.length}
+                      </span>
+                    </p>
+                    <p style={{ fontSize: 20, fontWeight: "bold" }}>
+                      Giá:{" "}
+                      <span style={{ fontSize: 17, fontWeight: "normal" }}>
+                        {PriceAll}
+                      </span>
+                    </p>
+                  </div>
+
                   <Form onFinish={onFinish} onFinishFailed={onFinishFailed}>
                     <div className={styles.parent}>
                       <div>
                         <b>
-                          <label style={{fontSize: 16}} htmlFor="Email">Email</label>
+                          <label style={{ fontSize: 16 }} htmlFor="Email">
+                            Email
+                          </label>
                         </b>
                         <Form.Item
-                          name="Email3"
+                          name="Email"
                           rules={[
                             {
                               required: true,
@@ -149,7 +234,7 @@ export default function Payments() {
 
                       <div>
                         <b>
-                          <label  htmlFor="Username">Họ và tên</label>
+                          <label htmlFor="Username">Họ và tên</label>
                         </b>
                         <Form.Item
                           name="Username"
@@ -166,7 +251,9 @@ export default function Payments() {
 
                       <div>
                         <b>
-                          <label style={{fontSize: 16}} htmlFor="Phone">Số điện thoại</label>
+                          <label style={{ fontSize: 16 }} htmlFor="Phone">
+                            Số điện thoại
+                          </label>
                         </b>
                         <Form.Item
                           name="Phone"
@@ -185,7 +272,9 @@ export default function Payments() {
 
                       <div>
                         <b>
-                          <label style={{fontSize: 16}} htmlFor="City">Thành phố</label>
+                          <label style={{ fontSize: 16 }} htmlFor="City">
+                            Thành phố
+                          </label>
                         </b>
                         <Form.Item
                           name="City"
@@ -216,7 +305,9 @@ export default function Payments() {
 
                       <div>
                         <b>
-                          <label style={{fontSize: 16}} htmlFor="City">Huyện</label>
+                          <label style={{ fontSize: 16 }} htmlFor="City">
+                            Huyện
+                          </label>
                         </b>
                         <Form.Item
                           name="District"
@@ -250,7 +341,9 @@ export default function Payments() {
 
                       <div>
                         <b>
-                          <label style={{fontSize: 16}} htmlFor="City">Xã</label>
+                          <label style={{ fontSize: 16 }} htmlFor="City">
+                            Xã
+                          </label>
                         </b>
                         <Form.Item
                           name="Ward"
@@ -276,9 +369,11 @@ export default function Payments() {
 
                       <div>
                         <b>
-                          <label style={{fontSize: 16}} htmlFor="Note">Ghi chú</label>
+                          <label style={{ fontSize: 16 }} htmlFor="Note">
+                            Ghi chú
+                          </label>
                         </b>
-                        <Form.Item style={{ height: "100%" }}>
+                        <Form.Item name="Note" style={{ height: "100%" }}>
                           <textarea name="Note" id="Note"></textarea>
                         </Form.Item>
                       </div>
@@ -320,7 +415,9 @@ export default function Payments() {
 
                       <div>
                         <b>
-                          <label style={{fontSize: 16}} htmlFor="Promotion">Mã khuyến mại</label>
+                          <label style={{ fontSize: 16 }} htmlFor="Promotion">
+                            Mã khuyến mại
+                          </label>
                         </b>
                         <Form.Item name="Promotion">
                           <input

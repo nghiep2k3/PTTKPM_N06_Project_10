@@ -226,6 +226,7 @@ export default function InfoTourDaNang() {
     setTours(updatedTours);
     localStorage.setItem("tours", JSON.stringify(updatedTours));
     message.success('Đặt thành công');
+    window.location.reload();
   };
 
   if (!data) {

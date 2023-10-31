@@ -48,9 +48,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   const [tours, setTours] = useState([]);
 
   useEffect(() => {
@@ -71,6 +68,10 @@ const Home = () => {
     if (storedTours) {
       setTours(JSON.parse(storedTours));
     }
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, []);
 
   const items = [
@@ -217,7 +218,9 @@ const Home = () => {
             </div>
 
             <div>
-              <LoginOutlined /> <span>Đăng nhập</span>
+              <Link to="/Login">
+                <LoginOutlined /> <span>Đăng nhập</span>
+              </Link>
               <UserAddOutlined style={{ marginLeft: "30px" }} />
               <span>Đăng ký</span>
             </div>

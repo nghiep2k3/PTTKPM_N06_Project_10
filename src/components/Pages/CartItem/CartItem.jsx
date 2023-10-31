@@ -14,25 +14,33 @@ export default function CartItem() {
     // Get the 'tours' object from Local Storage
     const toursStr = localStorage.getItem("tours");
 
-    // Parse the string to convert it back to an object
-    const tours = JSON.parse(toursStr);
+    if (toursStr) {
+      // Parse the string to convert it back to an object
+      const tours = JSON.parse(toursStr);
 
-    // Initialize a variable to store the total price
-    let totalPrice = 0;
+      // Initialize a variable to store the total price
+      let totalPrice = 0;
 
-    // Loop through the 'price' property of each tour, remove non-numeric characters, and add it to the total price
-    for (const tour of tours) {
-      const priceWithoutSpecialChars = tour.price.replace(/[^0-9]/g, ""); // Remove non-numeric characters
-      totalPrice += parseInt(priceWithoutSpecialChars); // Convert the string to a number and add it to the total
+      for (const tour of tours) {
+        const priceWithoutSpecialChars = tour.price.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+        totalPrice += parseInt(priceWithoutSpecialChars); // Convert the string to a number and add it to the total
+      }
+
+      const formattedPrice = totalPrice.toLocaleString("vi-VN", {
+        style: "currency",
+        currency: "VND",
+      });
+
+      setTotalMoney(formattedPrice);
+      localStorage.setItem('PriceAll', formattedPrice);
     }
+    else{
+      // Nếu không có dữ liệu trong localStorage, tạo một mảng rỗng
+      setTours([]);
 
-    // Format the total price with the currency symbol ₫
-    const formattedPrice = totalPrice.toLocaleString("vi-VN", {
-      style: "currency",
-      currency: "VND",
-    });
-
-    setTotalMoney(formattedPrice);
+      // Lưu mảng rỗng vào localStorage
+      localStorage.setItem("tours", JSON.stringify([]));
+    }
   }, []);
 
   // Lấy danh sách tour từ Local Storage khi tải ứng dụng
@@ -66,14 +74,22 @@ export default function CartItem() {
 
   return (
     <div>
-      <div style={{ fontSize: 15, fontWeight: "bold" }}>
+      <div style={{ fontSize: 18, fontWeight: "bold" }}>
         <Link to="/">Trang chủ</Link> &gt;{" "}
         <span style={{ color: "#1ba0e2" }}>Du lịch Hà Nội</span>
       </div>
 
       <div>
-        <span style={{ fontSize: 18, fontWeight: "bold" }}>Giỏ hàng</span>
-        <span>( {tours.length} tour )</span>
+        <span
+          style={{
+            fontSize: 18,
+            fontWeight: "bold",
+            margin: "8px 0",
+            display: "block",
+          }}
+        >
+          Giỏ hàng <span>( {tours.length} tour )</span>
+        </span>
 
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div>
@@ -165,63 +181,6 @@ export default function CartItem() {
             </div>
           </div>
         </div>
-
-        {/* <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div style={{ display: "flex", width: 800 }}>
-            <div style={{ width: 200 }}>
-              <img
-                style={{ maxWidth: "100%" }}
-                src="https://bizweb.dktcdn.net/thumb/grande/100/299/077/products/53916-1315037279.jpg?v=1529554090113"
-                alt=""
-              />
-            </div>
-
-            <div style={{ marginLeft: 40 }}>
-              <h3>Du lịch Châu Âu Pháp - Thụy Sỹ - Núi Jungfrau - Ý</h3>
-              <p>Mã đơn hàng: </p>
-              <p>Tổng tiền: 85.000.000đ</p>
-              <p>Người lớn</p>
-              <button>Xóa</button>
-            </div>
-          </div>
-
-          <div
-            style={{
-              border: "2px solid #1ba0e2",
-              height: 190,
-              borderRadius: 12,
-              padding: "10px 15px",
-            }}
-          >
-            <div style={{ fontWeight: "bold", fontSize: 16 }}>
-              Tạm tính: 85.000.000đ
-            </div>
-            <div
-              style={{
-                fontWeight: "bold",
-                fontSize: 16,
-                borderTop: "2px solid gray",
-                margin: "10px 0",
-                paddingTop: 10,
-              }}
-            >
-              Thành tiền:{" "}
-              <span
-                style={{ color: "#1ba0e2", fontWeight: "bold", fontSize: 20 }}
-              >
-                85.000.000đ
-              </span>
-            </div>
-            <div>
-              <button className={styles.ButtonPay}>Thanh toán ngay</button>
-            </div>
-            <div>
-              <button className={styles.ButtonContinue}>
-                Tiếp tục mua hàng
-              </button>
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
   );
