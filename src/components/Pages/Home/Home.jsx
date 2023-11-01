@@ -13,6 +13,7 @@ import {
 } from "@ant-design/icons";
 import { Route, Routes, Link, Outlet, useNavigate } from "react-router-dom";
 import imageUrl from "../../img/logo.webp";
+import RoleZZ from "../Role/Role";
 
 //Cách dùng chung className
 // className={`${style.ButtonClick} ${selectedButton === 'a' ? 'selected' : ''} common-button`}
@@ -53,6 +54,7 @@ const Home = () => {
   const navigate = useNavigate();
   const [tours, setTours] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState();
+
   useEffect(() => {
     const loggedIn = localStorage.getItem("LogIn");
     if (loggedIn === "true") {
@@ -234,16 +236,11 @@ const Home = () => {
               <MailOutlined style={{ marginLeft: "30px" }} />
               <span>nguyennghiep1320@gmail.com</span>
             </div>
-
             <div>
               {isLoggedIn ? (
                 // Hiển thị khi đã đăng nhập (isLoggedIn === true)
                 <div>
-                  <UserAddOutlined /> <span>User 1</span>
-                  <LoginOutlined style={{ marginLeft: "30px" }} />
-                  <button className={style.LogOut} onClick={LogOut}>
-                    Đăng xuất
-                  </button>
+                  <UserAddOutlined /> <span><RoleZZ></RoleZZ></span>
                   <Link to="/ManagerTour">
                     <button
                       style={{ marginLeft: "30px", paddingRight: 5 }}
@@ -254,6 +251,10 @@ const Home = () => {
                         Quản lý tour
                     </button>
                   </Link>
+                  <LoginOutlined style={{ marginLeft: "30px" }} />
+                  <button className={style.LogOut} onClick={LogOut}>
+                    Đăng xuất
+                  </button>
                 </div>
               ) : (
                 // Hiển thị khi chưa đăng nhập (isLoggedIn === false)

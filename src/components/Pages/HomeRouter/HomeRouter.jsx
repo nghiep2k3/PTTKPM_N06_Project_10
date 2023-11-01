@@ -17,6 +17,7 @@ import { Route, Routes, Link, Outlet, useNavigate } from "react-router-dom";
 import { Content } from "antd/es/layout/layout";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import RoleZZ from "../Role/Role";
 
 export default function HomeRouter() {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ export default function HomeRouter() {
 
   const LogOut = () => {
     localStorage.setItem("LogIn", "false");
-    navigate('/')
+    navigate("/");
     window.location.reload();
   };
 
@@ -66,6 +67,8 @@ export default function HomeRouter() {
       setTours(JSON.parse(storedTours));
     }
   }, []);
+
+  
   return (
     <div>
       <div className={style.Navbar}>
@@ -81,11 +84,7 @@ export default function HomeRouter() {
             {isLoggedIn ? (
               // Hiển thị khi đã đăng nhập (isLoggedIn === true)
               <div>
-                <UserAddOutlined /> <span>User 1</span>
-                <LoginOutlined style={{ marginLeft: "30px" }} />
-                <button className={style.LogOut} onClick={LogOut}>
-                  Đăng xuất
-                </button>
+                <UserAddOutlined /> <span><RoleZZ/></span>
                 <Link to="/ManagerTour">
                   <button
                     style={{ marginLeft: "30px", paddingRight: 5 }}
@@ -96,6 +95,10 @@ export default function HomeRouter() {
                     Quản lý tour
                   </button>
                 </Link>
+                <LoginOutlined style={{ marginLeft: "30px" }} />
+                <button className={style.LogOut} onClick={LogOut}>
+                  Đăng xuất
+                </button>
               </div>
             ) : (
               // Hiển thị khi chưa đăng nhập (isLoggedIn === false)
