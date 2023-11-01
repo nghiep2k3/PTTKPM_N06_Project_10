@@ -108,9 +108,6 @@
     margin-top: 10px;
 }
 
-.Test{
-    font-size: 30px;
-}
 
 .LogOut{
     font-size: 15px;
@@ -120,3 +117,76 @@
     cursor: pointer;
 }
 
+.title {
+    background: #dd4f4f;
+    background: -webkit-linear-gradient(57deg, #dd4f4f 15%, #12b4ea 100%);
+    background: linear-gradient(57deg, #dd4f4f 15%, #12b4ea 100%);
+    padding: 30px 50px;
+    margin: 0 33px;
+    height: 200px;
+}
+.title h1 {
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 45px;
+    line-height: 140px;
+}
+.aboutName {
+    margin-top: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 40px;
+}
+.aboutDes {
+    text-align: center;
+    font-size: 20px;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 30px;
+}
+.aboutDes {
+    color: #8d8d94;
+}
+.aboutSd {
+    margin-top: 30px;
+    display: flex;
+    justify-self: center;
+    text-align: center;
+}
+.aboutItem {
+    width: 33.333%;
+}
+.aboutImg {
+    width: 300px;
+}
+.aboutImg:hover {
+    transform: translateY(-10px);
+    transition-duration: 0.5s;
+}
+.aboutText {
+    font-size: 20px;
+    color: #8d8d94;
+}
+.aboutMission {
+    margin-top: 30px;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    background-image: url("https://i.pinimg.com/564x/44/c0/e0/44c0e0d4babe32401d97a0ebbb716f90.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+}
+.missionTitle {
+    text-align: center;
+    color: #fff;
+    margin-top: 70px;
+    text-transform: uppercase;
+}
+.missionDes {
+    color: #fff;
+    font-size: 20px;
+    margin:20px 500px;
+}
