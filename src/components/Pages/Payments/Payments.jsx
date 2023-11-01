@@ -4,9 +4,11 @@ import { UserOutlined, MoneyCollectOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Radio, message } from "antd";
 import { database } from "../../../firebase";
 import { getDatabase, ref, child, get, set } from "firebase/database";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./Payments.module.css";
 export default function Payments() {
+  const navigate = useNavigate();
   const [tours, setTours] = useState([]);
   const [PriceAll, setPriceAll] = useState("");
 
@@ -77,10 +79,13 @@ export default function Payments() {
       promotion: IsPromotion,
       note: IsNote,
       tours: tours,
+      priceAll: PriceAll, 
     };
 
     set(ref(database, `OrderTour/${handleEmail}`), dataAdd);
-    // localStorage.removeItem('tours');
+    localStorage.removeItem('tours');
+    localStorage.removeItem('priceAll');
+    navigate('/');
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);

@@ -264,4 +264,10 @@
     height: 130px;
 }
 
-
+.LogOut{
+    font-size: 15px;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+}

@@ -108,9 +108,15 @@
     margin-top: 10px;
 }
 
-.Test{
-    font-size: 30px;
+
+.LogOut{
+    font-size: 15px;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
 }
+
 .title {
     background: #dd4f4f;
     background: -webkit-linear-gradient(57deg, #dd4f4f 15%, #12b4ea 100%);

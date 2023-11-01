@@ -7,10 +7,13 @@ import {
   MailOutlined,
   PhoneOutlined,
   SearchOutlined,
+  ShopOutlined,
+  TableOutlined,
   UserAddOutlined,
 } from "@ant-design/icons";
-import { Route, Routes, Link, Outlet } from "react-router-dom";
+import { Route, Routes, Link, Outlet, useNavigate } from "react-router-dom";
 import imageUrl from "../../img/logo.webp";
+import RoleZZ from "../Role/Role";
 
 //Cách dùng chung className
 // className={`${style.ButtonClick} ${selectedButton === 'a' ? 'selected' : ''} common-button`}
@@ -48,7 +51,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
+  const navigate = useNavigate();
   const [tours, setTours] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState();
+
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("LogIn");
+    if (loggedIn === "true") {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
 
   useEffect(() => {
     const storedTours = localStorage.getItem("tours");
@@ -73,6 +87,12 @@ const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const LogOut = () => {
+    localStorage.setItem("LogIn", "false");
+    navigate("/")
+    window.location.reload();
+  };
 
   const items = [
     {
@@ -216,13 +236,39 @@ const Home = () => {
               <MailOutlined style={{ marginLeft: "30px" }} />
               <span>nguyennghiep1320@gmail.com</span>
             </div>
-
             <div>
-              <Link to="/Login">
-                <LoginOutlined /> <span>Đăng nhập</span>
-              </Link>
-              <UserAddOutlined style={{ marginLeft: "30px" }} />
-              <span>Đăng ký</span>
+              {isLoggedIn ? (
+                // Hiển thị khi đã đăng nhập (isLoggedIn === true)
+                <div>
+                  <UserAddOutlined /> <span><RoleZZ></RoleZZ></span>
+                  <Link to="/ManagerTour">
+                    <button
+                      style={{ marginLeft: "30px", paddingRight: 5 }}
+                      className={style.LogOut}
+                    >
+                      {" "}
+                      <ShopOutlined />
+                        Quản lý tour
+                    </button>
+                  </Link>
+                  <LoginOutlined style={{ marginLeft: "30px" }} />
+                  <button className={style.LogOut} onClick={LogOut}>
+                    Đăng xuất
+                  </button>
+                </div>
+              ) : (
+                // Hiển thị khi chưa đăng nhập (isLoggedIn === false)
+                <div>
+                  <Link to="/Login">
+                    <span style={{ color: "white" }}>
+                      {" "}
+                      <LoginOutlined /> Đăng nhập
+                    </span>
+                  </Link>
+                  <UserAddOutlined style={{ marginLeft: "30px" }} />
+                  <span>Đăng ký</span>
+                </div>
+              )}
             </div>
           </div>
 

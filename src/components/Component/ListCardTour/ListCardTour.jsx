@@ -21,6 +21,7 @@ export default function ListCardTour(props) {
           console.log("Tour Châu Á");
           setData(snapshot.val());
           console.log(snapshot.val());
+          console.log("đang ở đây");
         } else {
           console.log("Không có dữ liệu");
         }
