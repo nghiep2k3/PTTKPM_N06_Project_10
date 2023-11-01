@@ -80,10 +80,11 @@ export default function ManagerTour() {
           </div>
 
           <div style={{ position: "absolute", right: 20, width: 310 }}>
-            <p style={{ fontWeight: "bold" }}>Tên tour: </p>
+            <p style={{ fontWeight: "bold" }}>Tên tour: ({ManagerTour[item].tours.length})</p>
+
             {Object.keys(ManagerTour[item].tours).map((item2) => (
               <p className={styles.CutText}>
-                {ManagerTour[item].tours[item2].title}
+              Số vé {ManagerTour[item].tours[item2].ticket} - {ManagerTour[item].tours[item2].title}
               </p>
             ))}
             <p style={{ fontWeight: "bold" }}>Tổng số tiền:</p>
