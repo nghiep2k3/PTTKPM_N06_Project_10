@@ -7,6 +7,7 @@ import UrlImg3 from "../../img/banner3.jpg";
 import { database } from "../../../firebase";
 import { getDatabase, ref, child, get, set } from "firebase/database";
 import { Space, Spin } from "antd";
+import { Link } from "react-router-dom";
 
 export default function Trung() {
   // const data = {
@@ -96,15 +97,17 @@ export default function Trung() {
         }}
       >
         {Object.keys(data).map((item) => (
-          <CardItem
-            key={item}
-            time={data[item].time}
-            depart={data[item].depart}
-            price={data[item].price}
-            title={data[item].title}
-            priceOld={data[item].priceOld}
-            imgSrc={data[item].srcImg}
-          />
+          <Link to={`${data[item].Link}`}>
+            <CardItem
+              key={item}
+              time={data[item].time}
+              depart={data[item].depart}
+              price={data[item].price}
+              title={data[item].title}
+              priceOld={data[item].priceOld}
+              imgSrc={data[item].srcImg}
+            />
+          </Link>
         ))}
       </div>
     );

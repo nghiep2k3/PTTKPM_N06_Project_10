@@ -20,18 +20,25 @@ import TourEurope from "./components/Pages/HomeRouter/TourForeign/TourEurope";
 import TourAutralia from "./components/Pages/HomeRouter/TourForeign/TourAutralia";
 
 import HaNoi from "./components/Pages/HomeRouter/TourDomestic/MienBac/HaNoi";
-import HaLong from "./components/Pages/HomeRouter/TourDomestic/MienBac/HaLong";
+import CaoBang from "./components/Pages/HomeRouter/TourDomestic/MienBac/CaoBang";
 import InfoTourHaNoi from "./components/Pages/DetailTour/MienBac/InfoTourHaNoi";
 import InfoTourCaoBang from "./components/Pages/DetailTour/MienBac/InfoTourCaoBang"
 import InfoTourHaiDuong from "./components/Pages/DetailTour/MienBac/InfoTourHaiDuong"
 import InfoTourHaiPhong from "./components/Pages/DetailTour/MienBac/InfoTourHaiPhong";
 import InfoTourNhaTrang from "./components/Pages/DetailTour/MienTrung/InfoTourNhaTrang"
 import InfoTourDaNang from "./components/Pages/DetailTour/MienTrung/InfoTourDangNang";
+import InfoTourHue from "./components/Pages/DetailTour/MienTrung/InfoTourHue";
+import InfoTourCaiBe from "./components/Pages/DetailTour/MienNam/InfoTourCaiBe"
+import InfoTourPhuQuoc from "./components/Pages/DetailTour/MienNam/InfoTourPhuQuoc"
+import InfoTourPhuQuoc2 from "./components/Pages/DetailTour/MienNam/InfoTourPhuQuoc2"
 
 import InfoTourChauAuPhap from "./components/Pages/DetailTour/TourForeign/InfoTourChauAuPhap";
 import InfoTourMy from "./components/Pages/DetailTour/TourForeign/InfoTourMy";
 import InfoTourPhap from "./components/Pages/DetailTour/TourForeign/InfoTourPhap"
-
+import InfoTourY from "./components/Pages/DetailTour/TourForeign/InfoTourY"
+import InfoTourUc from "./components/Pages/DetailTour/TourForeign/InfoTourUc"
+import InfoTourCanada from "./components/Pages/DetailTour/TourForeign/InfoTourCanada"
+import InfoTourNamPhi from "./components/Pages/DetailTour/TourForeign/InfoTourNamPhi"
 import Payments from "./components/Pages/Payments/Payments";
 function Router() {
   return (
@@ -59,7 +66,7 @@ function Router() {
           <Route path="/TourAmericars" element={<TourAmericars />} />
           <Route path="/TourAutralia" element={<TourAutralia />} />
           <Route path="/HaNoi" element={<HaNoi />} />
-          <Route path="/HaLong" element={<HaLong />} />
+          <Route path="/CaoBang" element={<CaoBang />} />
           {/* Detail Tour */}
           <Route path="/InfoTourHaNoi" element={<InfoTourHaNoi />} />
           <Route path="/InfoTourCaoBang" element={<InfoTourCaoBang />} />
@@ -68,10 +75,20 @@ function Router() {
 
           <Route path="/InfoTourNhaTrang" element={<InfoTourNhaTrang />} />
           <Route path="/InfoTourDaNang" element={<InfoTourDaNang />} />
+          <Route path="/InfoTourHue" element={<InfoTourHue />} />
+
+          <Route path="/InfoTourCaiBe" element={<InfoTourCaiBe />} />
+          <Route path="/InfoTourPhuQuoc" element={<InfoTourPhuQuoc />} />
+          <Route path="/InfoTourPhuQuoc2" element={<InfoTourPhuQuoc2 />} />
+
           {/* Detail Tour Foreign*/}
           <Route path="/InfoTourChauAuPhap" element={<InfoTourChauAuPhap />} />
           <Route path="/InfoTourMy" element={<InfoTourMy />} />
           <Route path="/InfoTourPhap" element={<InfoTourPhap />} />
+          <Route path="/InfoTourY" element={<InfoTourY />} />
+          <Route path="/InfoTourUc" element={<InfoTourUc />} />
+          <Route path="/InfoTourCanada" element={<InfoTourCanada />} />
+          <Route path="/InfoTourNamPhi" element={<InfoTourNamPhi />} />
 
           <Route path="*" element={<Page_404 />} />
 

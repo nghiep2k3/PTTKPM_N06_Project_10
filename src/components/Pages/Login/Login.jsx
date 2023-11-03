@@ -4,6 +4,7 @@ import styles from "./Login.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { getDatabase, ref, child, get, set } from "firebase/database";
 import { database } from "../../../firebase";
+import Video from "./Video.mp4";
 
 const onFinishFailed = (errorInfo) => {
   console.log("Failed:", errorInfo);
@@ -56,11 +57,10 @@ const Login = () => {
       values.password == account.Admin1.Password
     ) {
       navigate("/");
-      localStorage.setItem('LogIn', "true");
+      localStorage.setItem("LogIn", "true");
     } else {
       message.error("Sai tài khoản hoặc mặc khẩu");
     }
-
   };
 
   if (!account) {
@@ -70,7 +70,7 @@ const Login = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height: '100vh',
+          height: "100vh",
         }}
       >
         <Spin size="large" />
@@ -79,15 +79,14 @@ const Login = () => {
   }
 
   return (
-    <div
-      style={{
-        display: "flex",
-        backgroundColor: "#FFF",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-      }}
-    >
+    <div className={styles.ContainerDiv}>
+      <video
+        src={Video}
+        autoPlay
+        muted
+        loop
+        style={{ width: "100%", height: "max-content" }}
+      ></video>
       <Form
         name="basic"
         labelCol={{ span: 5 }}
@@ -147,7 +146,7 @@ const Login = () => {
             type="primary"
             htmlType="submit"
             className={styles.buttonL}
-            style={{ width: "100%", background: "#805EDF" }}
+            style={{ width: "100%", background: "rgb(27 160 226 / 91%)" }}
           >
             Login
           </Button>
@@ -159,14 +158,10 @@ const Login = () => {
           style={{ marginTop: "5px" }}
         >
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <p style={{ fontSize: 20, fontFamily: "Poppins" }}>
-              Đăng ký tài khoản
-            </p>
             <Link to="/">
-              <p style={{ fontSize: 20, fontFamily: "Poppins" }}>
-                Quay lại trang chủ
-              </p>
+              <p style={{ fontSize: 20, fontFamily: "Poppins" }}>Back Home</p>
             </Link>
+            <p style={{ fontSize: 20, fontFamily: "Poppins" }}>Resgiter now!</p>
           </div>
         </Form.Item>
       </Form>

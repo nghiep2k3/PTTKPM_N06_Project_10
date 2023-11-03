@@ -90,7 +90,7 @@ const Home = () => {
 
   const LogOut = () => {
     localStorage.setItem("LogIn", "false");
-    navigate("/")
+    navigate("/");
     window.location.reload();
   };
 
@@ -240,7 +240,10 @@ const Home = () => {
               {isLoggedIn ? (
                 // Hiển thị khi đã đăng nhập (isLoggedIn === true)
                 <div>
-                  <UserAddOutlined /> <span><RoleZZ></RoleZZ></span>
+                  <UserAddOutlined />{" "}
+                  <span>
+                    <RoleZZ></RoleZZ>
+                  </span>
                   <Link to="/ManagerTour">
                     <button
                       style={{ marginLeft: "30px", paddingRight: 5 }}
@@ -248,7 +251,7 @@ const Home = () => {
                     >
                       {" "}
                       <ShopOutlined />
-                        Quản lý tour
+                      Quản lý tour
                     </button>
                   </Link>
                   <LoginOutlined style={{ marginLeft: "30px" }} />
@@ -364,7 +367,7 @@ const Home = () => {
               }}
             >
               <li style={{ width: "300px", textAlign: "center" }}>Trang chủ</li>
-              <Link to="/Contact">
+              <Link to="/Page">
                 <li
                   style={{
                     width: "300px",
@@ -392,47 +395,58 @@ const Home = () => {
                       <p>
                         <Link to="/Hanoi">Du lịch Hà Nội</Link>
                       </p>
-                      <p>Du lịch Hạ Long</p>
-                      <p>Du lịch Hải Phòng</p>
+                      <p>
+                        <Link to="/CaoBang">Du lịch Cao Bằng</Link>
+                      </p>
+                      <p>
+                        <Link to="/HaiDuong">Du lịch Hải Dương</Link>
+                      </p>
                     </div>
 
                     <div className={style.local_1}>
                       <b>MIỀN TRUNG</b>
-                      <p>Du lịch Quảng Bình</p>
-                      <p>Du lịch Huế</p>
-                      <p>Du lịch Đà Nẵng</p>
+                      <p>
+                        <Link to="/DaNang">Du lịch Đà Nẵng</Link>
+                      </p>
+                      <p>
+                        <Link to="/Hue">Du lịch Huế</Link>
+                      </p>
+                      <p>
+                        <Link to="/NhaTrang">Du lịch Nha Trang</Link>
+                      </p>
                     </div>
 
                     <div className={style.local_1}>
                       <b>MIỀN NAM</b>
-                      <p>Du lịch Phú Quốc</p>
-                      <p>Du lịch Côn Đảo</p>
-                      <p>Du lịch Vũng Tàu</p>
+                      <p>
+                        <Link to="/Hue">Du lịch Cần Thơ</Link>
+                      </p>
+                      <p>
+                        <Link to="/NhaTrang">Du lịch Phú Quốc</Link>
+                      </p>
                     </div>
                   </div>
                 </Button>
               </li>
-              <Link to="/TourOut">
-                <li
-                  style={{
-                    width: "300px",
-                    textAlign: "center",
-                    borderLeft: "2px solid gray",
-                    borderRight: "2px solid gray",
+              <li
+                style={{
+                  width: "300px",
+                  textAlign: "center",
+                  borderLeft: "2px solid gray",
+                  borderRight: "2px solid gray",
+                }}
+              >
+                <Dropdown
+                  menu={{
+                    items,
                   }}
+                  placement="bottomLeft"
                 >
-                  <Dropdown
-                    menu={{
-                      items,
-                    }}
-                    placement="bottomLeft"
-                  >
-                    <Button style={{ fontSize: "16px" }}>
-                      Tour nước ngoài
-                    </Button>
-                  </Dropdown>
-                </li>
-              </Link>
+                  <Button style={{ fontSize: "16px" }}>
+                    Tour nước ngoài
+                  </Button>
+                </Dropdown>
+              </li>
               <Link to="/Contact">
                 <li style={{ width: "300px", textAlign: "center" }}>Liên hệ</li>
               </Link>
@@ -486,26 +500,23 @@ const Home = () => {
           >
             {/* selected là một đối tượng class */}
             <button
-              className={`${style.ButtonClick} ${
-                Active === "MienBac" ? "selected" : ""
-              }`}
+              className={`${style.ButtonClick} ${Active === "MienBac" ? "selected" : ""
+                }`}
               onClick={() => handleButtonNext(<Component5 />, "MienBac")}
             >
               Miền Bắc
             </button>
             <button
               style={{ margin: "0 20px" }}
-              className={`${style.ButtonClick} ${
-                Active === "MienTrung" ? "selected" : ""
-              }`}
+              className={`${style.ButtonClick} ${Active === "MienTrung" ? "selected" : ""
+                }`}
               onClick={() => handleButtonNext(<Component7 />, "MienTrung")}
             >
               Miền Trung
             </button>
             <button
-              className={`${style.ButtonClick} ${
-                Active === "MienNam" ? "selected" : ""
-              }`}
+              className={`${style.ButtonClick} ${Active === "MienNam" ? "selected" : ""
+                }`}
               onClick={() => handleButtonNext(<Component6 />, "MienNam")}
             >
               Miền Nam
@@ -539,35 +550,31 @@ const Home = () => {
             }}
           >
             <button
-              className={`${style.ButtonClick} ${
-                isActive === "Asia" ? "selected" : ""
-              }`}
+              className={`${style.ButtonClick} ${isActive === "Asia" ? "selected" : ""
+                }`}
               onClick={() => handleButtonClick(<Component1 />, "Asia")}
             >
               Du lịch Châu Á
             </button>
             <button
               style={{ margin: "0 20px" }}
-              className={`${style.ButtonClick} ${
-                isActive === "Europe" ? "selected" : ""
-              }`}
+              className={`${style.ButtonClick} ${isActive === "Europe" ? "selected" : ""
+                }`}
               onClick={() => handleButtonClick(<Component2 />, "Europe")}
             >
               Du lịch Châu Âu
             </button>
             <button
               style={{ marginRight: "20px" }}
-              className={`${style.ButtonClick} ${
-                isActive === "Australia" ? "selected" : ""
-              }`}
+              className={`${style.ButtonClick} ${isActive === "Australia" ? "selected" : ""
+                }`}
               onClick={() => handleButtonClick(<Component3 />, "Australia")}
             >
               Du lịch Châu Úc
             </button>
             <button
-              className={`${style.ButtonClick} ${
-                isActive === "Americas" ? "selected" : ""
-              }`}
+              className={`${style.ButtonClick} ${isActive === "Americas" ? "selected" : ""
+                }`}
               onClick={() => handleButtonClick(<Component4 />, "Americas")}
             >
               Du lịch Châu Mỹ
@@ -707,11 +714,12 @@ const Home = () => {
         </div>
 
         <div className={style.Card_favorite}>
-          <CardFavorite SrcImg={BgCF1} title="Phú Quốc" />
-          <CardFavorite SrcImg={BgCF2} title="Châu Á" />
-          <CardFavorite SrcImg={BgCF2} title="Châu Âu" />
-          <CardFavorite SrcImg={BgCF4} title="Châu Mỹ" />
-          <CardFavorite SrcImg={BgCF5} title="Châu Phi" />
+          <Link to="/InfoTourPhuQuoc"><CardFavorite SrcImg={BgCF1} title="Phú Quốc" /></Link>
+          <Link to="/InfoTourPhuQuoc"><CardFavorite SrcImg={BgCF2} title="Châu Á" /></Link>
+          <Link to="/InfoTourPhuQuoc"><CardFavorite SrcImg={BgCF2} title="Châu Âu" /></Link>
+          <Link to="/InfoTourPhuQuoc"><CardFavorite SrcImg={BgCF4} title="Châu Mỹ" /></Link>
+          <Link to="/InfoTourPhuQuoc"><CardFavorite SrcImg={BgCF5} title="Châu Phi" /></Link>
+
         </div>
 
         <Footer />

@@ -1,7 +1,7 @@
 .textf {
     font-family: 'Poppins';
     font-style: normal;
-    font-weight: 400;
+    font-weight: bold;
     font-size: 24px !important;
     color: #111111;
     display: block !important;
@@ -10,11 +10,11 @@
 
 .container {
     display: block;
-    background-color: #FFF;
+    background-color: rgba(255, 255, 255, 0.1);
     padding: 16px;
     width: 462px;
     border-radius: 50px;
-    height: 390px !important;
+    height: 400px !important;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -221,4 +221,15 @@
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 28px;
     grid-row-gap: 24px;
+}
+
+
+.ContainerDiv {
+    display: flex;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-image: url('https://img4.thuthuatphanmem.vn/uploads/2020/04/28/anh-nen-bien-song-xanh_014557180.jpg');
+
 }

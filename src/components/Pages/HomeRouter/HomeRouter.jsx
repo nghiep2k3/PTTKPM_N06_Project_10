@@ -68,7 +68,6 @@ export default function HomeRouter() {
     }
   }, []);
 
-  
   return (
     <div>
       <div className={style.Navbar}>
@@ -84,7 +83,10 @@ export default function HomeRouter() {
             {isLoggedIn ? (
               // Hiển thị khi đã đăng nhập (isLoggedIn === true)
               <div>
-                <UserAddOutlined /> <span><RoleZZ/></span>
+                <UserAddOutlined />{" "}
+                <span>
+                  <RoleZZ />
+                </span>
                 <Link to="/ManagerTour">
                   <button
                     style={{ marginLeft: "30px", paddingRight: 5 }}
@@ -239,46 +241,55 @@ export default function HomeRouter() {
                       <Link to="/Hanoi">Du lịch Hà Nội</Link>
                     </p>
                     <p>
-                      <Link to="/HaLong">Du lịch Hạ Long</Link>
+                      <Link to="/CaoBang">Du lịch Cao Bằng</Link>
                     </p>
-                    <p>Du lịch Hải Phòng</p>
+                    <p>
+                      <Link to="/HaiDuong">Du lịch Hải Dương</Link>
+                    </p>
                   </div>
 
                   <div className={style.local_1}>
                     <b>MIỀN TRUNG</b>
-                    <p>Du lịch Quảng Bình</p>
-                    <p>Du lịch Huế</p>
-                    <p>Du lịch Đà Nẵng</p>
+                    <p>
+                      <Link to="/DaNang">Du lịch Đà Nẵng</Link>
+                    </p>
+                    <p>
+                      <Link to="/Hue">Du lịch Huế</Link>
+                    </p>
+                    <p>
+                      <Link to="/NhaTrang">Du lịch Nha Trang</Link>
+                    </p>
                   </div>
 
                   <div className={style.local_1}>
                     <b>MIỀN NAM</b>
-                    <p>Du lịch Phú Quốc</p>
-                    <p>Du lịch Côn Đảo</p>
-                    <p>Du lịch Vũng Tàu</p>
+                    <p>
+                      <Link to="/Hue">Du lịch Cần Thơ</Link>
+                    </p>
+                    <p>
+                      <Link to="/NhaTrang">Du lịch Phú Quốc</Link>
+                    </p>
                   </div>
                 </div>
               </Button>
             </li>
-            <Link to="/TourOut">
-              <li
-                style={{
-                  width: "300px",
-                  textAlign: "center",
-                  borderLeft: "2px solid gray",
-                  borderRight: "2px solid gray",
+            <li
+              style={{
+                width: "300px",
+                textAlign: "center",
+                borderLeft: "2px solid gray",
+                borderRight: "2px solid gray",
+              }}
+            >
+              <Dropdown
+                menu={{
+                  items,
                 }}
+                placement="bottomLeft"
               >
-                <Dropdown
-                  menu={{
-                    items,
-                  }}
-                  placement="bottomLeft"
-                >
-                  <Button style={{ fontSize: "16px" }}>Tour nước ngoài</Button>
-                </Dropdown>
-              </li>
-            </Link>
+                <Button style={{ fontSize: "16px" }}>Tour nước ngoài</Button>
+              </Dropdown>
+            </li>
             <Link to="/Contact">
               <li style={{ width: "300px", textAlign: "center" }}>Liên hệ</li>
             </Link>
