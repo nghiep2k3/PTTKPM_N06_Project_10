@@ -273,25 +273,23 @@ export default function HomeRouter() {
                 </div>
               </Button>
             </li>
-            <Link to="/TourOut">
-              <li
-                style={{
-                  width: "300px",
-                  textAlign: "center",
-                  borderLeft: "2px solid gray",
-                  borderRight: "2px solid gray",
+            <li
+              style={{
+                width: "300px",
+                textAlign: "center",
+                borderLeft: "2px solid gray",
+                borderRight: "2px solid gray",
+              }}
+            >
+              <Dropdown
+                menu={{
+                  items,
                 }}
+                placement="bottomLeft"
               >
-                <Dropdown
-                  menu={{
-                    items,
-                  }}
-                  placement="bottomLeft"
-                >
-                  <Button style={{ fontSize: "16px" }}>Tour nước ngoài</Button>
-                </Dropdown>
-              </li>
-            </Link>
+                <Button style={{ fontSize: "16px" }}>Tour nước ngoài</Button>
+              </Dropdown>
+            </li>
             <Link to="/Contact">
               <li style={{ width: "300px", textAlign: "center" }}>Liên hệ</li>
             </Link>
