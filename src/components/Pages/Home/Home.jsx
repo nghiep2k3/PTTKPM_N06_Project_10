@@ -714,7 +714,7 @@ const Home = () => {
         </div>
 
         <div className={style.Card_favorite}>
-          <CardFavorite SrcImg={BgCF1} title="Phú Quốc" />
+          <Link to="/InfoTourPhuQuoc"><CardFavorite SrcImg={BgCF1} title="Phú Quốc" /></Link>
           <CardFavorite SrcImg={BgCF2} title="Châu Á" />
           <CardFavorite SrcImg={BgCF2} title="Châu Âu" />
           <CardFavorite SrcImg={BgCF4} title="Châu Mỹ" />
