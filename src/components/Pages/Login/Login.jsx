@@ -73,7 +73,13 @@ const Login = () => {
           height: "100vh",
         }}
       >
-        <Spin size="large" />
+        <video
+        src={Video}
+        autoPlay
+        muted
+        loop
+        style={{ width: "100%", height: "max-content" }}
+      ></video>
       </div>
     );
   }

@@ -30,7 +30,7 @@ import ImgSrc3 from "../../../img/carousel3.webp";
 import CardTourMini from "../../../Component/CardTourMini/CardTourMini";
 import TextArea from "antd/es/input/TextArea";
 
-export default function InfoTourPhap() {
+export default function InfoTourMy() {
   //uid
   const { v4: uuidv4 } = require('uuid');
   useEffect(() => {
@@ -59,6 +59,7 @@ export default function InfoTourPhap() {
   const [ticket2, setTicket2] = useState(0);
   const [ticket3, setTicket3] = useState(0);
 
+  console.log(2222, quantityTicket);
 
   const onChangeAdult = (value) => {
     const priceNumber = parseFloat(`${data.price}`.replace(/\./g, ""));
@@ -172,7 +173,7 @@ export default function InfoTourPhap() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const snapshot = await get(child(dbRef, `DetailTour/Uc`));
+        const snapshot = await get(child(dbRef, `DetailTour/DuThuyen`));
         if (snapshot.exists()) {
           console.log("Tour detail Danang");
           setData(snapshot.val());
@@ -573,9 +574,35 @@ export default function InfoTourPhap() {
         <p>{data.Des.Day3.description}</p>
         <b>NGÀY 4: {data.Des.Day4.title}</b>
         <p>{data.Des.Day4.description}</p>
+        <b>NGÀY 5: {data.Des.Day5.title}</b>
+        <p>{data.Des.Day5.description}</p>
       </div>
 
-      
+      <div className={style.Footer}>
+        <div style={{ textAlign: "center", marginTop: 20 }}>
+          <h2>
+            Tour <span style={{ color: "#1ba0e2" }}>Liên Quan</span>
+          </h2>
+          <div>
+            <div className={style.tl_1}></div>
+            <div className={style.tl_2}></div>
+            <div className={style.tl_1}></div>
+          </div>
+        </div>
+        <div
+          style={{
+            margin: "20px 80px",
+            display: "flex",
+            justifyContent: "space-around",
+            flexWrap: "wrap",
+          }}
+        >
+          <CardTourMini />
+          <CardTourMini />
+          <CardTourMini />
+          <CardTourMini />
+        </div>
+      </div>
     </div>
   );
 }

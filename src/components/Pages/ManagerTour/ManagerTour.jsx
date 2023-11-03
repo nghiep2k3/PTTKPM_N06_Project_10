@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getDatabase, ref, child, get, set } from "firebase/database";
+import { getDatabase, ref, child, get, set, remove } from "firebase/database";
 import { Space, Spin, message } from "antd";
 import { database } from "../../../firebase";
 import styles from "./ManagerTour.module.css";
@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 export default function ManagerTour() {
   const dbRef = ref(database);
-  const [ManagerTour, setManagerTour] = useState();
+  const [ManagerTour, setManagerTour] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,6 +27,22 @@ export default function ManagerTour() {
 
     fetchData();
   }, []);
+
+  const handleDeleteClick = (value) => {
+    // Create a reference to the user you want to delete
+    console.log(2222, value);
+    const userRef = ref(getDatabase(), `OrderTour/${value}`);
+
+    // Remove the user from the database
+    remove(userRef)
+      .then(() => {
+        console.log("Dữ liệu đã được xóa thành công.");
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error("Lỗi khi xóa dữ liệu:", error);
+      });
+  };
 
   if (!ManagerTour) {
     return (
@@ -64,7 +80,6 @@ export default function ManagerTour() {
           <div className={styles.Container}>
             <div>
               <p style={{ fontWeight: "bold" }}>Tên khách hàng:</p>
-              <p>{index}</p>
               <p>{ManagerTour[item].username}</p>
               <p style={{ fontWeight: "bold" }}>Số điện thoại:</p>
               <p>{ManagerTour[item].numberPhone}</p>
@@ -80,8 +95,8 @@ export default function ManagerTour() {
               <p>{ManagerTour[item].promotion}</p>
             </div>
 
-            <div style={{ position: "absolute", right: 20, width: 310 }}>
-              <p style={{ fontWeight: "bold" }}>
+            <div style={{ position: "absolute", right: 40, width: 310, zIndex: 99}}>
+              <p style={{ fontWeight: "bold", width: 100 }}>
                 Tên tour: ({ManagerTour[item].tours.length})
               </p>
 
@@ -94,7 +109,7 @@ export default function ManagerTour() {
               <p style={{ fontWeight: "bold" }}>Tổng số tiền:</p>
               <p>{ManagerTour[item].priceAll}</p>
               <p style={{ fontWeight: "bold" }}>Ghi chú</p>
-              <p>{ManagerTour[item].note}</p>
+              <p>{ManagerTour[item].note} {ManagerTour[item].delete}</p>
             </div>
             <div>
               <button
@@ -105,6 +120,8 @@ export default function ManagerTour() {
                   border: "2px solid gray",
                   cursor: "pointer",
                 }}
+                value={ManagerTour[item].delete}
+                onClick={() => handleDeleteClick(item)}
               >
                 Xóa
               </button>

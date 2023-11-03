@@ -39,31 +39,27 @@ export default function FormPrice(props) {
           >
             <div className={style.Form_Price}>
               <Form.Item name="Tour_Price1" valuePropName="checked">
-                <Checkbox>2.000.000đ</Checkbox>
+                <Checkbox>Dưới 2.000.000đ</Checkbox>
               </Form.Item>
-
+              
               <Form.Item name="Tour_Price2" valuePropName="checked">
-                <Checkbox>2.000.000đ</Checkbox>
+                <Checkbox>2.000.000đ - 4.000.000đ</Checkbox>
               </Form.Item>
 
               <Form.Item name="Tour_Price3" valuePropName="checked">
-                <Checkbox>2.000.000đ</Checkbox>
+                <Checkbox>4.000.000đ - 6.000.000đ</Checkbox>
               </Form.Item>
 
               <Form.Item name="Tour_Price4" valuePropName="checked">
-                <Checkbox>2.000.000đ</Checkbox>
+                <Checkbox>6.000.000đ - 8.000.000đ</Checkbox>
               </Form.Item>
 
               <Form.Item name="Tour_Price5" valuePropName="checked">
-                <Checkbox>2.000.000đ</Checkbox>
+                <Checkbox>8.000.000đ - 10.000.000đ</Checkbox>
               </Form.Item>
 
               <Form.Item name="Tour_Price6" valuePropName="checked">
-                <Checkbox>2.000.000đ</Checkbox>
-              </Form.Item>
-
-              <Form.Item name="Tour_Price7" valuePropName="checked">
-                <Checkbox>2.000.000đ</Checkbox>
+                <Checkbox>Trên 10.000.000đ</Checkbox>
               </Form.Item>
             </div>
 

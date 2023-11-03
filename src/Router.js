@@ -38,8 +38,15 @@ import InfoTourPhap from "./components/Pages/DetailTour/TourForeign/InfoTourPhap
 import InfoTourY from "./components/Pages/DetailTour/TourForeign/InfoTourY"
 import InfoTourUc from "./components/Pages/DetailTour/TourForeign/InfoTourUc"
 import InfoTourCanada from "./components/Pages/DetailTour/TourForeign/InfoTourCanada"
+import InfoTourMalaysia from "./components/Pages/DetailTour/TourForeign/InfoTourMalaysia"
+import InfoTourDuThuyen from "./components/Pages/DetailTour/TourForeign/InfoTourDuThuyen"
+import InfoTourHanQuoc from "./components/Pages/DetailTour/TourForeign/InfoTourHanQuoc"
+import InfoTourCampuchia from "./components/Pages/DetailTour/TourForeign/InfoTourCampuchia"
 import InfoTourNamPhi from "./components/Pages/DetailTour/TourForeign/InfoTourNamPhi"
+import InfoTourScotland from "./components/Pages/DetailTour/TourForeign/InfoTourScotland"
+
 import Payments from "./components/Pages/Payments/Payments";
+
 function Router() {
   return (
     <div>
@@ -89,7 +96,24 @@ function Router() {
           <Route path="/InfoTourUc" element={<InfoTourUc />} />
           <Route path="/InfoTourCanada" element={<InfoTourCanada />} />
           <Route path="/InfoTourNamPhi" element={<InfoTourNamPhi />} />
+          <Route path="/TourAsia/InfoTourMalaysia" element={<InfoTourMalaysia />} />
+          <Route path="/TourAsia/InfoTourDuThuyen" element={<InfoTourDuThuyen />} />
+          <Route path="/TourAsia/InfoTourHanQuoc" element={<InfoTourHanQuoc />} />
+          <Route path="/TourAsia/InfoTourCampuchia" element={<InfoTourCampuchia />} />
+          
+          <Route path="/TourEurope/InfoTourChauAuPhap" element={<InfoTourChauAuPhap />} />
+          <Route path="/TourEurope/InfoTourPhap" element={<InfoTourPhap />} />
+          <Route path="/TourEurope/InfoTourPhap" element={<InfoTourPhap />} />
+          <Route path="/TourEurope/InfoTourY" element={<InfoTourY />} />
+          <Route path="/TourEurope/InfoTourScotland" element={<InfoTourScotland />} />
+          
+          <Route path="/TourAutralia/InfoTourUc" element={<InfoTourUc />} />
 
+          <Route path="/TourAmericars/InfoTourMy" element={<InfoTourMy />} />
+          <Route path="/TourAmericars/InfoTourNamPhi" element={<InfoTourNamPhi />} />
+          <Route path="/TourAmericars/InfoTourCanada" element={<InfoTourCanada />} />
+
+          
           <Route path="*" element={<Page_404 />} />
 
 
