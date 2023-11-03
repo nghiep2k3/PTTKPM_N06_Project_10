@@ -715,10 +715,11 @@ const Home = () => {
 
         <div className={style.Card_favorite}>
           <Link to="/InfoTourPhuQuoc"><CardFavorite SrcImg={BgCF1} title="Phú Quốc" /></Link>
-          <CardFavorite SrcImg={BgCF2} title="Châu Á" />
-          <CardFavorite SrcImg={BgCF2} title="Châu Âu" />
-          <CardFavorite SrcImg={BgCF4} title="Châu Mỹ" />
-          <CardFavorite SrcImg={BgCF5} title="Châu Phi" />
+          <Link to="/InfoTourPhuQuoc"><CardFavorite SrcImg={BgCF2} title="Châu Á" /></Link>
+          <Link to="/InfoTourPhuQuoc"><CardFavorite SrcImg={BgCF2} title="Châu Âu" /></Link>
+          <Link to="/InfoTourPhuQuoc"><CardFavorite SrcImg={BgCF4} title="Châu Mỹ" /></Link>
+          <Link to="/InfoTourPhuQuoc"><CardFavorite SrcImg={BgCF5} title="Châu Phi" /></Link>
+
         </div>
 
         <Footer />
