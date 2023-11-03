@@ -4,9 +4,8 @@ import CardItem from "../../Pages/Home/Card";
 import { Space, Spin } from "antd";
 import { database } from "../../../firebase";
 import { getDatabase, ref, child, get, set } from "firebase/database";
+import { Link } from "react-router-dom";
 export default function Bac() {
-  
-
   const dbRef = ref(database);
   const [data, setData] = useState();
 
@@ -31,7 +30,14 @@ export default function Bac() {
 
   if (!data) {
     return (
-      <div style={{ display: "flex", justifyContent: "center", alignItems: 'center', height: 280 }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: 280,
+        }}
+      >
         <Spin size="large" />
       </div>
     );
@@ -57,17 +63,26 @@ export default function Bac() {
 
     //Hiển thị tất cả
     return (
-      <div style={{display: 'flex', justifyContent: "space-around", margin: '0 95px', flexWrap: 'wrap'}}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          margin: "0 95px",
+          flexWrap: "wrap",
+        }}
+      >
         {Object.keys(data).map((item) => (
-          <CardItem
-            key={item}
-            time={data[item].time}
-            depart={data[item].depart}
-            price={data[item].price}
-            title={data[item].title}
-            priceOld={data[item].priceOld}
-            imgSrc={data[item].srcImg}
-          />
+          <Link to={`${data[item].Link}`}>
+            <CardItem
+              key={item}
+              time={data[item].time}
+              depart={data[item].depart}
+              price={data[item].price}
+              title={data[item].title}
+              priceOld={data[item].priceOld}
+              imgSrc={data[item].srcImg}
+            />
+          </Link>
         ))}
       </div>
     );

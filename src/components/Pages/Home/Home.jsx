@@ -90,7 +90,7 @@ const Home = () => {
 
   const LogOut = () => {
     localStorage.setItem("LogIn", "false");
-    navigate("/")
+    navigate("/");
     window.location.reload();
   };
 
@@ -240,7 +240,10 @@ const Home = () => {
               {isLoggedIn ? (
                 // Hiển thị khi đã đăng nhập (isLoggedIn === true)
                 <div>
-                  <UserAddOutlined /> <span><RoleZZ></RoleZZ></span>
+                  <UserAddOutlined />{" "}
+                  <span>
+                    <RoleZZ></RoleZZ>
+                  </span>
                   <Link to="/ManagerTour">
                     <button
                       style={{ marginLeft: "30px", paddingRight: 5 }}
@@ -248,7 +251,7 @@ const Home = () => {
                     >
                       {" "}
                       <ShopOutlined />
-                        Quản lý tour
+                      Quản lý tour
                     </button>
                   </Link>
                   <LoginOutlined style={{ marginLeft: "30px" }} />
@@ -364,7 +367,7 @@ const Home = () => {
               }}
             >
               <li style={{ width: "300px", textAlign: "center" }}>Trang chủ</li>
-              <Link to="/Contact">
+              <Link to="/Page">
                 <li
                   style={{
                     width: "300px",
@@ -392,22 +395,35 @@ const Home = () => {
                       <p>
                         <Link to="/Hanoi">Du lịch Hà Nội</Link>
                       </p>
-                      <p>Du lịch Hạ Long</p>
-                      <p>Du lịch Hải Phòng</p>
+                      <p>
+                        <Link to="/CaoBang">Du lịch Cao Bằng</Link>
+                      </p>
+                      <p>
+                        <Link to="/HaiDuong">Du lịch Hải Dương</Link>
+                      </p>
                     </div>
 
                     <div className={style.local_1}>
                       <b>MIỀN TRUNG</b>
-                      <p>Du lịch Quảng Bình</p>
-                      <p>Du lịch Huế</p>
-                      <p>Du lịch Đà Nẵng</p>
+                      <p>
+                        <Link to="/DaNang">Du lịch Đà Nẵng</Link>
+                      </p>
+                      <p>
+                        <Link to="/Hue">Du lịch Huế</Link>
+                      </p>
+                      <p>
+                        <Link to="/NhaTrang">Du lịch Nha Trang</Link>
+                      </p>
                     </div>
 
                     <div className={style.local_1}>
                       <b>MIỀN NAM</b>
-                      <p>Du lịch Phú Quốc</p>
-                      <p>Du lịch Côn Đảo</p>
-                      <p>Du lịch Vũng Tàu</p>
+                      <p>
+                        <Link to="/Hue">Du lịch Cần Thơ</Link>
+                      </p>
+                      <p>
+                        <Link to="/NhaTrang">Du lịch Phú Quốc</Link>
+                      </p>
                     </div>
                   </div>
                 </Button>

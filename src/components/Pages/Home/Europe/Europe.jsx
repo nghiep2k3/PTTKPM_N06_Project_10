@@ -4,6 +4,7 @@ import CardItem from "../Card";
 import { database } from "../../../../firebase";
 import { getDatabase, ref, child, get, set } from "firebase/database";
 import { Space, Spin } from "antd";
+import { Link } from "react-router-dom";
 
 export default function TestCard() {
   const dbRef = ref(database);
@@ -47,7 +48,7 @@ export default function TestCard() {
     const DataKeys = Object.keys(data);
     const dataToDisplay = DataKeys.slice(0, 3);
 
-    //Hiển thị giới hạn 
+    //Hiển thị giới hạn
     return (
       <div
         style={{
@@ -58,15 +59,17 @@ export default function TestCard() {
         }}
       >
         {dataToDisplay.map((item) => (
-          <CardItem
-            key={item}
-            time={data[item].time}
-            depart={data[item].depart}
-            price={data[item].price}
-            title={data[item].title}
-            priceOld={data[item].priceOld}
-            imgSrc={data[item].srcImg}
-          />
+          <Link to={`${data[item].Link}`}>
+            <CardItem
+              key={item}
+              time={data[item].time}
+              depart={data[item].depart}
+              price={data[item].price}
+              title={data[item].title}
+              priceOld={data[item].priceOld}
+              imgSrc={data[item].srcImg}
+            />
+          </Link>
         ))}
       </div>
     );
