@@ -5,6 +5,7 @@ import HomeRouter from "./components/Pages/HomeRouter/HomeRouter";
 import Login from "./components/Pages/Login/Login";
 import Page from "./components/Pages/HomeRouter/Page";
 import Contact from "./components/Pages/HomeRouter/Contact";
+import Cskh from "./components/Pages/Cskh/Cskh";
 import Home from "./components/Pages/Home/Home";
 import Page_404 from "./components/Pages/Page_404/Page_404";
 import TestAntd from "./components/Test/TestAntd";
@@ -65,6 +66,7 @@ function Router() {
           <Route path="/CartItem" element={<CartItem />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/TourOut" element={<TourOut />} />
+          <Route path="/Cskh" element={<Cskh />} />
           <Route path="/TestAntd" element={<TestAntd />} />
           <Route path="/TestOrder" element={<TestOrder />} />
           <Route path="/TestArrange" element={<TestArrange />} />
@@ -96,10 +98,14 @@ function Router() {
           <Route path="/InfoTourUc" element={<InfoTourUc />} />
           <Route path="/InfoTourCanada" element={<InfoTourCanada />} />
           <Route path="/InfoTourNamPhi" element={<InfoTourNamPhi />} />
+
           <Route path="/TourAsia/InfoTourMalaysia" element={<InfoTourMalaysia />} />
           <Route path="/TourAsia/InfoTourDuThuyen" element={<InfoTourDuThuyen />} />
+          <Route path="/InfoTourDuThuyen" element={<InfoTourDuThuyen />} />
           <Route path="/TourAsia/InfoTourHanQuoc" element={<InfoTourHanQuoc />} />
+          <Route path="/InfoTourHanQuoc" element={<InfoTourHanQuoc />} />
           <Route path="/TourAsia/InfoTourCampuchia" element={<InfoTourCampuchia />} />
+          <Route path="/InfoTourCampuchia" element={<InfoTourCampuchia />} />
           
           <Route path="/TourEurope/InfoTourChauAuPhap" element={<InfoTourChauAuPhap />} />
           <Route path="/TourEurope/InfoTourPhap" element={<InfoTourPhap />} />
