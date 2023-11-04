@@ -393,36 +393,36 @@ const Home = () => {
                     <div className={style.local_1}>
                       <b>MIỀN BẮC</b>
                       <p>
-                        <Link to="/Hanoi">Du lịch Hà Nội</Link>
+                        <Link to="/InfoTourHaNoi">Du lịch Hà Nội</Link>
                       </p>
                       <p>
-                        <Link to="/CaoBang">Du lịch Cao Bằng</Link>
+                        <Link to="/InfoTourCaoBang">Du lịch Cao Bằng</Link>
                       </p>
                       <p>
-                        <Link to="/HaiDuong">Du lịch Hải Dương</Link>
+                        <Link to="/InfoTourHaiDuong">Du lịch Hải Dương</Link>
                       </p>
                     </div>
 
                     <div className={style.local_1}>
                       <b>MIỀN TRUNG</b>
                       <p>
-                        <Link to="/DaNang">Du lịch Đà Nẵng</Link>
+                        <Link to="/InfoTourDaNang">Du lịch Đà Nẵng</Link>
                       </p>
                       <p>
-                        <Link to="/Hue">Du lịch Huế</Link>
+                        <Link to="/InfoTourHue">Du lịch Huế</Link>
                       </p>
                       <p>
-                        <Link to="/NhaTrang">Du lịch Nha Trang</Link>
+                        <Link to="/InfoTourNhaTrang">Du lịch Nha Trang</Link>
                       </p>
                     </div>
 
                     <div className={style.local_1}>
                       <b>MIỀN NAM</b>
                       <p>
-                        <Link to="/Hue">Du lịch Cần Thơ</Link>
+                        <Link to="/InfoTourCaiBe">Du lịch Cần Thơ</Link>
                       </p>
                       <p>
-                        <Link to="/NhaTrang">Du lịch Phú Quốc</Link>
+                        <Link to="/InfoTourPhuQuoc">Du lịch Phú Quốc</Link>
                       </p>
                     </div>
                   </div>
