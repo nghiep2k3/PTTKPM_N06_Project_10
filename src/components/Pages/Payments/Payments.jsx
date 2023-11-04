@@ -4,7 +4,7 @@ import { UserOutlined, MoneyCollectOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Radio, message } from "antd";
 import { database } from "../../../firebase";
 import { getDatabase, ref, child, get, set } from "firebase/database";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import styles from "./Payments.module.css";
 export default function Payments() {
@@ -84,9 +84,9 @@ export default function Payments() {
     };
 
     set(ref(database, `OrderTour/${handleEmail}`), dataAdd);
-    localStorage.removeItem('tours');
-    localStorage.removeItem('priceAll');
-    navigate('/');
+    localStorage.removeItem("tours");
+    localStorage.removeItem("priceAll");
+    navigate("/");
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -189,17 +189,19 @@ export default function Payments() {
                     }}
                   >
                     <b style={{ fontSize: 20 }}>Thông tin nhận hàng</b>
-                    <button
-                      style={{
-                        color: "#2a9dcc",
-                        border: "none",
-                        backgroundColor: "transparent",
-                        fontSize: 15,
-                      }}
-                    >
-                      <UserOutlined />
-                      Đăng nhập
-                    </button>
+                    <Link to="/Login">
+                      <button
+                        style={{
+                          color: "#2a9dcc",
+                          border: "none",
+                          backgroundColor: "transparent",
+                          fontSize: 15,
+                        }}
+                      >
+                        <UserOutlined />
+                        Đăng nhập
+                      </button>
+                    </Link>
                   </div>
 
                   <div>

@@ -10,6 +10,8 @@ export default function CartItem() {
   const [TotalMoneny, setTotalMoney] = useState("0");
   document.title = NameTitle;
 
+  
+
   useEffect(() => {
     // Get the 'tours' object from Local Storage
     const toursStr = localStorage.getItem("tours");
