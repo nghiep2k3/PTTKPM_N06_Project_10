@@ -628,7 +628,7 @@ const Home = () => {
               <div className={style.List1}>
                 <div className={style.List1_left}>
                   <img
-                    src="https://tourvip.vn/assets/uploads/images/c1.jpg"
+                    src="https://bizweb.dktcdn.net/thumb/compact/100/299/077/articles/trang-an-2-5-1.jpg?v=1606138224437"
                     alt=""
                   />
                 </div>
@@ -645,50 +645,44 @@ const Home = () => {
               <div className={style.List1}>
                 <div className={style.List1_left}>
                   <img
-                    src="https://tourvip.vn/assets/uploads/images/c1.jpg"
+                    src="https://bizweb.dktcdn.net/thumb/compact/100/299/077/articles/7mai-anh-dao-dalat-zing.jpg?v=1520693432973"
                     alt=""
                   />
                 </div>
                 <div className={style.List1_right}>
-                  <b>Tràng An cổ - điểm đến đang hot ở Ninh Bình</b>
+                  <b>Mùa hoa phấn phủ hồng trời Bảo Lộc</b>
                   <p>
-                    Ở Tràng An có hai địa danh là Tràng An và Tràng An cổ. Trong
-                    đó, Tràng An, nơi thu hút hàng nghìn lượt khách du xuân mỗi
-                    ngày
+                    Hoa phấn hồng còn được nhiều người gọi là hoa kèn hồng. Đây là loại cây thân gỗ, chiều cao trung bình 10 ...
                   </p>
                 </div>
               </div>
 
               <div className={style.List1}>
-                <div className={style.List1_left}>
+                <div className={style.List1_left} style={{width: 595}}>
                   <img
                     src="https://tourvip.vn/assets/uploads/images/c1.jpg"
                     alt=""
                   />
                 </div>
                 <div className={style.List1_right}>
-                  <b>Tràng An cổ - điểm đến đang hot ở Ninh Bình</b>
+                  <b>Ai bảo Đà Lạt chỉ hợp style mơ mộng? Cool ngầu như đôi bạn thân này vẫn có cả rổ ảnh thần thái!</b>
                   <p>
-                    Ở Tràng An có hai địa danh là Tràng An và Tràng An cổ. Trong
-                    đó, Tràng An, nơi thu hút hàng nghìn lượt khách du xuân mỗi
-                    ngày
+                  Mỗi khi nghe đến những lời rủ rê đi Đà Lạt, chúng ta thường sẽ nghĩ ngay trong đầu khung cảnh lãng mạn, trữ tình, những dáng post hơi e ấp, thẹn thùng cùng những bộ trang phục nhẹ nhàng, hơi thơ thẩn một chút.
                   </p>
                 </div>
               </div>
 
               <div className={style.List1}>
-                <div className={style.List1_left}>
+                <div className={style.List1_left} style={{width: 595}}>
                   <img
-                    src="https://tourvip.vn/assets/uploads/images/c1.jpg"
+                    src="https://dulichviet.com.vn/images/bandidau/danh-sach-nhung-buc-anh-viet-nam-lot-top-anh-dep-the-gioi.jpg"
                     alt=""
                   />
                 </div>
                 <div className={style.List1_right}>
-                  <b>Tràng An cổ - điểm đến đang hot ở Ninh Bình</b>
+                  <b>Nét bình dị Việt Nam qua ảnh của tay máy Hà Lan</b>
                   <p>
-                    Ở Tràng An có hai địa danh là Tràng An và Tràng An cổ. Trong
-                    đó, Tràng An, nơi thu hút hàng nghìn lượt khách du xuân mỗi
-                    ngày
+                  Thủ đô Việt Nam sáng sớm êm đềm với những hồ nước, những con phố rợp bóng cây xanh, những tòa nhà rêu phong mang đậm nét kiến trúc Pháp và những phụ nữ đạp xe chở bán hoa cúc tô điểm thêm nét rực rỡ cho Hà Nội.
                   </p>
                 </div>
               </div>
