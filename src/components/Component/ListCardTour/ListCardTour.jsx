@@ -7,9 +7,9 @@ import UrlImg4 from "../../img/banner4.jpg";
 import { database } from "../../../firebase";
 import { getDatabase, ref, child, get, set } from "firebase/database";
 import { Space, Spin } from "antd";
+import { Link } from "react-router-dom";
 
 export default function ListCardTour(props) {
-
   const dbRef = ref(database);
   const [data, setData] = useState();
 
@@ -69,24 +69,26 @@ export default function ListCardTour(props) {
     return (
       <div>
         {Object.keys(data).map((item) => (
-          <CardTour
-            key={item}
-            price={data[item].price}
-            trip={data[item].trip}
-            title={data[item].title}
-            priceOld={data[item].priceOld}
-            vehicle={data[item].vehicle}
-            srcImg={data[item].srcImg}
-            depart={data[item].depart}
-            time={data[item].time}
-          />
+          <Link to={`${data[item].Link}`}>
+            <CardTour
+              key={item}
+              price={data[item].price}
+              trip={data[item].trip}
+              title={data[item].title}
+              priceOld={data[item].priceOld}
+              vehicle={data[item].vehicle}
+              srcImg={data[item].srcImg}
+              depart={data[item].depart}
+              time={data[item].time}
+            />
+          </Link>
         ))}
       </div>
     );
   };
 
   return (
-    <div style={{marginLeft: 290}}>
+    <div style={{ marginLeft: 290 }}>
       <ListCardTour></ListCardTour>
     </div>
   );

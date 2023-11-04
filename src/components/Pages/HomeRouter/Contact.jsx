@@ -1,24 +1,44 @@
 import React from "react";
 import { Route, Routes, Link, Outlet } from "react-router-dom";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Checkbox, Form, Input, message } from "antd";
 import ImgSrc from "../../img/logo.webp";
 import style from "./HomeRouter.module.css";
-import {
-  HomeOutlined,
-  MailOutlined,
-  PhoneOutlined,
-} from "@ant-design/icons";
+import { HomeOutlined, MailOutlined, PhoneOutlined } from "@ant-design/icons";
+import { database } from "../../../firebase";
+import { getDatabase, ref, child, get, set } from "firebase/database";
 
 export default function Contact() {
   const onFinish = (values) => {
     console.log("Success:", values);
+
+    message.success("Đặt hàng thành công");
+    var handleEmail = values.user.email;
+    if (handleEmail.includes("@")) {
+      const username = handleEmail.split("@")[0]; // Lấy phần trước dấu @
+      const username2 = username.split(".")[0];
+      handleEmail = username2;
+    }
+
+    console.log(1111, handleEmail);
+
+    const dataAdd = {
+      username: values.username,
+      email: values.user.email,
+      introduction: values.user.introduction,
+      delete: handleEmail,
+    };
+
+    console.log(dataAdd);
+
+    set(ref(database, `CSKH/${handleEmail}`), dataAdd);
+    window.location.reload();
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
   return (
     <div>
-      <div style={{marginLeft: '39px'}}>
+      <div style={{ marginLeft: "39px" }}>
         <Link to="/" style={{ fontSize: "20px" }}>
           Trang chủ{" "}
         </Link>{" "}
@@ -99,7 +119,11 @@ export default function Contact() {
                 type="primary"
                 htmlType="submit"
                 title="ButtonSubmit"
-                style={{ background: "#1ba0e2", width: '112px', height: '35px' }}
+                style={{
+                  background: "#1ba0e2",
+                  width: "112px",
+                  height: "35px",
+                }}
               >
                 Submit
               </Button>

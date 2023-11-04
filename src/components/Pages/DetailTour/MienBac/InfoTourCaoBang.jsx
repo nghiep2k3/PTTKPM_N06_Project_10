@@ -574,32 +574,6 @@ export default function InfoTourDaNang() {
         <b>NGÀY 4: {data.Des.Day4.title}</b>
         <p>{data.Des.Day4.description}</p>
       </div>
-
-      <div className={style.Footer}>
-        <div style={{ textAlign: "center", marginTop: 20 }}>
-          <h2>
-            Tour <span style={{ color: "#1ba0e2" }}>Liên Quan</span>
-          </h2>
-          <div>
-            <div className={style.tl_1}></div>
-            <div className={style.tl_2}></div>
-            <div className={style.tl_1}></div>
-          </div>
-        </div>
-        <div
-          style={{
-            margin: "20px 80px",
-            display: "flex",
-            justifyContent: "space-around",
-            flexWrap: "wrap",
-          }}
-        >
-          <CardTourMini />
-          <CardTourMini />
-          <CardTourMini />
-          <CardTourMini />
-        </div>
-      </div>
     </div>
   );
 }

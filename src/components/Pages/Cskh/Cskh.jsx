@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getDatabase, ref, child, get, set, remove } from "firebase/database";
 import { Space, Spin, message } from "antd";
 import { database } from "../../../firebase";
-import styles from "./ManagerTour.module.css";
+import styles from "./Cskh.module.css";
 import { Link } from "react-router-dom";
 
 export default function ManagerTour() {
@@ -12,7 +12,7 @@ export default function ManagerTour() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const snapshot = await get(child(dbRef, `OrderTour`));
+        const snapshot = await get(child(dbRef, `CSKH`));
         if (snapshot.exists()) {
           console.log("Manager");
           setManagerTour(snapshot.val());
@@ -31,7 +31,7 @@ export default function ManagerTour() {
   const handleDeleteClick = (value) => {
     // Create a reference to the user you want to delete
     console.log(2222, value);
-    const userRef = ref(getDatabase(), `OrderTour/${value}`);
+    const userRef = ref(getDatabase(), `CSKH/${value}`);
 
     // Remove the user from the database
     remove(userRef)
@@ -63,7 +63,7 @@ export default function ManagerTour() {
     <div>
       <div style={{marginBottom: 15}}>
           <button className={styles.AddTour}>Thêm tour</button>
-          <Link to="/Cskh"><button className={styles.AddTour}>Chăm sóc khách hàng</button></Link>
+          <Link to="/ManagerTour"><button className={styles.AddTour}>Quản lý Tour</button></Link>
       </div>
       <div className={styles.Parent}>
         {/* <div className={styles.Container}>
@@ -84,35 +84,10 @@ export default function ManagerTour() {
             <div>
               <p style={{ fontWeight: "bold" }}>Tên khách hàng:</p>
               <p>{ManagerTour[item].username}</p>
-              <p style={{ fontWeight: "bold" }}>Số điện thoại:</p>
-              <p>{ManagerTour[item].numberPhone}</p>
               <p style={{ fontWeight: "bold" }}>Email:</p>
               <p>{ManagerTour[item].email}</p>
-              <p style={{ fontWeight: "bold" }}>Địa chỉ:</p>
-              <p>
-                {ManagerTour[item].address.ward} -{" "}
-                {ManagerTour[item].address.district} -{" "}
-                {ManagerTour[item].address.city}
-              </p>
-              <p style={{ fontWeight: "bold" }}>Mã khuyến mãi:</p>
-              <p>{ManagerTour[item].promotion}</p>
-            </div>
-
-            <div style={{ position: "absolute", right: 40, width: 310, zIndex: 99}}>
-              <p style={{ fontWeight: "bold", width: 100 }}>
-                Tên tour: ({ManagerTour[item].tours.length})
-              </p>
-
-              {Object.keys(ManagerTour[item].tours).map((item2) => (
-                <p className={styles.CutText}>
-                  Số vé {ManagerTour[item].tours[item2].ticket} -{" "}
-                  {ManagerTour[item].tours[item2].title}
-                </p>
-              ))}
-              <p style={{ fontWeight: "bold" }}>Tổng số tiền:</p>
-              <p>{ManagerTour[item].priceAll}</p>
-              <p style={{ fontWeight: "bold" }}>Ghi chú</p>
-              <p>{ManagerTour[item].note}</p>
+              <p style={{ fontWeight: "bold" }}>Nội dung:</p>
+              <p>{ManagerTour[item].introduction}</p>
             </div>
             <div>
               <button

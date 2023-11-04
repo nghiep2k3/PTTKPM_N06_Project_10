@@ -53,16 +53,22 @@
 
 // export default AddDataToFirebase;
 
-import React from "react";
+import React, { useState } from "react";
 import { getDatabase, ref, child, get, set, remove } from "firebase/database";
 import { database } from "../../firebase";
 
 export default function TestOrder() {
-  const handleDeleteClick = () => {
-    const userId = "Info"; // Replace with the correct user ID you want to delete
+  const [items, setItems] = useState([1, 2, 3, 4, 3, 5]);
 
+  // Hàm xóa phần tử dựa trên chỉ số
+  const removeElementByIndex = (index) => {
+    const updatedItems = [...items]; // Tạo một bản sao mới của mảng
+    items.splice(index, 1); // Xóa phần tử theo chỉ số
+    setItems(updatedItems); // Cập nhật trạng thái
+  };
+  const handleDeleteClick = () => {
     // Create a reference to the user you want to delete
-    const userRef = ref(getDatabase(), `users/B/id`);
+    const userRef = ref(getDatabase(), `users/B`);
 
     // Remove the user from the database
     remove(userRef)
@@ -73,5 +79,19 @@ export default function TestOrder() {
         console.error("Lỗi khi xóa dữ liệu:", error);
       });
   };
-  return <div><button onClick={handleDeleteClick}>Xóa đối tượng B vào Firebase</button></div>;
+  return (
+    <div>
+      <button onClick={handleDeleteClick}>Xóa đối tượng B vào Firebase</button>
+      <div>
+        <ul>
+          {items.map((item, index) => (
+            <li key={index}>
+              {item}
+              <button onClick={() => removeElementByIndex(index)}>Xóa</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
 }

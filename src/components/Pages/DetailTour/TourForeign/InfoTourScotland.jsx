@@ -172,7 +172,7 @@ export default function InfoTourPhap() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const snapshot = await get(child(dbRef, `DetailTour/Uc`));
+        const snapshot = await get(child(dbRef, `DetailTour/Scotland`));
         if (snapshot.exists()) {
           console.log("Tour detail Danang");
           setData(snapshot.val());
@@ -573,6 +573,10 @@ export default function InfoTourPhap() {
         <p>{data.Des.Day3.description}</p>
         <b>NGÀY 4: {data.Des.Day4.title}</b>
         <p>{data.Des.Day4.description}</p>
+        <b>NGÀY 5: {data.Des.Day5.title}</b>
+        <p>{data.Des.Day5.description}</p>
+        <b>NGÀY 6: {data.Des.Day6.title}</b>
+        <p>{data.Des.Day6.description}</p>
       </div>
 
       

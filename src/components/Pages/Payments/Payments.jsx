@@ -79,7 +79,8 @@ export default function Payments() {
       promotion: IsPromotion,
       note: IsNote,
       tours: tours,
-      priceAll: PriceAll, 
+      priceAll: PriceAll,
+      delete: handleEmail,
     };
 
     set(ref(database, `OrderTour/${handleEmail}`), dataAdd);
@@ -405,7 +406,7 @@ export default function Payments() {
                                 selectedDiv === 1 ? styles.SelectedDiv2 : ""
                               }`}
                             >
-                              <Radio value={1}>Thanh toán khi nhận hàng</Radio>
+                              <Radio value={1}>Thanh toán trực tiếp</Radio>
                             </div>
                             <div
                               className={`${styles.ClickPay} ${
