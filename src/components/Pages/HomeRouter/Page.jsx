@@ -10,7 +10,7 @@ export default function Page() {
       </div>
       <div className={styles.about}>
         <h2 className={styles.aboutName}>về chúng tôi</h2>
-        <div className={styles.aboutDes}><p>Công ty cổ phần Ant chuyên kinh doanh tour du lịch trọn gói trong và ngoài nước, tour Free & Easy, dịch vụ hàng không, khách sạn, Visa, đào tạo các chuyên ngành du lịch. Trong suốt 30 năm hình thành và phát triển, Công ty cổ phần Fiditour luôn nằm trong Top 10 hãng lữ hành hàng đầu Việt Nam, luôn chăm chút trong từng quy trình phục vụ để bảo đảm đúng chất lượng dịch vụ và giữ vững cam kết với khách hàng. Bảo đảm cung cấp những sản phẩm đã được chọn lọc. Bảo đảm giá cả hợp lí. Bảo đảm phong cách phục vụ nhiệt tình và chu đáo.</p></div>
+        <div className={styles.aboutDes}><p>Công ty cổ phần Ant chuyên kinh doanh tour du lịch trọn gói trong và ngoài nước, tour Free & Easy, dịch vụ hàng không, khách sạn, Visa, đào tạo các chuyên ngành du lịch. Trong suốt 30 năm hình thành và phát triển, Công ty cổ phần Ant luôn nằm trong Top 10 hãng lữ hành hàng đầu Việt Nam, luôn chăm chút trong từng quy trình phục vụ để bảo đảm đúng chất lượng dịch vụ và giữ vững cam kết với khách hàng. Bảo đảm cung cấp những sản phẩm đã được chọn lọc. Bảo đảm giá cả hợp lí. Bảo đảm phong cách phục vụ nhiệt tình và chu đáo.</p></div>
       </div>
       <div className={styles.aboutSd}>
         <div className={styles.aboutItem}>

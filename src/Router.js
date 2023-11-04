@@ -11,7 +11,7 @@ import Page_404 from "./components/Pages/Page_404/Page_404";
 import TestAntd from "./components/Test/TestAntd";
 import TestArrange from "./components/Test/TestArrange"
 import TestOrder from "./components/Test/TestOrder"
-import CartItem from "./components/Pages/CartItem/CartItem";
+import CartItem from "./components/Pages/CartItem/CartItem"; 
 import ManagerTour from "./components/Pages/ManagerTour/ManagerTour";
 
 import TourOut from "./components/Pages/HomeRouter/TourOut";
